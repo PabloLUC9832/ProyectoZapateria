@@ -141,9 +141,35 @@ public class Promocion_DAO_Imp implements Promocion_DAO {
     }
 
     @Override
-    public boolean update(Promocion promocion) throws Exception {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+  public boolean update(Promocion promocion) throws Exception {
+    Statement stm;
+
+    boolean actualizar = false;
+
+    /*AQUÍ VALE MADRES*/
+    /*String sql = "update promocion set nombreProducto='" + promocion.getNombreProducto() + "' mensaje='" + promocion.getMensaje()
+            + "' descuento='" + promocion.getDescuento() + "' precioAnterior='" + promocion.getPrecioAnterior() + "' precioNuevo='" + promocion.getPrecioNuevo()
+            + "' where idPromocion =" + promocion.getIdPromocion()+"'";*/
+    
+    String sql = "UPDATE promocion SET  nombreProducto = '"+promocion.getNombreProducto()+"',"
+            +"mensaje='"+promocion.getMensaje()+"',"
+            +"descuento='"+promocion.getDescuento()+"',"
+            +"precioAnterior='"+promocion.getPrecioAnterior()+"',"
+            +"precioNuevo='"+promocion.getPrecioNuevo()+"'"
+            + "WHERE idPromocion='"+promocion.getIdPromocion()+"'";
+    
+    ConexionDB cc = new ConexionDB();
+    try (Connection connect = cc.getConnection();) {
+      stm = connect.createStatement();
+      actualizar = stm.execute(sql);
+      connect.close();
+    } catch (SQLException e) {
+      throw new Exception("Error en update SQLException " + e.getMessage());
+    } catch (Exception e) {
+      throw new Exception("Error en update Exception " + e.getMessage());
     }
+    return actualizar;
+  }
 
     @Override
     public boolean delete(Promocion promocion) throws Exception {

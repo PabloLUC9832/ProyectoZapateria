@@ -1,19 +1,21 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import com.jfoenix.controls.JFXButton?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.Pane?>
+<?import javafx.scene.text.Font?>
 
-<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="700.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controlador.Promocion.GeneralPromocionPantallaController">
+<AnchorPane id="AnchorPane" prefHeight="450.0" prefWidth="700.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controlador.Promocion.GeneralPromocionPantallaController">
    <children>
       <Pane prefHeight="200.0" prefWidth="662.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="-62.0" AnchorPane.topAnchor="0.0">
          <children>
-            <TextField fx:id="txtBusqueda" layoutX="162.0" layoutY="97.0" prefHeight="25.0" prefWidth="336.0" style="-fx-background-color: transparent; -fx-border-color: #4cc9f0; -fx-border-width: 0px 0px 2px 0px;" />
-            <Label layoutX="25.0" layoutY="107.0" text="Ingresa tu búsqueda" />
-            <TableView fx:id="tablaPromociones" layoutX="25.0" layoutY="150.0" prefHeight="220.0" prefWidth="648.0">
+            <TextField fx:id="txtBusqueda" layoutX="162.0" layoutY="54.0" prefHeight="25.0" prefWidth="336.0" style="-fx-background-color: transparent; -fx-border-color: #4cc9f0; -fx-border-width: 0px 0px 2px 0px;" />
+            <Label layoutX="25.0" layoutY="66.0" text="Ingresa tu búsqueda" />
+            <TableView fx:id="tablaPromociones" layoutX="25.0" layoutY="98.0" prefHeight="220.0" prefWidth="648.0">
               <columns>
                 <TableColumn fx:id="columnaID" prefWidth="41.0" text="ID" />
                 <TableColumn fx:id="columnaNombreProducto" prefWidth="136.0" text="Nombre del Producto" />
@@ -22,8 +24,56 @@
                   <TableColumn fx:id="columnaPrecioAnterior" prefWidth="96.0" text="Precio Anterior" />
                   <TableColumn fx:id="columnaPrecioNuevo" prefWidth="91.0" text="Precio Nuevo" />
               </columns>
-            </TableView>
+            </TableView>            
+            <Label layoutX="37.0" layoutY="383.0" text="ID">
+               <font>
+                  <Font name="System Bold Italic" size="12.0" />
+               </font>
+            </Label>
+            <Label layoutX="425.0" layoutY="383.0" text="Descuento">
+               <font>
+                  <Font name="System Bold Italic" size="12.0" />
+               </font>
+            </Label>
+            <Label layoutX="294.0" layoutY="19.0" text="Promociones">
+               <font>
+                  <Font name="System Bold" size="18.0" />
+               </font>
+            </Label>
+            <Label fx:id="textoId" layoutX="36.0" layoutY="408.0" />
+            <Label layoutX="68.0" layoutY="383.0" text="Nombre del Producto">
+               <font>
+                  <Font name="System Bold Italic" size="12.0" />
+               </font>
+            </Label>
+            <Label layoutX="281.0" layoutY="383.0" text="Mensaje">
+               <font>
+                  <Font name="System Bold Italic" size="12.0" />
+               </font>
+            </Label>
+            <Label layoutX="494.0" layoutY="383.0" text="Precio Anterior">
+               <font>
+                  <Font name="System Bold Italic" size="12.0" />
+               </font>
+            </Label>
+            <Label layoutX="593.0" layoutY="383.0" text="Precio Nuevo">
+               <font>
+                  <Font name="System Bold Italic" size="12.0" />
+               </font>
+            </Label>
+            <Label fx:id="textoNombreProducto" layoutX="69.0" layoutY="408.0" />
+            <Label fx:id="textoMensaje" layoutX="281.0" layoutY="408.0" />
+            <Label fx:id="textoDescuento" layoutX="425.0" layoutY="408.0" />
+            <Label fx:id="textoPrecioAnterior" layoutX="495.0" layoutY="409.0" />
+            <Label fx:id="textoPrecioNuevo" layoutX="593.0" layoutY="409.0" />
+            <Label layoutX="279.0" layoutY="343.0" text="Producto Seleccionado">
+               <font>
+                  <Font name="System Bold" size="13.0" />
+               </font>
+            </Label>
+            <JFXButton fx:id="btnEditar" layoutX="68.0" layoutY="340.0" onAction="#editarPromocion" text="Editar" />     
          </children>
       </Pane>
    </children>
 </AnchorPane>
+
