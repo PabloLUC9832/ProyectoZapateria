@@ -13,7 +13,7 @@ import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 import modelo.Promocion.Promocion;
 import modelo.Promocion.Promocion_DAO_Imp;
-import vista.AlertaFXML;
+import modelo.AlertaFXML;
 
 public class CreatePromocionPantallaController implements Initializable{
 

@@ -1,4 +1,4 @@
-package vista;
+package modelo;
 
 import javafx.stage.Stage;
 

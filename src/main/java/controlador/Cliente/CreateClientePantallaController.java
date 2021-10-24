@@ -13,7 +13,7 @@ import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 import modelo.Cliente.Cliente;
 import modelo.Cliente.Cliente_DAO_Imp;
-import vista.AlertaFXML;
+import modelo.AlertaFXML;
 
 
 /**

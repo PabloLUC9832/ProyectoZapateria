@@ -20,7 +20,7 @@ import javafx.scene.image.ImageView;
 import javafx.stage.Stage;
 import modelo.Empleado.Empleado;
 import modelo.Empleado.Empleado_DAO_Imp;
-import vista.AlertaFXML;
+import modelo.AlertaFXML;
 
 /**
  * FXML Controller class

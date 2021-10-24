@@ -1,4 +1,4 @@
-package vista;
+package modelo;
 
 import javafx.scene.control.Alert;
 import javafx.scene.control.ButtonType;
