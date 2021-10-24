@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controlador.Cliente.CreateClientePantallaController">
+   <children>
+      <ImageView fitHeight="400.0" fitWidth="600.0" layoutX="174.0" layoutY="151.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+         <image>
+            <Image url="@../../imgs/fondoSignUp.jpg" />
+         </image>
+      </ImageView>
+      <Pane prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #ffff;" AnchorPane.bottomAnchor="30.0" AnchorPane.leftAnchor="40.0" AnchorPane.rightAnchor="40.0" AnchorPane.topAnchor="30.0">
+         <children>
+            <Label layoutX="36.0" layoutY="24.0" text="Datos Cliente">
+               <font>
+                  <Font name="Barlow Condensed Bold" size="16.0" />
+               </font>
+            </Label>
+            <Label layoutX="25.0" layoutY="77.0" text="Nombre" />
+            <Label layoutX="25.0" layoutY="107.0" text="Email" />
+            <TextField fx:id="txtNombre" layoutX="163.0" layoutY="67.0" prefHeight="25.0" prefWidth="336.0" style="-fx-border-color: #4cc9f0; -fx-background-color: transparent; -fx-border-width: 0px 0px 2px 0px;" />
+            <TextField fx:id="txtEmail" layoutX="163.0" layoutY="97.0" prefHeight="25.0" prefWidth="336.0" style="-fx-border-color: #4cc9f0; -fx-background-color: transparent; -fx-border-width: 0px 0px 2px 0px;" />
+            <JFXButton fx:id="btnRegistrar" layoutX="230.0" layoutY="286.0" onAction="#registrarCliente" prefHeight="32.0" prefWidth="117.0" style="-fx-background-color: #4cc9f0;" text="Guardar" textFill="WHITE">
+               <font>
+                  <Font name="System Bold" size="13.0" />
+               </font>
+            </JFXButton>
+         </children>
+      </Pane>
+   </children>
+</AnchorPane>
