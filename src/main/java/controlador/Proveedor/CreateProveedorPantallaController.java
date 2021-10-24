@@ -1,35 +1,27 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package controlador.Proveedor;
 
 import java.net.URL;
 import java.util.ResourceBundle;
 import javafx.fxml.Initializable;
-
 import com.jfoenix.controls.JFXButton;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Alert;
-import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 import modelo.Proveedor.Proveedor;
 import modelo.Proveedor.Proveedor_DAO_Imp;
+import vista.AlertaFXML;
 
 /**
  *
- * @author horus
+ * @author Horus
  */
 
 public class CreateProveedorPantallaController implements Initializable{
-    /**
-     * Initializes the controller class.
-     */
+
     @FXML
     private TextField txtNombre;
 
@@ -62,11 +54,23 @@ public class CreateProveedorPantallaController implements Initializable{
                 String telefono = this.txtTelefono.getText();
                 String direccion = this.txtDireccion.getText();
                 String producto = this.txtProducto.getText();                
-                proveedor = new Proveedor(nombre,telefono,direccion,producto);
-                this.proveedor_DAO.create(proveedor);
+                proveedor = new Proveedor(nombre,telefono,direccion,producto);                                                
+                
+                if(this.proveedor_DAO.create(proveedor)==true){
+                    Stage stage = (Stage) this.btnRegistrar.getScene().getWindow();
+                    AlertaFXML alerta = new AlertaFXML(stage);
+                    alerta.alertaConfirmacion("Agregado con exito", "Proveedor agregado con exito", "El proveedor ha sido agregado exitosamente");                    
+                }else{
+                    Stage stage = (Stage) this.btnRegistrar.getScene().getWindow();
+                    AlertaFXML alerta = new AlertaFXML(stage);
+                    alerta.alertaError("Error al agregar", "Error al agregar", "Ha ocurrido al agregar al proveedor, intentelo nuevamente.");                                                        
+                }                                 
             }
             
-        }catch(Exception ex){
+        }catch(Exception ex) {
+            Stage stage = (Stage) this.btnRegistrar.getScene().getWindow();
+            AlertaFXML alerta = new AlertaFXML(stage);
+            alerta.alertaError("Error al agregar", "Error al agregar", "Ha ocurrido al agregar al proveedor, intentelo nuevamente.Más información \n"+ex);             
             Logger.getLogger(CreateProveedorPantallaController.class.getName()).log(Level.SEVERE,null,ex);
         }
            

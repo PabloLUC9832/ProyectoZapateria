@@ -17,6 +17,7 @@ import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 import modelo.Empleado.Empleado;
 import modelo.Empleado.Empleado_DAO_Imp;
+import vista.AlertaFXML;
 
 /**
  * FXML Controller class
@@ -75,14 +76,26 @@ public class CreateEmpleadoPantallaController implements Initializable {
                 String pass = this.txtPass.getText();
                 puesto = this.comboPuesto.getValue().toString();                
                 empleado = new Empleado(0,nombre,user,pass,puesto);
-                this.empleado_DAO.create(empleado);
+                                
+                if(this.empleado_DAO.create(empleado)==true){
+                    Stage stage = (Stage) this.btnRegistrar.getScene().getWindow();
+                    AlertaFXML alerta = new AlertaFXML(stage);
+                    alerta.alertaConfirmacion("Agregado con exito", "Personal agregado con exito", "El personal ha sido agregado exitosamente");                    
+                }else{
+                    Stage stage = (Stage) this.btnRegistrar.getScene().getWindow();
+                    AlertaFXML alerta = new AlertaFXML(stage);
+                    alerta.alertaError("Error al agregar", "Error al agregar", "Ha ocurrido al agregar al personal, intentelo nuevamente.");                                                        
+                }                 
+                                                                                
             }
             
-        }catch(Exception ex){
+        }catch(Exception ex) {
+            Stage stage = (Stage) this.btnRegistrar.getScene().getWindow();
+            AlertaFXML alerta = new AlertaFXML(stage);
+            alerta.alertaError("Error al agregar", "Error al agregar", "Ha ocurrido al agregar al personal, intentelo nuevamente.Más información \n"+ex);             
             Logger.getLogger(CreateEmpleadoPantallaController.class.getName()).log(Level.SEVERE,null,ex);
         }
-        
-        
+                
     }    
     
     

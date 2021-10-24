@@ -14,13 +14,13 @@ import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
-import javafx.scene.control.Label;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import javafx.scene.image.ImageView;
 import javafx.stage.Stage;
 import modelo.Empleado.Empleado;
 import modelo.Empleado.Empleado_DAO_Imp;
+import vista.AlertaFXML;
 
 /**
  * FXML Controller class
@@ -79,11 +79,18 @@ public class LoginPantallaController implements Initializable {
                 this.cerrarVentanaInicio();
                 this.mostrarVentanaPrincipal();
             }else{
-                
+                Alert alert = new Alert(Alert.AlertType.ERROR);
+                alert.setTitle("Usuario sin permiso");
+                alert.setHeaderText("Acceso denegado");
+                alert.setContentText("Usuario no permitido");
+                alert.showAndWait();                
                 System.out.println("ERROR AL ACCEDER ----");
             }
             
         }else{
+            Stage stage = (Stage) this.btnLogin.getScene().getWindow();
+            AlertaFXML alerta = new AlertaFXML(stage);
+            alerta.alertaInformacion("Contraseña inválida", "Realiza lo siguiente", "La contraseña deben ser números");            
             System.out.println("CONTRASEÑA INVALIDA");
         }
     }

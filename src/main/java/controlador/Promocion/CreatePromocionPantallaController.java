@@ -13,6 +13,7 @@ import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 import modelo.Promocion.Promocion;
 import modelo.Promocion.Promocion_DAO_Imp;
+import vista.AlertaFXML;
 
 public class CreatePromocionPantallaController implements Initializable{
 
@@ -59,14 +60,24 @@ public class CreatePromocionPantallaController implements Initializable{
                 String mensaje = this.txtMensaje.getText();
                 String descuento = this.txtDescuento.getText();
                 float precioAnterior = Float.parseFloat(txtPrecioAnterior.getText());
-                float precioNuevo = Float.parseFloat(txtPrecioNuevo.getText());
-
+                float precioNuevo = Float.parseFloat(txtPrecioNuevo.getText());                
+                promocion = new Promocion(0,nombreProducto,mensaje,descuento,precioAnterior,precioNuevo);                                
                 
-                promocion = new Promocion(0,nombreProducto,mensaje,descuento,precioAnterior,precioNuevo);
-                this.promocion_DAO.create(promocion);
+                if(this.promocion_DAO.create(promocion)==true){
+                    Stage stage = (Stage) this.btnRegistrar.getScene().getWindow();
+                    AlertaFXML alerta = new AlertaFXML(stage);
+                    alerta.alertaConfirmacion("Agregado con exito", "Promoción agregado con exito", "La promoción ha sido agregado exitosamente");                    
+                }else{
+                    Stage stage = (Stage) this.btnRegistrar.getScene().getWindow();
+                    AlertaFXML alerta = new AlertaFXML(stage);
+                    alerta.alertaError("Error al agregar", "Error al agregar", "Ha ocurrido al agregar la promoción, intentelo nuevamente.");                                                        
+                }                                                   
             }
             
-        }catch(Exception ex){
+        }catch(Exception ex) {
+            Stage stage = (Stage) this.btnRegistrar.getScene().getWindow();
+            AlertaFXML alerta = new AlertaFXML(stage);
+            alerta.alertaError("Error al agregar", "Error al agregar", "Ha ocurrido al agregar la promoción, intentelo nuevamente.Más información \n"+ex);             
             Logger.getLogger(CreatePromocionPantallaController.class.getName()).log(Level.SEVERE,null,ex);
         }
     }
