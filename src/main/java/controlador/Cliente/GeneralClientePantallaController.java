@@ -21,7 +21,7 @@ import modelo.Cliente.Cliente_DAO_Imp;
  */
 public class GeneralClientePantallaController implements Initializable {
 
-   @FXML
+    @FXML
     private TableView<Cliente> tablaClientes;
     @FXML
     private TableColumn<Cliente, String> columnaNombre;
@@ -60,5 +60,5 @@ public class GeneralClientePantallaController implements Initializable {
         this.columnaEmail.setCellValueFactory(new PropertyValueFactory<>("emailCliente"));
         this.tablaClientes.setItems(this.listaCliente);
     }  
-    
+      
 }

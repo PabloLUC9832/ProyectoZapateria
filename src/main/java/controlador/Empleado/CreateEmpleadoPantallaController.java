@@ -81,6 +81,7 @@ public class CreateEmpleadoPantallaController implements Initializable {
                     Stage stage = (Stage) this.btnRegistrar.getScene().getWindow();
                     AlertaFXML alerta = new AlertaFXML(stage);
                     alerta.alertaConfirmacion("Agregado con exito", "Personal agregado con exito", "El personal ha sido agregado exitosamente");                    
+                    cerrarVentana();
                 }else{
                     Stage stage = (Stage) this.btnRegistrar.getScene().getWindow();
                     AlertaFXML alerta = new AlertaFXML(stage);
@@ -125,6 +126,10 @@ public class CreateEmpleadoPantallaController implements Initializable {
         
     }
     
+    public void cerrarVentana(){
+        Stage stage = (Stage) this.btnRegistrar.getScene().getWindow();
+        stage.close();
+    }       
     
     
 }

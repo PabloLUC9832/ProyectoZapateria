@@ -90,14 +90,19 @@ public class MainPantallaController implements Initializable {
     private StackPane contentArea;
          
     @FXML
-    public JFXButton btnProveedores;
+    private JFXButton btnPersonal;
 
     @FXML
-    public JFXButton btnPersonal;
+    private JFXButton btnProveedor;
+
+    @FXML
+    private JFXButton btnCliente;
 
     @FXML
     private JFXButton btnPromocion;
-    
+
+    @FXML
+    private JFXButton btnCerrarSesion;    
     //LoginPantallaController lgc;
     
     @Override
@@ -172,7 +177,6 @@ public class MainPantallaController implements Initializable {
 
     public void pantallaPersonal(javafx.event.ActionEvent actionEvent) throws IOException{
         
-        //String ruta = "";                
         Parent fxml = FXMLLoader.load(getClass().getResource("/vista/Empleado/GeneralEmpleadoPantalla.fxml"));      
         contentArea.getChildren().removeAll();
         contentArea.getChildren().setAll(fxml);     
@@ -190,21 +194,53 @@ public class MainPantallaController implements Initializable {
     
     public void pantallaPromocion(javafx.event.ActionEvent actionEvent) throws IOException{
         
-        //String ruta = "";                
         Parent fxml = FXMLLoader.load(getClass().getResource("/vista/Promocion/GeneralPromocionPantalla.fxml"));      
         contentArea.getChildren().removeAll();
         contentArea.getChildren().setAll(fxml);     
         btn1.setText("Añadir Promocion");
         btn1.setAccessibleText("Añadir Promocion");
-        Image image = new Image("/imgs/addEmpleado_64px.png");
+        Image image = new Image("/imgs/addPromocion_64px.png");
         img1.setImage(image);  
         
         btn1.setOnMouseClicked((MouseEvent mouseEvent) -> {
-            mostrarVentana("/vista/Promocion/CreatePromocionPantalla.fxml","Promociones");
+            mostrarVentana("/vista/Promocion/CreatePromocionPantalla.fxml","Registro de  Promociones");
         });
         
     }
   
+    public void pantallaProveedor(javafx.event.ActionEvent actionEvent) throws IOException{
+        
+        /*Parent fxml = FXMLLoader.load(getClass().getResource("/vista/Proveedor/GeneralPromocionPantalla.fxml"));      
+        contentArea.getChildren().removeAll();
+        contentArea.getChildren().setAll(fxml);     */
+        btn1.setText("Añadir Proveedor");
+        btn1.setAccessibleText("Añadir Proveedor");
+        Image image = new Image("/imgs/addEmpleado_64px.png");
+        img1.setImage(image); 
+        
+        btn1.setOnMouseClicked((MouseEvent mouseEvent) -> {
+            mostrarVentana("/vista/Proveedor/CreateProveedorPantalla.fxml","Registro de Proveedor");
+        });
+        
+    }    
+    
+    public void pantallaCliente(javafx.event.ActionEvent actionEvent) throws IOException{
+        
+        Parent fxml = FXMLLoader.load(getClass().getResource("/vista/Cliente/GeneralClientePantalla.fxml"));      
+        contentArea.getChildren().removeAll();
+        contentArea.getChildren().setAll(fxml);     
+        btn1.setText("Añadir Cliente");
+        btn1.setAccessibleText("Añadir Cliente");
+        Image image = new Image("/imgs/addEmpleado_64px.png");
+        img1.setImage(image);
+        
+        btn1.setOnMouseClicked((MouseEvent mouseEvent) -> {
+            mostrarVentana("/vista/Cliente/CreateClientePantalla.fxml","Registro de Proveedor");
+        });
+        
+    }     
+
+    
     
     public void mostrarVentana(String ruta,String tituloVentana){
         try{
@@ -219,6 +255,24 @@ public class MainPantallaController implements Initializable {
         }catch(IOException e){
             System.out.println("ERROR AL MOSTRAR LA VENTANA: "+e);
         }
+    }   
+    
+    
+    @FXML
+    void cerrarSesion(ActionEvent event) {
+        Stage stage = (Stage) this.btnCerrarSesion.getScene().getWindow();
+        stage.close();
+        try{
+            FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/vista/LoginPantalla.fxml"));
+            Parent ventanaPrincipal = (Parent) fxmlLoader.load();
+            //Stage
+            stage = new Stage();
+            stage.setScene(new Scene(ventanaPrincipal));
+            stage.show();
+            
+        }catch(IOException e){
+            System.out.println("Error al abrir ventana principal"+e);
+        }      
     }    
     
 }

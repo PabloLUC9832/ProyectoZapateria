@@ -36,10 +36,18 @@ public class CreateClientePantallaController implements Initializable {
     private Stage stageDialogoEdicion;
     private Cliente cliente;
     
+    GeneralClientePantallaController gc;
+    
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         cliente_DAO = new Cliente_DAO_Imp();
+        //GeneralClientePantallaController gc =new GeneralClientePantallaController();
+        //gc.colocarClientesTabla();        
     }    
+    
+    /*public CreateClientePantallaController(GeneralClientePantallaController gc){
+        this.gc=gc;
+    }*/
     
     @FXML
     void registrarCliente(ActionEvent event) {
@@ -49,17 +57,19 @@ public class CreateClientePantallaController implements Initializable {
                 String nombreCliente = this.txtNombre.getText();
                 String emailCliente = this.txtEmail.getText();
                 cliente = new Cliente(nombreCliente, emailCliente);
-                
+
                 if(this.cliente_DAO.create(cliente)==true){
                     Stage stage = (Stage) this.btnRegistrar.getScene().getWindow();
                     AlertaFXML alerta = new AlertaFXML(stage);
-                    alerta.alertaConfirmacion("Agregado con exito", "Cliente agregado con exito", "El cliente ha sido agregado exitosamente");                    
+                    alerta.alertaConfirmacion("Agregado con exito", "Cliente agregado con exito", "El cliente ha sido agregado exitosamente");                                        
+                    cerrarVentana();     
+                    //gc.colocarClientesTabla();
                 }else{
                     Stage stage = (Stage) this.btnRegistrar.getScene().getWindow();
                     AlertaFXML alerta = new AlertaFXML(stage);
                     alerta.alertaError("Error al agregar", "Error al agregar", "Ha ocurrido al agregar al cliente, intentelo nuevamente.");                                                        
                 }                
-            }
+            }           
         }catch(Exception ex) {
             Stage stage = (Stage) this.btnRegistrar.getScene().getWindow();
             AlertaFXML alerta = new AlertaFXML(stage);
@@ -89,4 +99,9 @@ public class CreateClientePantallaController implements Initializable {
             return false;
         }
     }
+    
+    public void cerrarVentana(){
+        Stage stage = (Stage) this.btnRegistrar.getScene().getWindow();
+        stage.close();
+    }         
 }

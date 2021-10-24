@@ -184,7 +184,7 @@
                               </ImageView>
                            </graphic>
                         </JFXButton>
-                        <JFXButton fx:id="btnProveedores" alignment="BASELINE_LEFT" prefHeight="38.0" prefWidth="176.0" styleClass="sidebarItem" text="Proveedores" textAlignment="CENTER" textFill="WHITE">
+                        <JFXButton fx:id="btnProveedor" alignment="BASELINE_LEFT" onAction="#pantallaProveedor" prefHeight="38.0" prefWidth="176.0" styleClass="sidebarItem" text="Proveedores" textAlignment="CENTER" textFill="WHITE">
                            <font>
                               <Font name="System Bold" size="12.0" />
                            </font>
@@ -196,7 +196,7 @@
                               </ImageView>
                            </graphic>
                         </JFXButton>
-                        <JFXButton alignment="BASELINE_LEFT" prefHeight="38.0" prefWidth="176.0" styleClass="sidebarItem" text="Clientes" textAlignment="CENTER" textFill="WHITE">
+                        <JFXButton fx:id="btnCliente" alignment="BASELINE_LEFT" onAction="#pantallaCliente" prefHeight="38.0" prefWidth="176.0" styleClass="sidebarItem" text="Clientes" textAlignment="CENTER" textFill="WHITE">
                            <font>
                               <Font name="System Bold" size="12.0" />
                            </font>
@@ -220,7 +220,7 @@
                               </ImageView>
                            </graphic>
                         </JFXButton>
-                        <JFXButton alignment="BASELINE_LEFT" prefHeight="38.0" prefWidth="176.0" styleClass="sidebarItem" text="Cerrar sesión" textAlignment="CENTER" textFill="WHITE">
+                        <JFXButton fx:id="btnCerrarSesion" alignment="BASELINE_LEFT" onAction="#cerrarSesion" prefHeight="38.0" prefWidth="176.0" styleClass="sidebarItem" text="Cerrar sesión" textAlignment="CENTER" textFill="WHITE">
                            <font>
                               <Font name="System Bold" size="12.0" />
                            </font>

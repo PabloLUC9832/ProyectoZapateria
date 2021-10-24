@@ -60,6 +60,7 @@ public class CreateProveedorPantallaController implements Initializable{
                     Stage stage = (Stage) this.btnRegistrar.getScene().getWindow();
                     AlertaFXML alerta = new AlertaFXML(stage);
                     alerta.alertaConfirmacion("Agregado con exito", "Proveedor agregado con exito", "El proveedor ha sido agregado exitosamente");                    
+                    cerrarVentana();
                 }else{
                     Stage stage = (Stage) this.btnRegistrar.getScene().getWindow();
                     AlertaFXML alerta = new AlertaFXML(stage);
@@ -105,5 +106,11 @@ public class CreateProveedorPantallaController implements Initializable{
         }                                       
         
     }
+    
+    public void cerrarVentana(){
+        Stage stage = (Stage) this.btnRegistrar.getScene().getWindow();
+        stage.close();
+    }       
+    
 }
 

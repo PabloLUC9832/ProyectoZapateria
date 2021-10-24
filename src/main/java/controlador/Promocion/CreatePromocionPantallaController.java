@@ -67,6 +67,7 @@ public class CreatePromocionPantallaController implements Initializable{
                     Stage stage = (Stage) this.btnRegistrar.getScene().getWindow();
                     AlertaFXML alerta = new AlertaFXML(stage);
                     alerta.alertaConfirmacion("Agregado con exito", "Promoción agregado con exito", "La promoción ha sido agregado exitosamente");                    
+                    cerrarVentana();
                 }else{
                     Stage stage = (Stage) this.btnRegistrar.getScene().getWindow();
                     AlertaFXML alerta = new AlertaFXML(stage);
@@ -109,5 +110,11 @@ public class CreatePromocionPantallaController implements Initializable{
         
     }    
 
+    public void cerrarVentana(){
+        Stage stage = (Stage) this.btnRegistrar.getScene().getWindow();
+        stage.close();
+    }       
+    
+    
 }
 
