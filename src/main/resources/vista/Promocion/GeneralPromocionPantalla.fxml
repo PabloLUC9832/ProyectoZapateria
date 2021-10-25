@@ -71,9 +71,9 @@
                   <Font name="System Bold" size="13.0" />
                </font>
             </Label>
-            <JFXButton fx:id="btnEditar" layoutX="68.0" layoutY="340.0" onAction="#editarPromocion" text="Editar" />     
+            <JFXButton fx:id="btnEditar" layoutX="68.0" layoutY="340.0" onAction="#editarPromocion" text="Editar" />
+            <JFXButton fx:id="btnEliminar" layoutX="138.0" layoutY="340.0" onAction="#eliminarPromocion" text="Eliminar" />     
          </children>
       </Pane>
    </children>
 </AnchorPane>
-

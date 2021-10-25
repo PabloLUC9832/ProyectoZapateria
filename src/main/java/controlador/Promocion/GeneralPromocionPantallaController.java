@@ -75,6 +75,9 @@ public class GeneralPromocionPantallaController implements Initializable {
     @FXML
     private JFXButton btnEditar;
     
+    @FXML
+    private JFXButton btnEliminar;
+        
     private Promocion_DAO_Imp promocion_DAO;
     public ObservableList<Promocion> listaPromocion;  
     
@@ -237,5 +240,36 @@ public class GeneralPromocionPantallaController implements Initializable {
             alert.showAndWait();
         }
     }
+    
+    @FXML
+    void eliminarPromocion(ActionEvent event) {
+
+        int selectedIndex = this.tablaPromociones.getSelectionModel().getSelectedIndex();
+        if (selectedIndex >= 0) {
+            Promocion promocion = this.tablaPromociones.getSelectionModel().getSelectedItem();
+            this.tablaPromociones.getSelectionModel().selectLast();           
+            try {
+                this.promocion_DAO.delete(promocion);
+            } catch (Exception ex) {
+                Logger.getLogger(GeneralPromocionPantallaController.class.getName()).log(Level.SEVERE, null, ex);
+            }
+            this.colocarPromocionesTabla();
+            if(selectedIndex!=0){
+                selectedIndex--;
+                this.tablaPromociones.getSelectionModel().select(selectedIndex);
+            }
+
+        } else {
+            // Nothing selected.
+            Alert alert = new Alert(Alert.AlertType.WARNING);
+            alert.initOwner(this.stagePrincipal);
+            alert.setTitle("Ninguna fila seleccionada");
+            alert.setHeaderText("No ha seleccionado ninguna promoción");
+            alert.setContentText("Por favor selecciona una fila e intenta eliminar nuevamente.");
+            alert.showAndWait();
+        }        
+        
+        
+    }    
     
 }

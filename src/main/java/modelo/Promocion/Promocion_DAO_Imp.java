@@ -109,11 +109,6 @@ public class Promocion_DAO_Imp implements Promocion_DAO {
             rs = stm.executeQuery(sql);
             
             while(rs.next()){
-                /*empleado.setNempleado(rs.getInt(1));
-                empleado.setNombre(rs.getString(2));
-                empleado.setUsuario(rs.getString(3));
-                empleado.setPass(rs.getString(4));                
-                empleado.setPuesto(rs.getString(5));*/
               Promocion prom1 = new Promocion(
                             rs.getInt(1),
                             rs.getString(2),
@@ -122,10 +117,8 @@ public class Promocion_DAO_Imp implements Promocion_DAO {
                             rs.getFloat(5),
                             rs.getFloat(6)                                                   
                             );
-                //empl
                 listaPromocion.add(prom1);
             }
-            //listaEmpleado.add(empleado);
             System.out.println(promocion);
             stm.close();
             rs.close();
@@ -145,12 +138,7 @@ public class Promocion_DAO_Imp implements Promocion_DAO {
     Statement stm;
 
     boolean actualizar = false;
-
-    /*AQUÍ VALE MADRES*/
-    /*String sql = "update promocion set nombreProducto='" + promocion.getNombreProducto() + "' mensaje='" + promocion.getMensaje()
-            + "' descuento='" + promocion.getDescuento() + "' precioAnterior='" + promocion.getPrecioAnterior() + "' precioNuevo='" + promocion.getPrecioNuevo()
-            + "' where idPromocion =" + promocion.getIdPromocion()+"'";*/
-    
+ 
     String sql = "UPDATE promocion SET  nombreProducto = '"+promocion.getNombreProducto()+"',"
             +"mensaje='"+promocion.getMensaje()+"',"
             +"descuento='"+promocion.getDescuento()+"',"
@@ -173,7 +161,24 @@ public class Promocion_DAO_Imp implements Promocion_DAO {
 
     @Override
     public boolean delete(Promocion promocion) throws Exception {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+
+        Statement stm;
+
+        boolean eliminar = false;
+
+        String sql = "DELETE FROM promocion WHERE idPromocion = " + promocion.getIdPromocion();
+        ConexionDB cc = new ConexionDB();
+        try (Connection connect = cc.getConnection();) {
+          stm = connect.createStatement();
+          eliminar = stm.execute(sql);
+          connect.close();
+        } catch (SQLException e) {
+          throw new Exception("Error en delete SQLException " + e.getMessage());
+        } catch (Exception e) {
+          throw new Exception("Error en delete Exception " + e.getMessage());
+        }
+        return eliminar;        
+
     }
 
     @Override
