@@ -25,6 +25,7 @@ import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
+import modelo.AlertaFXML;
 import modelo.Promocion.Promocion;
 import modelo.Promocion.Promocion_DAO_Imp;
 
@@ -249,7 +250,15 @@ public class GeneralPromocionPantallaController implements Initializable {
             Promocion promocion = this.tablaPromociones.getSelectionModel().getSelectedItem();
             this.tablaPromociones.getSelectionModel().selectLast();           
             try {
-                this.promocion_DAO.delete(promocion);
+                String a = "¿Estas seguro de eliminar  : \n"+promocion.getNombreProducto()+"";
+                Stage stage = (Stage) this.btnEliminar.getScene().getWindow();
+                AlertaFXML alerta = new AlertaFXML(stage);
+                //alerta.alertaConfirmacion("Eliminar", a, "Pulsa Aceptar para eliminar");
+                //this.promocion_DAO.delete(promocion);
+                if (alerta.alertaConfirmacion("Eliminar", a, "Pulsa Aceptar para eliminar")==true) {
+                  this.promocion_DAO.delete(promocion);  
+                }
+                
             } catch (Exception ex) {
                 Logger.getLogger(GeneralPromocionPantallaController.class.getName()).log(Level.SEVERE, null, ex);
             }

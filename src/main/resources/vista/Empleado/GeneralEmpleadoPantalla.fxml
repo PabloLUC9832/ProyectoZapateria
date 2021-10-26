@@ -1,28 +1,67 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import com.jfoenix.controls.JFXButton?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.Pane?>
+<?import javafx.scene.text.Font?>
 
-<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controlador.Empleado.GeneralEmpleadoPantallaController">
+<AnchorPane id="AnchorPane" prefHeight="450.0" prefWidth="700.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controlador.Empleado.GeneralEmpleadoPantallaController">
    <children>
       <Pane prefHeight="200.0" prefWidth="200.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
          <children>
-            <TextField fx:id="txtBusqueda" layoutX="163.0" layoutY="97.0" prefHeight="25.0" prefWidth="336.0" style="-fx-background-color: transparent; -fx-border-color: #4cc9f0; -fx-border-width: 0px 0px 2px 0px;" />
-            <Label layoutX="25.0" layoutY="107.0" text="Ingresa tu búsqueda" />
-            <TableView fx:id="tablaEmpleados" layoutX="25.0" layoutY="150.0" prefHeight="220.0" prefWidth="550.0">
+            <TextField fx:id="txtBusqueda" layoutX="162.0" layoutY="54.0" prefHeight="25.0" prefWidth="336.0" style="-fx-background-color: transparent; -fx-border-color: #4cc9f0; -fx-border-width: 0px 0px 2px 0px;" />
+            <Label layoutX="25.0" layoutY="66.0" text="Ingresa tu búsqueda" />
+            <TableView fx:id="tablaEmpleados" layoutX="25.0" layoutY="98.0" prefHeight="220.0" prefWidth="648.0">
               <columns>
                 <TableColumn fx:id="columnaID" prefWidth="30.0" text="ID" />
-                <TableColumn fx:id="columnaNombre" prefWidth="214.0" text="Nombre" />
-                  <TableColumn fx:id="columnaUsuario" minWidth="0.0" prefWidth="114.0" text="Usuario" />
-                  <TableColumn fx:id="columnaContraseña" minWidth="1.0" prefWidth="90.0" text="Contraseña" />
-                  <TableColumn fx:id="columnaPuesto" prefWidth="100.0" text="Puesto" />
+                <TableColumn fx:id="columnaNombre" prefWidth="234.0" text="Nombre" />
+                  <TableColumn fx:id="columnaUsuario" minWidth="0.0" prefWidth="147.0" text="Usuario" />
+                  <TableColumn fx:id="columnaContraseña" minWidth="1.0" prefWidth="98.0" text="Contraseña" />
+                  <TableColumn fx:id="columnaPuesto" prefWidth="138.0" text="Puesto" />
               </columns>
             </TableView>
          </children>
       </Pane>
+      <Label layoutX="279.0" layoutY="343.0" text="Personal Seleccionado">
+         <font>
+            <Font name="System Bold" size="13.0" />
+         </font>
+      </Label>
+      <Label layoutX="37.0" layoutY="383.0" text="ID">
+         <font>
+            <Font name="System Bold Italic" size="12.0" />
+         </font>
+      </Label>
+      <Label layoutX="68.0" layoutY="383.0" text="Nombre">
+         <font>
+            <Font name="System Bold Italic" size="12.0" />
+         </font>
+      </Label>
+      <Label layoutX="281.0" layoutY="383.0" text="Usuario">
+         <font>
+            <Font name="System Bold Italic" size="12.0" />
+         </font>
+      </Label>
+      <Label layoutX="425.0" layoutY="383.0" text="Contraseña">
+         <font>
+            <Font name="System Bold Italic" size="12.0" />
+         </font>
+      </Label>
+      <Label layoutX="593.0" layoutY="383.0" text="Puesto">
+         <font>
+            <Font name="System Bold Italic" size="12.0" />
+         </font>
+      </Label>
+      <Label fx:id="textoId" layoutX="46.0" layoutY="418.0" />
+      <Label fx:id="textoNombreEmpleado" layoutX="79.0" layoutY="418.0" />
+      <Label fx:id="textoUsuario" layoutX="291.0" layoutY="418.0" />
+      <Label fx:id="textoPass" layoutX="435.0" layoutY="418.0" />
+      <Label fx:id="textoPuesto" layoutX="603.0" layoutY="419.0" />
+      <JFXButton fx:id="btnEditar" layoutX="78.0" layoutY="350.0" onAction="#editarEmpleado" text="Editar" />
+      <JFXButton fx:id="btnEliminar" layoutX="148.0" layoutY="350.0" onAction="#eliminarEmpleado" text="Eliminar" />
    </children>
 </AnchorPane>

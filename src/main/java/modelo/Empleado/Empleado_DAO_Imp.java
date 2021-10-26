@@ -115,12 +115,50 @@ public class Empleado_DAO_Imp implements Empleado_DAO {
 
     @Override
     public boolean update(Empleado empleado) throws Exception {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    
+        Statement stm;
+
+        boolean actualizar = false;
+
+        String sql = "UPDATE empleado SET Nombre='"+empleado.getNombre()+"',"
+        +"usuario='"+empleado.getUsuario()+"',"
+        +"pass='"+empleado.getPass()+"',"
+        +"puesto='"+empleado.getPuesto()+"'"
+        +"WHERE Nempleado='"+empleado.getNempleado()+"'";
+        
+        ConexionDB cc = new ConexionDB();
+        try (Connection connect = cc.getConnection();) {
+          stm = connect.createStatement();
+          actualizar = stm.execute(sql);
+          connect.close();
+        } catch (SQLException e) {
+          throw new Exception("Error en update SQLException " + e.getMessage());
+        } catch (Exception e) {
+          throw new Exception("Error en update Exception " + e.getMessage());
+        }
+        return actualizar;
     }
 
     @Override
     public boolean delete(Empleado empleado) throws Exception {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+
+        Statement stm;
+
+        boolean eliminar = false;
+
+        String sql = "DELETE FROM empleado WHERE Nempleado = " + empleado.getNempleado();
+        ConexionDB cc = new ConexionDB();
+        try (Connection connect = cc.getConnection();) {
+          stm = connect.createStatement();
+          eliminar = stm.execute(sql);
+          connect.close();
+        } catch (SQLException e) {
+          throw new Exception("Error en delete SQLException " + e.getMessage());
+        } catch (Exception e) {
+          throw new Exception("Error en delete Exception " + e.getMessage());
+        }
+        return eliminar;   
+
     }
 
     @Override

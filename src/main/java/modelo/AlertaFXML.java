@@ -48,5 +48,5 @@ public class AlertaFXML extends Alerta {
         }
         return respuesta;
     }
-
+  
 }
