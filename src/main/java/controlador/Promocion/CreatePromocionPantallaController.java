@@ -54,7 +54,7 @@ public class CreatePromocionPantallaController implements Initializable{
         
         Promocion promocion = new Promocion();
         try{
-            if (camposValidos()) {
+            if (camposValidosTexto() && camposValidosNumeros()) {
 
                 String nombreProducto = this.txtNombreProducto.getText();
                 String mensaje = this.txtMensaje.getText();
@@ -83,17 +83,15 @@ public class CreatePromocionPantallaController implements Initializable{
         }
     }
     
-    private boolean camposValidos(){
+    private boolean camposValidosTexto(){
         
         String errorMessage = "";
         
-        if(this.txtNombreProducto.getText() == null ||
-           this.txtMensaje.getText() == null   ||
-           this.txtDescuento.getText() == null   || 
-           this.txtPrecioAnterior.getText() == null ||
-           this.txtPrecioNuevo.getText() == null
+        if(this.txtNombreProducto.getText() == null || this.txtNombreProducto.getText().length() == 0 ||
+           this.txtMensaje.getText() == null   || this.txtMensaje.getText().length() == 0 ||
+           this.txtDescuento.getText() == null   || this.txtDescuento.getText().length() == 0
         ){
-          errorMessage +="ALGUNOS CAMPOS ESTAN VACIOS\n";                         
+          errorMessage +="Verifica los cambios\n";                         
         }
         
         if(errorMessage.length()==0){
@@ -101,14 +99,65 @@ public class CreatePromocionPantallaController implements Initializable{
         }else{
             Alert alert = new Alert(Alert.AlertType.ERROR);
             alert.setTitle("Campo Invalido");
-            alert.setHeaderText("Realizar lo siguiente");
+            alert.setHeaderText("Revisa los campos Nombre Producto, Mensaje, Descuento");
             alert.setContentText(errorMessage);
             alert.initOwner(stageDialogoEdicion);
             alert.showAndWait();
             return false;            
         }                                       
         
-    }    
+    }
+
+      private boolean camposValidosNumeros(){
+        String errorMessage = "";
+        if(this.txtPrecioAnterior.getText() == null || this.txtPrecioNuevo.getText() == null || 
+                this.txtPrecioAnterior.getText().length() == 0 || this.txtPrecioNuevo.getText().length() == 0 || 
+                this.campoNumericoPrecioAnterior() == false || this.campoNumericoPrecioNuevo() == false){
+            errorMessage += "Verifica los campos! \n";
+        }
+                
+        if(errorMessage.length() == 0){
+            return true;
+        }else{
+            Alert alert = new Alert(Alert.AlertType.ERROR);
+            alert.setTitle("Campo Invalido");
+            alert.setHeaderText("Atencion, verifica los campos Precio Anterior y Precio Nuevo");
+            alert.setContentText(errorMessage);
+            alert.initOwner(stageDialogoEdicion);
+            alert.showAndWait();
+            return false;
+        }
+    }
+    
+    private boolean campoNumericoPrecioAnterior(){
+        boolean numero = false;
+        String precioAnterior = this.txtPrecioAnterior.getText();
+        for(int i = 0;i<precioAnterior.length();i++){
+            if(precioAnterior.charAt(i) == '1' || precioAnterior.charAt(i) == '2'|| precioAnterior.charAt(i) == '3' ||
+                    precioAnterior.charAt(i) == '4' || precioAnterior.charAt(i) == '5' || precioAnterior.charAt(i) == '6' ||
+                    precioAnterior.charAt(i) == '7' || precioAnterior.charAt(i) == '8' || precioAnterior.charAt(i) == '9' ||
+                    precioAnterior.charAt(i) == '.'){
+                numero = true;
+                break;
+            }
+        }
+        return numero;
+    }
+    
+        private boolean campoNumericoPrecioNuevo(){
+        boolean numero = false;
+        String precioNuevo = this.txtPrecioNuevo.getText();
+        for(int i = 0;i<precioNuevo.length();i++){
+            if(precioNuevo.charAt(i) == '1' || precioNuevo.charAt(i) == '2'|| precioNuevo.charAt(i) == '3' ||
+                    precioNuevo.charAt(i) == '4' || precioNuevo.charAt(i) == '5' || precioNuevo.charAt(i) == '6' ||
+                    precioNuevo.charAt(i) == '7' || precioNuevo.charAt(i) == '8' || precioNuevo.charAt(i) == '9' ||
+                    precioNuevo.charAt(i) == '.'){
+                numero = true;
+                break;
+            }
+        }
+        return numero;
+    }
 
     public void cerrarVentana(){
         Stage stage = (Stage) this.btnRegistrar.getScene().getWindow();

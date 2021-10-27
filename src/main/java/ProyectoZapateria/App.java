@@ -21,9 +21,9 @@ public class App extends Application {
     public void start(Stage primaryStage) throws IOException {
         
         //String ruta="/vista/Cliente/GeneralClientePantalla.fxml";
-        //String ruta="/vista/MainPantalla.fxml";
+        String ruta="/vista/MainPantalla.fxml";
         //String ruta="/vista/Promocion/GeneralPromocionPantalla.fxml";
-        String ruta="/vista/Empleado/GeneralEmpleadoPantalla.fxml";
+        //String ruta="/vista/Promocion/EditarPromocionPantalla.fxml";
         //String ruta="/vista/LoginPantalla.fxml";
         Parent root = FXMLLoader.load(getClass().getResource(ruta));
         primaryStage.initStyle(StageStyle.UNDECORATED);

@@ -225,8 +225,8 @@ public class GeneralPromocionPantallaController implements Initializable {
                 try {
                     this.promocion_DAO.update(promocionSeleccionada);
                 } catch (Exception ex) {
-                    //AlertaFXML alerta = new AlertaFXML(this.stagePrincipal);
-                    //alerta.alertaError("Error", "Ocurrió un error al realizar una operación", ex.getMessage());
+                    AlertaFXML alerta = new AlertaFXML(this.stagePrincipal);
+                    alerta.alertaError("Error", "Ocurrió un error al realizar una operación", ex.getMessage());
                     Logger.getLogger(MainPantallaController.class.getName()).log(Level.SEVERE, null, ex);
                 }
                 this.colocarPromocionesTabla();
