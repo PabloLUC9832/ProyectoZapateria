@@ -27,54 +27,6 @@ import javafx.stage.Stage;
 public class MainPantallaController implements Initializable {
 
     @FXML
-    private JFXButton btn1;
-
-    @FXML
-    private JFXButton btn2;
-
-    @FXML
-    private JFXButton btn3;
-
-    @FXML
-    private JFXButton btn4;
-
-    @FXML
-    private JFXButton btn5;
-
-    @FXML
-    private JFXButton btn6;
-
-    @FXML
-    private JFXButton btn7;
-
-    @FXML
-    private JFXButton btn8;
-    
-    @FXML
-    private ImageView img1;    
-    
-    @FXML
-    private ImageView img2;       
-    
-    @FXML
-    private ImageView img3;       
-    
-    @FXML
-    private ImageView img4;       
-    
-    @FXML
-    private ImageView img5;       
-    
-    @FXML
-    private ImageView img6;       
-    
-    @FXML
-    private ImageView img7;       
-    
-    @FXML
-    private ImageView img8;               
-    
-    @FXML
     private ImageView btnExit;
 
     @FXML
@@ -180,64 +132,27 @@ public class MainPantallaController implements Initializable {
         Parent fxml = FXMLLoader.load(getClass().getResource("/vista/Empleado/GeneralEmpleadoPantalla.fxml"));      
         contentArea.getChildren().removeAll();
         contentArea.getChildren().setAll(fxml);     
-        btn1.setText("Añadir empleado");
-        btn1.setAccessibleText("Añadir empleado");
-        Image image = new Image("/imgs/addEmpleado_64px.png");
-        img1.setImage(image);  
-        
-        btn1.setOnMouseClicked((MouseEvent mouseEvent) -> {
-            mostrarVentana("/vista/Empleado/CreateEmpleadoPantalla.fxml","Registro de Personal");
-        });
-        
-        
     }
     
     public void pantallaPromocion(javafx.event.ActionEvent actionEvent) throws IOException{
         
         Parent fxml = FXMLLoader.load(getClass().getResource("/vista/Promocion/GeneralPromocionPantalla.fxml"));      
         contentArea.getChildren().removeAll();
-        contentArea.getChildren().setAll(fxml);     
-        btn1.setText("Añadir Promocion");
-        btn1.setAccessibleText("Añadir Promocion");
-        Image image = new Image("/imgs/addPromocion_64px.png");
-        img1.setImage(image);  
-        
-        btn1.setOnMouseClicked((MouseEvent mouseEvent) -> {
-            mostrarVentana("/vista/Promocion/CreatePromocionPantalla.fxml","Registro de  Promociones");
-        });
-        
+        contentArea.getChildren().setAll(fxml);             
     }
   
     public void pantallaProveedor(javafx.event.ActionEvent actionEvent) throws IOException{
         
         /*Parent fxml = FXMLLoader.load(getClass().getResource("/vista/Proveedor/GeneralPromocionPantalla.fxml"));      
         contentArea.getChildren().removeAll();
-        contentArea.getChildren().setAll(fxml);     */
-        btn1.setText("Añadir Proveedor");
-        btn1.setAccessibleText("Añadir Proveedor");
-        Image image = new Image("/imgs/addEmpleado_64px.png");
-        img1.setImage(image); 
-        
-        btn1.setOnMouseClicked((MouseEvent mouseEvent) -> {
-            mostrarVentana("/vista/Proveedor/CreateProveedorPantalla.fxml","Registro de Proveedor");
-        });
-        
+        contentArea.getChildren().setAll(fxml);     */        
     }    
     
     public void pantallaCliente(javafx.event.ActionEvent actionEvent) throws IOException{
         
         Parent fxml = FXMLLoader.load(getClass().getResource("/vista/Cliente/GeneralClientePantalla.fxml"));      
         contentArea.getChildren().removeAll();
-        contentArea.getChildren().setAll(fxml);     
-        btn1.setText("Añadir Cliente");
-        btn1.setAccessibleText("Añadir Cliente");
-        Image image = new Image("/imgs/addEmpleado_64px.png");
-        img1.setImage(image);
-        
-        btn1.setOnMouseClicked((MouseEvent mouseEvent) -> {
-            mostrarVentana("/vista/Cliente/CreateClientePantalla.fxml","Registro de Proveedor");
-        });
-        
+        contentArea.getChildren().setAll(fxml);             
     }     
 
     

@@ -2,12 +2,10 @@
 
 <?import com.jfoenix.controls.JFXButton?>
 <?import javafx.scene.control.Label?>
-<?import javafx.scene.control.ScrollPane?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.BorderPane?>
-<?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.layout.StackPane?>
 <?import javafx.scene.layout.VBox?>
@@ -28,82 +26,6 @@
                         </ImageView>
                      </children>
                   </Pane>
-                  <HBox accessibleRole="SCROLL_PANE" nodeOrientation="LEFT_TO_RIGHT" prefHeight="100.0" prefWidth="200.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="174.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="25.0">
-                     <children>
-                        <ScrollPane pannable="true" prefHeight="200.0" prefWidth="725.0">
-                           <content>
-                              <Pane prefHeight="35.0" prefWidth="1000.0">
-                                 <children>
-                                    <JFXButton fx:id="btn1" prefWidth="125.0" styleClass="menuItem" text="btn1">
-                                       <graphic>
-                                          <ImageView fx:id="img1" fitHeight="25.0" fitWidth="25.0" pickOnBounds="true" preserveRatio="true" />
-                                       </graphic>
-                                       <font>
-                                          <Font size="11.0" />
-                                       </font>
-                                    </JFXButton>
-                                    <JFXButton fx:id="btn2" layoutX="126.0" prefWidth="125.0" styleClass="menuItem" text="btn2">
-                                       <graphic>
-                                          <ImageView fx:id="img2" fitHeight="25.0" fitWidth="25.0" pickOnBounds="true" preserveRatio="true" />
-                                       </graphic>
-                                       <font>
-                                          <Font size="11.0" />
-                                       </font>
-                                    </JFXButton>
-                                    <JFXButton fx:id="btn3" layoutX="251.0" prefWidth="125.0" text="btn3">
-                                       <graphic>
-                                          <ImageView fx:id="img3" fitHeight="25.0" fitWidth="25.0" pickOnBounds="true" preserveRatio="true" />
-                                       </graphic>
-                                       <font>
-                                          <Font size="11.0" />
-                                       </font>
-                                    </JFXButton>
-                                    <JFXButton fx:id="btn4" layoutX="376.0" prefWidth="125.0" styleClass="menuItem" text="btn4">
-                                       <graphic>
-                                          <ImageView fx:id="img4" fitHeight="25.0" fitWidth="25.0" pickOnBounds="true" preserveRatio="true" />
-                                       </graphic>
-                                       <font>
-                                          <Font size="11.0" />
-                                       </font>
-                                    </JFXButton>
-                                    <JFXButton fx:id="btn5" layoutX="501.0" prefWidth="125.0" styleClass="menuItem" text="btn5">
-                                       <graphic>
-                                          <ImageView fx:id="img5" fitHeight="25.0" fitWidth="25.0" pickOnBounds="true" preserveRatio="true" />
-                                       </graphic>
-                                       <font>
-                                          <Font size="11.0" />
-                                       </font>
-                                    </JFXButton>
-                                    <JFXButton fx:id="btn6" layoutX="626.0" prefWidth="125.0" styleClass="menuItem" text="btn6">
-                                       <graphic>
-                                          <ImageView fx:id="img6" fitHeight="25.0" fitWidth="25.0" pickOnBounds="true" preserveRatio="true" />
-                                       </graphic>
-                                       <font>
-                                          <Font size="11.0" />
-                                       </font>
-                                    </JFXButton>
-                                    <JFXButton fx:id="btn7" layoutX="751.0" prefWidth="125.0" styleClass="menuItem" text="btn7">
-                                       <graphic>
-                                          <ImageView fx:id="img7" fitHeight="25.0" fitWidth="25.0" pickOnBounds="true" preserveRatio="true" />
-                                       </graphic>
-                                       <font>
-                                          <Font size="11.0" />
-                                       </font>
-                                    </JFXButton>
-                                    <JFXButton fx:id="btn8" layoutX="876.0" prefWidth="125.0" styleClass="menuItem" text="btn8">
-                                       <graphic>
-                                          <ImageView fx:id="img8" fitHeight="25.0" fitWidth="25.0" pickOnBounds="true" preserveRatio="true" />
-                                       </graphic>
-                                       <font>
-                                          <Font size="11.0" />
-                                       </font>
-                                    </JFXButton>
-                                 </children>
-                              </Pane>
-                           </content>
-                        </ScrollPane>
-                     </children>
-                  </HBox>
                   <Label fx:id="btnMenu1" layoutX="28.0" layoutY="37.0" text="MENÚ" textFill="#b7b7b7">
                      <graphic>
                         <ImageView fitHeight="22.0" fitWidth="22.0" pickOnBounds="true" preserveRatio="true">

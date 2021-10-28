@@ -74,8 +74,11 @@ public class GeneralPromocionPantallaController implements Initializable {
     public Label textoPrecioNuevo;
     
     @FXML
+    private JFXButton btnAgregar;
+
+    @FXML
     private JFXButton btnEditar;
-    
+
     @FXML
     private JFXButton btnEliminar;
         
@@ -140,9 +143,7 @@ public class GeneralPromocionPantallaController implements Initializable {
     }  
     
     private void buscarProducto() throws Exception{
-                       
-        //String busqueda = this.txtBusqueda.getText();
-         
+                                
         txtBusqueda.setOnKeyReleased((e) -> {
             if(txtBusqueda.getText().equals("")){
             //if(busqueda.equals("")){
@@ -164,9 +165,7 @@ public class GeneralPromocionPantallaController implements Initializable {
             }            
                   
             
-        });
-        
- 
+        });         
         
     }
     
@@ -279,6 +278,21 @@ public class GeneralPromocionPantallaController implements Initializable {
         }        
         
         
+    }    
+    
+    @FXML
+    void agregarPromocion(ActionEvent event) {
+        try{
+            FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/vista/Promocion/CreatePromocionPantalla.fxml"));
+            Parent ventana = (Parent) fxmlLoader.load();
+            Stage stage = new Stage();            
+            stage.setScene(new Scene(ventana));
+            stage.setTitle("Añadir Promocion");
+            stage.show();
+            
+        }catch(IOException e){
+            System.out.println("ERROR AL MOSTRAR LA VENTANA: "+e);
+        }        
     }    
     
 }
