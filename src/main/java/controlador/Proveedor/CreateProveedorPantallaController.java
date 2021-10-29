@@ -48,7 +48,8 @@ public class CreateProveedorPantallaController implements Initializable{
     void registrarProveedor(ActionEvent event) {
            Proveedor proveedor = new Proveedor();
            try{
-            if (camposValidos()) {
+            if (campoTextoValidoNombre() && campoNuloTelefono() && campoNumericoValidoTelefono() && 
+                    campoTextoValidoDireccion() && campoTextoValidoProducto()) {
 
                 String nombre = this.txtNombre.getText();
                 String telefono = this.txtTelefono.getText();
@@ -80,31 +81,119 @@ public class CreateProveedorPantallaController implements Initializable{
     public void setStageDialog(Stage stageDialogoEdicion){
         this.stageDialogoEdicion = stageDialogoEdicion;
     }
-    
-    private boolean camposValidos(){
+
+    private boolean campoTextoValidoNombre(){
         
         String errorMessage = "";
         
-        if(this.txtNombre.getText() == null ||
-           this.txtTelefono.getText() == null   ||
-           this.txtDireccion.getText() == null   ||
-           this.txtProducto.getText() == null   
-        ){
-          errorMessage +="ALGUNOS CAMPOS ESTAN VACIOS\n";                         
+        if(this.txtNombre.getText() == null || this.txtNombre.getText().length() == 0){
+          errorMessage +="Verifica el campo! \n";                         
         }
-        
         if(errorMessage.length()==0){
             return true;
         }else{
             Alert alert = new Alert(Alert.AlertType.ERROR);
-            alert.setTitle("Campo Invalido");
-            alert.setHeaderText("Realizar lo siguiente");
+            alert.setTitle("Error, campo no válido");
+            alert.setHeaderText("El campo Nombre esta vacío");
             alert.setContentText(errorMessage);
             alert.initOwner(stageDialogoEdicion);
             alert.showAndWait();
             return false;            
-        }                                       
+        }                                        
+    }
+    
+        private boolean campoNuloTelefono(){
+        String errorMessage = "";
+        if(this.txtTelefono.getText() == null || this.txtTelefono.getText().length() == 0 ){
+            errorMessage += "Verifica el campo! \n";
+        }
+                
+        if(errorMessage.length() == 0){
+            return true;
+        }else{
+            Alert alert = new Alert(Alert.AlertType.ERROR);
+            alert.setTitle("Error, campo no válido");
+            alert.setHeaderText("El campo Teléfono esta vacío");
+            alert.setContentText(errorMessage);
+            alert.initOwner(stageDialogoEdicion);
+            alert.showAndWait();
+            return false;
+        }
+    }
+   
+   private boolean campoNumericoTelefono(){
+        String errorMessage = "";
+        boolean numero = false;
+        String telefono = this.txtTelefono.getText();
+        for(int i = 0;i<telefono.length();i++){
+            if(telefono.charAt(i) == '1' || telefono.charAt(i) == '2'|| telefono.charAt(i) == '3' ||
+                    telefono.charAt(i) == '4' || telefono.charAt(i) == '5' || telefono.charAt(i) == '6' ||
+                    telefono.charAt(i) == '7' || telefono.charAt(i) == '8' || telefono.charAt(i) == '9' ||
+                    telefono.charAt(i) == '.'){
+                numero = true;
+                break;
+            }
+        }
+        return numero;
+    }
+   
+   private boolean campoNumericoValidoTelefono(){
+        String errorMessage = "";
+        if(this.campoNumericoTelefono() == false){
+            errorMessage += "Verifica el campo! \n";
+        }
+                
+        if(errorMessage.length() == 0){
+            return true;
+        }else{
+            Alert alert = new Alert(Alert.AlertType.ERROR);
+            alert.setTitle("Error, campo no válido");
+            alert.setHeaderText("Ingresa solo numeros");
+            alert.setContentText(errorMessage);
+            alert.initOwner(stageDialogoEdicion);
+            alert.showAndWait();
+            return false;
+        }
+    }
+   
+     private boolean campoTextoValidoDireccion(){
         
+        String errorMessage = "";
+        
+        if(this.txtDireccion.getText() == null || this.txtDireccion.getText().length() == 0){
+          errorMessage +="Verifica el campo! \n";                         
+        }
+        if(errorMessage.length()==0){
+            return true;
+        }else{
+            Alert alert = new Alert(Alert.AlertType.ERROR);
+            alert.setTitle("Error, campo no válido");
+            alert.setHeaderText("El campo Dirección esta vacío");
+            alert.setContentText(errorMessage);
+            alert.initOwner(stageDialogoEdicion);
+            alert.showAndWait();
+            return false;            
+        }                                        
+    }
+     
+      private boolean campoTextoValidoProducto(){
+        
+        String errorMessage = "";
+        
+        if(this.txtProducto.getText() == null || this.txtProducto.getText().length() == 0){
+          errorMessage +="Verifica el campo! \n";                         
+        }
+        if(errorMessage.length()==0){
+            return true;
+        }else{
+            Alert alert = new Alert(Alert.AlertType.ERROR);
+            alert.setTitle("Error, campo no válido");
+            alert.setHeaderText("El campo Producto esta vacío");
+            alert.setContentText(errorMessage);
+            alert.initOwner(stageDialogoEdicion);
+            alert.showAndWait();
+            return false;            
+        }                                        
     }
     
     public void cerrarVentana(){

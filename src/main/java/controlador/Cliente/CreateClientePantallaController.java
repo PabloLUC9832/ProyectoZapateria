@@ -53,7 +53,7 @@ public class CreateClientePantallaController implements Initializable {
     void registrarCliente(ActionEvent event) {
         Cliente cliente = new Cliente();
         try{
-            if(CamposValidos()) {
+            if(campoTextoValidoNombre() && campoNuloEmail() && campoTextoValidoEmail() ) {
                 String nombreCliente = this.txtNombre.getText();
                 String emailCliente = this.txtEmail.getText();
                 cliente = new Cliente(nombreCliente, emailCliente);
@@ -78,7 +78,7 @@ public class CreateClientePantallaController implements Initializable {
         }
     }
 
-    private boolean CamposValidos() {
+    /*private boolean CamposValidos() {
         
         String errorMessage = "";
         
@@ -98,7 +98,79 @@ public class CreateClientePantallaController implements Initializable {
             alert.showAndWait();
             return false;
         }
+    }*/
+    
+    private boolean campoTextoValidoNombre(){
+        
+        String errorMessage = "";
+        
+        if(this.txtNombre.getText() == null || this.txtNombre.getText().length() == 0){
+          errorMessage +="Verifica el campo! \n";                         
+        }
+        if(errorMessage.length()==0){
+            return true;
+        }else{
+            Alert alert = new Alert(Alert.AlertType.ERROR);
+            alert.setTitle("Error, campo no válido");
+            alert.setHeaderText("El campo Nombre esta vacío");
+            alert.setContentText(errorMessage);
+            alert.initOwner(stageDialogoEdicion);
+            alert.showAndWait();
+            return false;            
+        }                                       
+        
     }
+    
+    private boolean campoTextoEmail(){
+        String errorMessage = "";
+        boolean simbolo = false;
+        String email = this.txtEmail.getText();
+        for(int i = 0;i<email.length();i++){
+            if(email.charAt(i) == '@'){
+                simbolo = true;
+                break;
+            }
+        }
+        return simbolo;
+    }
+    
+    private boolean campoNuloEmail(){
+        String errorMessage = "";
+        if(this.txtEmail.getText() == null || this.txtEmail.getText().length() == 0 ){
+            errorMessage += "Verifica el campo! \n";
+        }
+                
+        if(errorMessage.length() == 0){
+            return true;
+        }else{
+            Alert alert = new Alert(Alert.AlertType.ERROR);
+            alert.setTitle("Error, campo no válido");
+            alert.setHeaderText("El campo Email esta vacío");
+            alert.setContentText(errorMessage);
+            alert.initOwner(stageDialogoEdicion);
+            alert.showAndWait();
+            return false;
+        }
+    }
+    
+    private boolean campoTextoValidoEmail(){
+        String errorMessage = "";
+        if(this.campoTextoEmail() == false){
+            errorMessage += "Verifica el campo! \n";
+        }
+                
+        if(errorMessage.length() == 0){
+            return true;
+        }else{
+            Alert alert = new Alert(Alert.AlertType.ERROR);
+            alert.setTitle("Error, campo no válido");
+            alert.setHeaderText("Ingresa una extención de correo válida");
+            alert.setContentText(errorMessage);
+            alert.initOwner(stageDialogoEdicion);
+            alert.showAndWait();
+            return false;
+        }
+    } 
     
     public void cerrarVentana(){
         Stage stage = (Stage) this.btnRegistrar.getScene().getWindow();

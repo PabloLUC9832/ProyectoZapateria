@@ -89,7 +89,8 @@ public class EditarPromocionPantallaController implements Initializable {
     @FXML
     void editarPromocion(ActionEvent event) {
         this.esEdicion = false;
-        if(camposValidosTexto() && camposValidosNumeros()){
+        if(campoTextoValidoNombreProducto() && campoTextoValidoMensaje() && campoTextoValidoDescuento() &&
+               campoNuloPrecioAnterior() && campoNumericoValidoPrecioAnterior() && campoNuloPrecioNuevo() && campoNumericoValidoPrecioNuevo()){
             this.promocion.setNombreProducto(this.txtNombreProducto.getText());
             this.promocion.setMensaje(this.txtMensaje.getText());
             this.promocion.setDescuento(this.txtDescuento.getText());
@@ -99,24 +100,20 @@ public class EditarPromocionPantallaController implements Initializable {
             this.stageDialogoEdicion.close();
         }
     }
-    
-private boolean camposValidosTexto(){
+
+    private boolean campoTextoValidoNombreProducto(){
         
         String errorMessage = "";
         
-        if(this.txtNombreProducto.getText() == null || this.txtNombreProducto.getText().length() == 0 ||
-           this.txtMensaje.getText() == null   || this.txtMensaje.getText().length() == 0 ||
-           this.txtDescuento.getText() == null   || this.txtDescuento.getText().length() == 0
-        ){
-          errorMessage +="Verifica los cambios\n";                         
+        if(this.txtNombreProducto.getText() == null || this.txtNombreProducto.getText().length() == 0){
+          errorMessage +="Verifica el campo! \n";                         
         }
-        
         if(errorMessage.length()==0){
             return true;
         }else{
             Alert alert = new Alert(Alert.AlertType.ERROR);
-            alert.setTitle("Campo Invalido");
-            alert.setHeaderText("Revisa los campos Nombre Producto, Mensaje, Descuento");
+            alert.setTitle("Error, campo no válido");
+            alert.setHeaderText("El campo Nombre Producto esta vacío");
             alert.setContentText(errorMessage);
             alert.initOwner(stageDialogoEdicion);
             alert.showAndWait();
@@ -124,21 +121,61 @@ private boolean camposValidosTexto(){
         }                                       
         
     }
-
-      private boolean camposValidosNumeros(){
+    
+    private boolean campoTextoValidoMensaje(){
+        
         String errorMessage = "";
-        if(this.txtPrecioAnterior.getText() == null || this.txtPrecioNuevo.getText() == null || 
-                this.txtPrecioAnterior.getText().length() == 0 || this.txtPrecioNuevo.getText().length() == 0 || 
-                this.campoNumericoPrecioAnterior() == false || this.campoNumericoPrecioNuevo() == false){
-            errorMessage += "Verifica los campos! \n";
+        
+        if(this.txtMensaje.getText() == null || this.txtMensaje.getText().length() == 0){
+          errorMessage +="Verifica el campo! \n";                         
+        }
+        if(errorMessage.length()==0){
+            return true;
+        }else{
+            Alert alert = new Alert(Alert.AlertType.ERROR);
+            alert.setTitle("Error, campo no válido");
+            alert.setHeaderText("El campo Mensaje esta vacío");
+            alert.setContentText(errorMessage);
+            alert.initOwner(stageDialogoEdicion);
+            alert.showAndWait();
+            return false;            
+        }                                       
+        
+    }
+    
+        private boolean campoTextoValidoDescuento(){
+        
+        String errorMessage = "";
+        
+        if(this.txtDescuento.getText() == null || this.txtDescuento.getText().length() == 0){
+          errorMessage +="Verifica el campo! \n";                         
+        }
+        if(errorMessage.length()==0){
+            return true;
+        }else{
+            Alert alert = new Alert(Alert.AlertType.ERROR);
+            alert.setTitle("Error, campo no válido");
+            alert.setHeaderText("El campo Descuento esta vacío");
+            alert.setContentText(errorMessage);
+            alert.initOwner(stageDialogoEdicion);
+            alert.showAndWait();
+            return false;            
+        }                                       
+        
+    }
+    
+    private boolean campoNuloPrecioAnterior(){
+        String errorMessage = "";
+        if(this.txtPrecioAnterior.getText() == null || this.txtPrecioAnterior.getText().length() == 0 ){
+            errorMessage += "Verifica el campo! \n";
         }
                 
         if(errorMessage.length() == 0){
             return true;
         }else{
             Alert alert = new Alert(Alert.AlertType.ERROR);
-            alert.setTitle("Campo Invalido");
-            alert.setHeaderText("Atencion, verifica los campos Precio Anterior y Precio Nuevo");
+            alert.setTitle("Error, campo no válido");
+            alert.setHeaderText("El campo Precio Anterior esta vacío");
             alert.setContentText(errorMessage);
             alert.initOwner(stageDialogoEdicion);
             alert.showAndWait();
@@ -160,8 +197,47 @@ private boolean camposValidosTexto(){
         }
         return numero;
     }
-    
-        private boolean campoNumericoPrecioNuevo(){
+   
+   private boolean campoNumericoValidoPrecioAnterior(){
+        String errorMessage = "";
+        if(this.campoNumericoPrecioAnterior() == false){
+            errorMessage += "Verifica el campo! \n";
+        }
+                
+        if(errorMessage.length() == 0){
+            return true;
+        }else{
+            Alert alert = new Alert(Alert.AlertType.ERROR);
+            alert.setTitle("Error, campo no válido");
+            alert.setHeaderText("Ingresa solo numeros enteros o decimales");
+            alert.setContentText(errorMessage);
+            alert.initOwner(stageDialogoEdicion);
+            alert.showAndWait();
+            return false;
+        }
+    } 
+ 
+    private boolean campoNuloPrecioNuevo(){
+        String errorMessage = "";
+        if(this.txtPrecioNuevo.getText() == null || this.txtPrecioNuevo.getText().length() == 0 ){
+            errorMessage += "Verifica el campo! \n";
+        }
+                
+        if(errorMessage.length() == 0){
+            return true;
+        }else{
+            Alert alert = new Alert(Alert.AlertType.ERROR);
+            alert.setTitle("Error, campo no válido");
+            alert.setHeaderText("El campo Precio Nuevo esta vacío");
+            alert.setContentText(errorMessage);
+            alert.initOwner(stageDialogoEdicion);
+            alert.showAndWait();
+            return false;
+        }
+    }
+   
+   private boolean campoNumericoPrecioNuevo(){
+        String errorMessage = "";
         boolean numero = false;
         String precioNuevo = this.txtPrecioNuevo.getText();
         for(int i = 0;i<precioNuevo.length();i++){
@@ -175,7 +251,26 @@ private boolean camposValidosTexto(){
         }
         return numero;
     }
-    
+   
+   private boolean campoNumericoValidoPrecioNuevo(){
+        String errorMessage = "";
+        if(this.campoNumericoPrecioNuevo() == false){
+            errorMessage += "Verifica el campo! \n";
+        }
+                
+        if(errorMessage.length() == 0){
+            return true;
+        }else{
+            Alert alert = new Alert(Alert.AlertType.ERROR);
+            alert.setTitle("Error, campo no válido");
+            alert.setHeaderText("Ingresa solo numeros enteros o decimales");
+            alert.setContentText(errorMessage);
+            alert.initOwner(stageDialogoEdicion);
+            alert.showAndWait();
+            return false;
+        }
+    } 
+ 
     
     @FXML
     void cancelarEdicion(ActionEvent event) {
