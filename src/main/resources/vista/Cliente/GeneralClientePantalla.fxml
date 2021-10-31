@@ -2,6 +2,9 @@
 
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import com.jfoenix.controls.JFXButton?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.Pane?>
 
@@ -16,6 +19,21 @@
                 <TableColumn fx:id="columnaEmail" minWidth="0.0" prefWidth="271.0" text="Correo" />
               </columns>
             </TableView>
+            
+            <Pane prefHeight="48.0" prefWidth="700.0">
+               <children>
+                  <JFXButton fx:id="btnAgregar" layoutY="8.0" onAction="#agregarCliente" prefWidth="125.0" styleClass="menuItem" stylesheets="@../../styles/mainpantalla.css" text="Añadir">
+                     <graphic>
+                        <ImageView fitHeight="25.0" fitWidth="25.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../../imgs/addPromocion_64px.png" />
+                           </image>
+                        </ImageView>
+                     </graphic>
+                  </JFXButton>
+                  
+               </children>
+            </Pane>     
          </children>
       </Pane>
    </children>

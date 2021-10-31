@@ -1,16 +1,22 @@
 package controlador.Cliente;
 
+import java.io.IOException;
 import java.net.URL;
 import java.util.Iterator;
 import java.util.List;
 import java.util.ResourceBundle;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.stage.Stage;
 import modelo.Cliente.Cliente;
 import modelo.Cliente.Cliente_DAO_Imp;
 
@@ -59,6 +65,21 @@ public class GeneralClientePantallaController implements Initializable {
         this.columnaNombre.setCellValueFactory(new PropertyValueFactory<>("nombreCliente"));
         this.columnaEmail.setCellValueFactory(new PropertyValueFactory<>("emailCliente"));
         this.tablaClientes.setItems(this.listaCliente);
-    }  
+    }
+    
+    @FXML
+    void agregarCliente(ActionEvent event) {
+        try{
+            FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/vista/Cliente/CreateClientePantalla.fxml"));
+            Parent ventana = (Parent) fxmlLoader.load();
+            Stage stage = new Stage();            
+            stage.setScene(new Scene(ventana));
+            stage.setTitle("Añadir Cliente");
+            stage.show();
+            
+        }catch(IOException e){
+            System.out.println("ERROR AL MOSTRAR LA VENTANA: "+e);
+        }        
+    }
       
 }

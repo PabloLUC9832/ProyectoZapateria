@@ -1,6 +1,9 @@
 package modelo;
 
+import java.util.Optional;
 import javafx.scene.control.Alert;
+import javafx.scene.control.ButtonBar;
+import javafx.scene.control.ButtonBar.ButtonData;
 import javafx.scene.control.ButtonType;
 import javafx.stage.Stage;
 
@@ -45,6 +48,19 @@ public class AlertaFXML extends Alerta {
         ButtonType resultado = this.alert.showAndWait().orElse(ButtonType.NO);
         if(ButtonType.NO.equals(resultado)){
             respuesta = false;
+        }
+        return respuesta;
+    }
+    
+    @Override
+    public boolean alertaEliminacion(String titulo, String encabezado, String contenido, boolean respuesta) {
+        //boolean respuesta = true;
+        respuesta = false;
+        this.alert = new Alert(Alert.AlertType.CONFIRMATION);
+        this.alertaDatos(titulo, encabezado, contenido);
+        Optional<ButtonType> result = alert.showAndWait();
+        if (result.isPresent() && result.get() == ButtonType.OK) {
+        respuesta = true;
         }
         return respuesta;
     }

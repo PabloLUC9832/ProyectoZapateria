@@ -252,9 +252,7 @@ public class GeneralPromocionPantallaController implements Initializable {
                 String a = "¿Estas seguro de eliminar  : \n"+promocion.getNombreProducto()+"";
                 Stage stage = (Stage) this.btnEliminar.getScene().getWindow();
                 AlertaFXML alerta = new AlertaFXML(stage);
-                //alerta.alertaConfirmacion("Eliminar", a, "Pulsa Aceptar para eliminar");
-                //this.promocion_DAO.delete(promocion);
-                if (alerta.alertaConfirmacion("Eliminar", a, "Pulsa Aceptar para eliminar")==true) {
+                if (alerta.alertaEliminacion("Eliminar", a, "Pulsa Aceptar para eliminar", true)==true) {
                   this.promocion_DAO.delete(promocion);  
                 }
                 

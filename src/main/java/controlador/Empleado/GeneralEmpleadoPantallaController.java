@@ -72,6 +72,9 @@ public class GeneralEmpleadoPantallaController implements Initializable {
     private Label textoPuesto;
 
     @FXML
+    private JFXButton btnAgregar;
+
+    @FXML
     private JFXButton btnEditar;
 
     @FXML
@@ -241,9 +244,7 @@ public class GeneralEmpleadoPantallaController implements Initializable {
                 String a = "¿Estas seguro de eliminar  : \n"+empleado.getNombre()+"";
                 Stage stage = (Stage) this.btnEliminar.getScene().getWindow();
                 AlertaFXML alerta = new AlertaFXML(stage);
-                //alerta.alertaConfirmacion("Eliminar", a, "Pulsa Aceptar para eliminar");
-                //this.promocion_DAO.delete(promocion);
-                if (alerta.alertaConfirmacion("Eliminar", a, "Pulsa Aceptar para eliminar")==true) {
+                if (alerta.alertaEliminacion("Eliminar", a, "Pulsa Aceptar para eliminar", true)==true) {
                   this.empleado_DAO.delete(empleado);  
                 }
                 
@@ -267,6 +268,21 @@ public class GeneralEmpleadoPantallaController implements Initializable {
         }        
         
         
-    }       
+    }
+    
+    @FXML
+    void agregarEmpleado(ActionEvent event) {
+        try{
+            FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/vista/Empleado/CreateEmpleadoPantalla.fxml"));
+            Parent ventana = (Parent) fxmlLoader.load();
+            Stage stage = new Stage();            
+            stage.setScene(new Scene(ventana));
+            stage.setTitle("Añadir Empleado");
+            stage.show();
+            
+        }catch(IOException e){
+            System.out.println("ERROR AL MOSTRAR LA VENTANA: "+e);
+        }        
+    }
     
 }
