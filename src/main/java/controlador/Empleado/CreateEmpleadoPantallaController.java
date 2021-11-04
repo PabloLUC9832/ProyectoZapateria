@@ -11,6 +11,7 @@ import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Alert;
+import javafx.scene.control.ButtonType;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
@@ -52,7 +53,6 @@ public class CreateEmpleadoPantallaController implements Initializable {
     
     ObservableList<String> puestoItems = FXCollections.observableArrayList();
     
-    //creo que no hace nada
     public void setStageDialog(Stage stageDialogoEdicion){
         this.stageDialogoEdicion = stageDialogoEdicion;
     }
@@ -79,9 +79,10 @@ public class CreateEmpleadoPantallaController implements Initializable {
                                 
                 if(this.empleado_DAO.create(empleado)==true){
                     Stage stage = (Stage) this.btnRegistrar.getScene().getWindow();
-                    AlertaFXML alerta = new AlertaFXML(stage);
-                    alerta.alertaConfirmacion("Agregado con exito", "Personal agregado con exito", "El personal ha sido agregado exitosamente");                    
-                    cerrarVentana();
+                    Alert alert = new Alert(Alert.AlertType.NONE,"Se ha añadido con exito",ButtonType.OK);
+                    alert.setTitle("Operación exitosa");          
+                    alert.showAndWait();
+                    cerrarVentana();                    
                 }else{
                     Stage stage = (Stage) this.btnRegistrar.getScene().getWindow();
                     AlertaFXML alerta = new AlertaFXML(stage);

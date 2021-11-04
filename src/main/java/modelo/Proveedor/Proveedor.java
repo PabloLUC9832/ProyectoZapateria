@@ -7,6 +7,7 @@ package modelo.Proveedor;
  */
 public class Proveedor {
    
+   int ProveedorId;
    String proveedorNombre;
    String proveedorTelefono;
    String proveedorDireccion;
@@ -14,6 +15,7 @@ public class Proveedor {
    
    public Proveedor () {
        
+       this.ProveedorId = 0;
        this.proveedorNombre = " ";
        this.proveedorTelefono = " ";
        this.proveedorDireccion = " ";
@@ -21,8 +23,9 @@ public class Proveedor {
        
    }
    
-   public Proveedor (String nombre, String telefono, String direccion, String producto) {
+   public Proveedor (int id, String nombre, String telefono, String direccion, String producto) {
        
+       this.ProveedorId = id;
        this.proveedorNombre = nombre;
        this.proveedorTelefono = telefono;
        this.proveedorDireccion = direccion;
@@ -30,6 +33,14 @@ public class Proveedor {
        
    }
 
+   public int getProveedorId() {
+        return ProveedorId;
+    }
+
+    public void setProveedorId(int proveedorId) {
+        this.ProveedorId = proveedorId;
+    }
+   
     public String getProveedorNombre() {
         return proveedorNombre;
     }
@@ -64,11 +75,7 @@ public class Proveedor {
 
     @Override
     public String toString() {
-        return "Proveedor{" + "proveedorNombre=" + proveedorNombre + ", proveedorTelefono=" + proveedorTelefono + ", proveedorDireccion=" + proveedorDireccion + ", proveedorProducto=" + proveedorProducto + '}';
+        return "Proveedor{" + "ProveedorId=" + ProveedorId + ", proveedorNombre=" + proveedorNombre + ", proveedorTelefono=" + proveedorTelefono + ", proveedorDireccion=" + proveedorDireccion + ", proveedorProducto=" + proveedorProducto + '}';
     }
-    
-    
-   
-   
-           
+        
 }

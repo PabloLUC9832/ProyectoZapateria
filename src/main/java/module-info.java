@@ -14,10 +14,10 @@ module org.openjfx.proyectozapateria {
     opens controlador.Cliente                 to javafx.fxml;
     opens controlador.Promocion               to javafx.fxml;
     opens modelo.Promocion                    to javafx.fxml;
-    
+    opens modelo.Proveedor                    to javafx.fxml;
     exports ProyectoZapateria;
     exports modelo.Empleado;
     exports modelo.Cliente;
     exports modelo.Promocion;
-
+    exports modelo.Proveedor;
 }

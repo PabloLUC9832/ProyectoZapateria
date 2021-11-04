@@ -143,9 +143,9 @@ public class MainPantallaController implements Initializable {
   
     public void pantallaProveedor(javafx.event.ActionEvent actionEvent) throws IOException{
         
-        /*Parent fxml = FXMLLoader.load(getClass().getResource("/vista/Proveedor/GeneralPromocionPantalla.fxml"));      
+        Parent fxml = FXMLLoader.load(getClass().getResource("/vista/Proveedor/GeneralProveedorPantalla.fxml"));      
         contentArea.getChildren().removeAll();
-        contentArea.getChildren().setAll(fxml);     */        
+        contentArea.getChildren().setAll(fxml);    
     }    
     
     public void pantallaCliente(javafx.event.ActionEvent actionEvent) throws IOException{

@@ -9,6 +9,7 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Alert;
+import javafx.scene.control.ButtonType;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 import modelo.Promocion.Promocion;
@@ -66,8 +67,9 @@ public class CreatePromocionPantallaController implements Initializable{
                 
                 if(this.promocion_DAO.create(promocion)==true){
                     Stage stage = (Stage) this.btnRegistrar.getScene().getWindow();
-                    AlertaFXML alerta = new AlertaFXML(stage);
-                    alerta.alertaConfirmacion("Agregado con exito", "Promoción agregado con exito", "La promoción ha sido agregado exitosamente");                    
+                    Alert alert = new Alert(Alert.AlertType.NONE,"Se ha añadido con exito",ButtonType.OK);
+                    alert.setTitle("Operación exitosa");          
+                    alert.showAndWait();
                     cerrarVentana();
                 }else{
                     Stage stage = (Stage) this.btnRegistrar.getScene().getWindow();

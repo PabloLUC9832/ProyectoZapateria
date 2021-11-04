@@ -9,6 +9,7 @@ import java.util.logging.Logger;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Alert;
+import javafx.scene.control.ButtonType;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 import modelo.Proveedor.Proveedor;
@@ -55,12 +56,13 @@ public class CreateProveedorPantallaController implements Initializable{
                 String telefono = this.txtTelefono.getText();
                 String direccion = this.txtDireccion.getText();
                 String producto = this.txtProducto.getText();                
-                proveedor = new Proveedor(nombre,telefono,direccion,producto);                                                
+                proveedor = new Proveedor(0,nombre,telefono,direccion,producto);                                                
                 
                 if(this.proveedor_DAO.create(proveedor)==true){
                     Stage stage = (Stage) this.btnRegistrar.getScene().getWindow();
-                    AlertaFXML alerta = new AlertaFXML(stage);
-                    alerta.alertaConfirmacion("Agregado con exito", "Proveedor agregado con exito", "El proveedor ha sido agregado exitosamente");                    
+                    Alert alert = new Alert(Alert.AlertType.NONE,"Se ha añadido con exito",ButtonType.OK);
+                    alert.setTitle("Operación exitosa");          
+                    alert.showAndWait();
                     cerrarVentana();
                 }else{
                     Stage stage = (Stage) this.btnRegistrar.getScene().getWindow();

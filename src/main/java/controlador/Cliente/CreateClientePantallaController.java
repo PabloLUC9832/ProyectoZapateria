@@ -9,6 +9,7 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Alert;
+import javafx.scene.control.ButtonType;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 import modelo.Cliente.Cliente;
@@ -41,13 +42,7 @@ public class CreateClientePantallaController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         cliente_DAO = new Cliente_DAO_Imp();
-        //GeneralClientePantallaController gc =new GeneralClientePantallaController();
-        //gc.colocarClientesTabla();        
     }    
-    
-    /*public CreateClientePantallaController(GeneralClientePantallaController gc){
-        this.gc=gc;
-    }*/
     
     @FXML
     void registrarCliente(ActionEvent event) {
@@ -60,10 +55,10 @@ public class CreateClientePantallaController implements Initializable {
 
                 if(this.cliente_DAO.create(cliente)==true){
                     Stage stage = (Stage) this.btnRegistrar.getScene().getWindow();
-                    AlertaFXML alerta = new AlertaFXML(stage);
-                    alerta.alertaConfirmacion("Agregado con exito", "Cliente agregado con exito", "El cliente ha sido agregado exitosamente");                                        
-                    cerrarVentana();     
-                    //gc.colocarClientesTabla();
+                    Alert alert = new Alert(Alert.AlertType.NONE,"Se ha añadido con exito",ButtonType.OK);
+                    alert.setTitle("Operación exitosa");          
+                    alert.showAndWait();
+                    cerrarVentana();
                 }else{
                     Stage stage = (Stage) this.btnRegistrar.getScene().getWindow();
                     AlertaFXML alerta = new AlertaFXML(stage);
@@ -77,29 +72,7 @@ public class CreateClientePantallaController implements Initializable {
             Logger.getLogger(CreateClientePantallaController.class.getName()).log(Level.SEVERE,null,ex);
         }
     }
-
-    /*private boolean CamposValidos() {
-        
-        String errorMessage = "";
-        
-        if(this.txtNombre.getText() == null || 
-           this.txtEmail.getText() == null){
-        errorMessage +="CAMPOS VACÍOS";
-        }
-                
-        if(errorMessage.length()== 0) {
-            return true;
-        }else {
-            Alert alert = new Alert(Alert.AlertType.ERROR);
-            alert.setTitle("Campo Invalido");
-            alert.setHeaderText("Realizar lo siguiente");
-            alert.setContentText(errorMessage);
-            alert.initOwner(stageDialogoEdicion);
-            alert.showAndWait();
-            return false;
-        }
-    }*/
-    
+  
     private boolean campoTextoValidoNombre(){
         
         String errorMessage = "";

@@ -76,7 +76,6 @@ public class EditarEmpleadoPantallaController implements Initializable {
     }
 
     public void setEmpleado(Empleado empleado){
-        //puesto = this.comboPuesto.getValue().toString();
         if(empleado != null){
             this.empleado = empleado;
             if(empleado.getNempleado()== 0){
@@ -88,7 +87,6 @@ public class EditarEmpleadoPantallaController implements Initializable {
             this.txtUsuario.setText(empleado.getUsuario());
             this.txtPass.setText(empleado.getPass());
             this.txtPuesto.setText(empleado.getPuesto());
-            //this.comboPuesto.getValue(empleado.getPuesto());
         }
     }    
     
@@ -96,23 +94,14 @@ public class EditarEmpleadoPantallaController implements Initializable {
     void editarEmpleado(ActionEvent event) {
         
         this.esEdicion = false;
-       if(campoTextoValidoNombre() && campoTextoValidoUsuario() && campoTextoValidoPass() && campoTextoValidoPuesto()){
+       //if(campoTextoValidoNombre() && campoTextoValidoUsuario() && campoTextoValidoPass() && campoTextoValidoPuesto()){
+       if(campoTextoValidoNombre() && campoTextoValidoUsuario() && campoTextoValidoPass()){
             this.empleado.setUsuario(this.txtUsuario.getText());
             this.empleado.setPass(this.txtPass.getText());
             this.empleado.setPuesto(this.comboPuesto.getValue().toString());
             this.esEdicion = true;
             this.stageDialogoEdicion.close();
-        }     
-        
-        /*this.empleado.setNombre(this.txtNombre.getText());
-            this.empleado.setUsuario(this.txtUsuario.getText());
-            this.empleado.setPass(this.txtPass.getText());
-            //this.empleado.setPuesto(this.txtPuesto.getText());
-            this.empleado.setPuesto(this.comboPuesto.getValue().toString());
-            
-            this.esEdicion = true;
-            this.stageDialogoEdicion.close();
-        //}*/   
+        }      
     }
     
     private boolean campoTextoValidoNombre(){
