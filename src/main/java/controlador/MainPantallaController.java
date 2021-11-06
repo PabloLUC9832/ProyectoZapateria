@@ -52,6 +52,9 @@ public class MainPantallaController implements Initializable {
 
     @FXML
     private JFXButton btnPromocion;
+    
+    @FXML
+    private JFXButton btnVentas;
 
     @FXML
     private JFXButton btnCerrarSesion;    
@@ -153,7 +156,14 @@ public class MainPantallaController implements Initializable {
         Parent fxml = FXMLLoader.load(getClass().getResource("/vista/Cliente/GeneralClientePantalla.fxml"));      
         contentArea.getChildren().removeAll();
         contentArea.getChildren().setAll(fxml);             
-    }     
+    }
+    
+    public void pantallaVentas(javafx.event.ActionEvent actionEvent) throws IOException{
+        
+        Parent fxml = FXMLLoader.load(getClass().getResource("/vista/Ventas/GeneralVentasPantalla.fxml"));      
+        contentArea.getChildren().removeAll();
+        contentArea.getChildren().setAll(fxml);             
+    }
 
     
     
