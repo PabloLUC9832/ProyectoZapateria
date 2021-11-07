@@ -89,11 +89,11 @@ public class Proveedor_DAO_Imp implements Proveedor_DAO {
         
         Statement stm;
         ResultSet rs;
-        String sql = "SELECT * FROM promocion WHERE ProveedorId LIKE '%"+busqueda+"%'"+
-                    " UNION SELECT *FROM promocion WHERE ProveedorNombre LIKE '%"+busqueda+"%'"+
-                    " UNION SELECT *FROM promocion WHERE ProveedorTelefono LIKE '%"+busqueda+"%'"+
-                    " UNION SELECT *FROM promocion WHERE ProveedorDireccion LIKE '%"+busqueda+"%'"+
-                    " UNION SELECT *FROM promocion WHERE ProveedorProducto LIKE '%"+busqueda+"%'"                                                                                                   
+        String sql = "SELECT * FROM proveedor WHERE ProveedorId LIKE '%"+busqueda+"%'"+
+                    " UNION SELECT *FROM proveedor WHERE ProveedorNombre LIKE '%"+busqueda+"%'"+
+                    " UNION SELECT *FROM proveedor WHERE ProveedorTelefono LIKE '%"+busqueda+"%'"+
+                    " UNION SELECT *FROM proveedor WHERE ProveedorDireccion LIKE '%"+busqueda+"%'"+
+                    " UNION SELECT *FROM proveedor WHERE ProveedorProducto LIKE '%"+busqueda+"%'"                                                                                                   
                     ;
         Proveedor proveedor = new Proveedor();
         ConexionDB cc= new ConexionDB();
