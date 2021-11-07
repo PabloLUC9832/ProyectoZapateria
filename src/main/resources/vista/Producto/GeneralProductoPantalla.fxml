@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.Pane?>
+
+<AnchorPane id="AnchorPane" prefHeight="480.0" prefWidth="700.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controlador.Producto.GeneralProductoPantallaController">
+   <children>
+      <Pane prefHeight="200.0" prefWidth="662.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="-62.0" AnchorPane.topAnchor="0.0">
+         <children>
+            <TextField fx:id="txtBusqueda" layoutX="162.0" layoutY="94.0" prefHeight="25.0" prefWidth="336.0" style="-fx-background-color: transparent; -fx-border-color: #4cc9f0; -fx-border-width: 0px 0px 2px 0px;" />
+            <Label layoutX="25.0" layoutY="106.0" text="Ingresa tu búsqueda" />
+            <TableView fx:id="tablaProductos" layoutX="25.0" layoutY="138.0" prefHeight="220.0" prefWidth="648.0">
+              <columns>
+                <TableColumn fx:id="columnaClave" prefWidth="45.0" text="Clave" />
+                <TableColumn fx:id="columnaMarca" prefWidth="73.0" text="Marca" />
+                <TableColumn fx:id="columnaDescripcion" minWidth="0.0" prefWidth="154.0" text="Descripcion" />
+                <TableColumn fx:id="columnaProveedor" minWidth="1.0" prefWidth="102.0" text="Proveedor" />
+                <TableColumn fx:id="columnaPrecioC" prefWidth="105.0" text="Precio Compra" />
+                <TableColumn fx:id="columnaPrecioV" prefWidth="99.0" text="Precio Venta" />
+                <TableColumn fx:id="columnaStock" prefWidth="69.0" text="Stock" />
+              </columns>
+            </TableView>     
+         </children>
+      </Pane>
+   </children>
+</AnchorPane>

@@ -58,7 +58,6 @@ public class MainPantallaController implements Initializable {
 
     @FXML
     private JFXButton btnCerrarSesion;    
-    //LoginPantallaController lgc;
     
     @Override
     public void initialize(URL url, ResourceBundle rb) {               
@@ -165,6 +164,12 @@ public class MainPantallaController implements Initializable {
         contentArea.getChildren().setAll(fxml);             
     }
 
+    public void pantallaProducto(javafx.event.ActionEvent actionEvent) throws IOException{
+        
+        Parent fxml = FXMLLoader.load(getClass().getResource("/vista/Producto/GeneralProductoPantalla.fxml"));      
+        contentArea.getChildren().removeAll();
+        contentArea.getChildren().setAll(fxml);             
+    }    
     
     
     public void mostrarVentana(String ruta,String tituloVentana){

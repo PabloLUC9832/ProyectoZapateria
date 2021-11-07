@@ -19,11 +19,13 @@ module org.openjfx.proyectozapateria {
     opens modelo.Promocion                    to javafx.fxml;
     opens modelo.Proveedor                    to javafx.fxml;
     opens modelo.Ventas                       to javafx.fxml;
-    
+    opens controlador.Producto                to javafx.fxml;
+    opens modelo.Producto                     to javafx.fxml;
     exports ProyectoZapateria;
     exports modelo.Empleado;
     exports modelo.Cliente;
     exports modelo.Promocion;
     exports modelo.Proveedor;
     exports modelo.Ventas;
+    exports modelo.Producto;
 }
