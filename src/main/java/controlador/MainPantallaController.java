@@ -193,7 +193,7 @@ public class MainPantallaController implements Initializable {
         Stage stage = (Stage) this.btnCerrarSesion.getScene().getWindow();
         stage.close();
         try{
-            FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/vista/LoginPantalla.fxml"));
+            FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("//vista/LoginPantalla.fxml"));
             Parent ventanaPrincipal = (Parent) fxmlLoader.load();
             //Stage
             stage = new Stage();
