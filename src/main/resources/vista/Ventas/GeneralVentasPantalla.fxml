@@ -34,7 +34,7 @@
             </TableView>
          </children>
       </Pane>
-      <JFXButton fx:id="btnAgregar" layoutY="8.0" onAction="#agregarEmpleado" prefWidth="125.0" styleClass="menuItem" stylesheets="@../../styles/mainpantalla.css" text="Añadir">
+      <JFXButton layoutY="8.0" prefWidth="125.0" styleClass="menuItem" stylesheets="@../../styles/mainpantalla.css" text="Añadir">
          <graphic>
             <ImageView fitHeight="25.0" fitWidth="25.0" pickOnBounds="true" preserveRatio="true">
                <image>
@@ -43,7 +43,7 @@
             </ImageView>
          </graphic>
       </JFXButton>
-      <JFXButton fx:id="btnEditar" layoutX="126.0" layoutY="8.0" onAction="#editarEmpleado" prefWidth="125.0" styleClass="menuItem" stylesheets="@../../styles/mainpantalla.css" text="boton2">
+      <JFXButton layoutX="126.0" layoutY="8.0" prefWidth="125.0" styleClass="menuItem" stylesheets="@../../styles/mainpantalla.css" text="boton2">
          <graphic>
             <ImageView fitHeight="25.0" fitWidth="25.0" pickOnBounds="true" preserveRatio="true">
                <image>
