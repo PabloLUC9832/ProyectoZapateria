@@ -13,6 +13,7 @@ module org.openjfx.proyectozapateria {
     opens controlador.Cliente                 to javafx.fxml;
     opens controlador.Promocion               to javafx.fxml;
     opens controlador.Ventas                  to javafx.fxml;
+    opens controlador.Horario                 to javafx.fxml;
     
     opens modelo.Cliente                      to javafx.fxml;
     opens modelo.Empleado                     to javafx.fxml;
@@ -21,6 +22,7 @@ module org.openjfx.proyectozapateria {
     opens modelo.Ventas                       to javafx.fxml;
     opens controlador.Producto                to javafx.fxml;
     opens modelo.Producto                     to javafx.fxml;
+    opens modelo.Horario                      to javafx.fxml;
     exports ProyectoZapateria;
     exports modelo.Empleado;
     exports modelo.Cliente;
@@ -28,4 +30,5 @@ module org.openjfx.proyectozapateria {
     exports modelo.Proveedor;
     exports modelo.Ventas;
     exports modelo.Producto;
+    exports modelo.Horario;
 }
