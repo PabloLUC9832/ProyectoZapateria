@@ -23,10 +23,16 @@ public class App extends Application {
         
         //String ruta="/vista/Cliente/GeneralClientePantalla.fxml";
         //String ruta="/vista/MainPantalla.fxml";
+<<<<<<< HEAD
         //String ruta="/vista/Cliente/GeneralClientePantalla.fxml";
         //String ruta="/vista/Promocion/EditarPromocionPantalla.fxml";
         String ruta="/vista/LoginPantalla.fxml";
 
+=======
+        //String ruta="/vista/Promocion/GeneralPromocionPantalla.fxml";
+        String ruta="/vista/Horario/GeneralHorarioPantalla.fxml";
+        //String ruta="/vista/LoginPantalla.fxml";
+>>>>>>> 14915cf1f5f34c2403514eb25e2651c5e1249dbb
         Parent root = FXMLLoader.load(getClass().getResource(ruta));
         //primaryStage.initStyle(StageStyle.UNDECORATED);
         
