@@ -36,6 +36,15 @@ public class MainPantallaController implements Initializable {
     private StackPane contentArea;
          
     @FXML
+    private JFXButton btnHorario;
+
+    @FXML
+    private JFXButton btnVentas;
+
+    @FXML
+    private JFXButton btnProducto;
+
+    @FXML
     private JFXButton btnPersonal;
 
     @FXML
@@ -46,16 +55,22 @@ public class MainPantallaController implements Initializable {
 
     @FXML
     private JFXButton btnPromocion;
-    
-    @FXML
-    private JFXButton btnVentas;
-
     @FXML
     private JFXButton btnCerrarSesion;    
     
+    public  String puestoM;
+    @FXML
+    private Label etiquetaPuesto;    
+        
+    public void getDatos(String puesto){
+        etiquetaPuesto.setText(puesto);
+        puestoM = puesto;
+    } 
+
     @Override
     public void initialize(URL url, ResourceBundle rb) {               
 
+        etiquetaPuesto.setVisible(false);
         btnExit.setOnMouseClicked(event ->{
             System.exit(0);
         });
@@ -100,48 +115,30 @@ public class MainPantallaController implements Initializable {
             Logger.getLogger(ModuleLayer.Controller.class.getName()).log(Level.SEVERE,null,ex);            
         }
         */
-        //DESABILITAR BOTONES PARA EL EMPLEADO
-        /*
-        lgc = new LoginPantallaController();
-        String puesto = lgc.puesto;
-        
-        if (puesto.equals("Empleado")) {
-            btnProveedores.setDisable(false);
-            btnPersonal.setDisable(false);
-                    
-        }else if(puesto.equals("Gerente")){
-            btnProveedores.setDisable(true);
-            btnPersonal.setDisable(true);            
-        }
-        */
     }    
-    /*
-    public void pantalla1(javafx.event.ActionEvent actionEvent) throws IOException{
-        Parent fxml = FXMLLoader.load(getClass().getResource("/vista/venta/VentaPantalla.fxml"));
-        contentArea.getChildren().removeAll();
-        contentArea.getChildren().setAll(fxml);     
-        
-    }  */  
-
+    
+    void bloqueo(String puesto,String ruta) throws IOException{
+        if(puesto.equals("Empleado")){
+            btnPersonal.setDisable(true);
+            btnProveedor.setDisable(true);
+        }else{
+            Parent fxml = FXMLLoader.load(getClass().getResource(ruta));      
+            contentArea.getChildren().removeAll();
+            contentArea.getChildren().setAll(fxml);            
+        }
+    }
     public void pantallaPersonal(javafx.event.ActionEvent actionEvent) throws IOException{
-        
-        Parent fxml = FXMLLoader.load(getClass().getResource("/vista/Empleado/GeneralEmpleadoPantalla.fxml"));      
-        contentArea.getChildren().removeAll();
-        contentArea.getChildren().setAll(fxml);     
+        bloqueo(etiquetaPuesto.getText(),"/vista/Empleado/GeneralEmpleadoPantalla.fxml");
     }
     
-    public void pantallaPromocion(javafx.event.ActionEvent actionEvent) throws IOException{
-        
+    public void pantallaPromocion(javafx.event.ActionEvent actionEvent) throws IOException{        
         Parent fxml = FXMLLoader.load(getClass().getResource("/vista/Promocion/GeneralPromocionPantalla.fxml"));      
         contentArea.getChildren().removeAll();
         contentArea.getChildren().setAll(fxml);             
     }
   
     public void pantallaProveedor(javafx.event.ActionEvent actionEvent) throws IOException{
-        
-        Parent fxml = FXMLLoader.load(getClass().getResource("/vista/Proveedor/GeneralProveedorPantalla.fxml"));      
-        contentArea.getChildren().removeAll();
-        contentArea.getChildren().setAll(fxml);    
+        bloqueo(etiquetaPuesto.getText(),"/vista/Proveedor/GeneralProveedorPantalla.fxml");
     }    
     
     public void pantallaCliente(javafx.event.ActionEvent actionEvent) throws IOException{
@@ -197,6 +194,7 @@ public class MainPantallaController implements Initializable {
         }catch(IOException e){
             System.out.println("Error al abrir ventana principal"+e);
         }      
-    }    
+    }   
     
+   
 }

@@ -9,6 +9,7 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Alert;
@@ -77,7 +78,7 @@ public class LoginPantallaController implements Initializable {
                 System.out.println("INGRESANDO");     
                 
                 this.cerrarVentanaInicio();
-                this.mostrarVentanaPrincipal();
+                this.mostrarVentanaPrincipal(event);
             }else{
                 Alert alert = new Alert(Alert.AlertType.ERROR);
                 alert.setTitle("Usuario sin permiso");
@@ -122,14 +123,22 @@ public class LoginPantallaController implements Initializable {
         stage.close();
     }    
     
-    public void mostrarVentanaPrincipal(){
+    public void mostrarVentanaPrincipal(ActionEvent event){
+        
         try{
             FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/vista/MainPantalla.fxml"));
             Parent ventanaPrincipal = (Parent) fxmlLoader.load();
-            Stage stage = new Stage();
-            stage.setScene(new Scene(ventanaPrincipal));
-            stage.show();
             
+            MainPantallaController control = fxmlLoader.getController();
+            control.getDatos(puesto);
+            
+            /*Stage stage = new Stage();
+            stage.setScene(new Scene(ventanaPrincipal));
+            stage.show();*/
+            Stage stage = (Stage) ((Node)event.getSource()).getScene().getWindow();
+            Scene scene = new Scene(ventanaPrincipal);
+            stage.setScene(scene);
+            stage.show();            
         }catch(IOException e){
             System.out.println("Error al abrir ventana principal"+e);
         }

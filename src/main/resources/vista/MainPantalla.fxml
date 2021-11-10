@@ -55,6 +55,7 @@
                         <Font name="System Bold" size="19.0" />
                      </font>
                   </Label>
+                  <Label fx:id="etiquetaPuesto" layoutX="800.0" layoutY="34.0" text="Label" />
                </children>
             </AnchorPane>
          </top>
@@ -63,7 +64,7 @@
                <children>
                   <VBox layoutX="30.0" layoutY="66.0" prefHeight="200.0" prefWidth="100.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="53.0">
                      <children>
-                        <JFXButton alignment="BASELINE_LEFT" prefHeight="38.0" prefWidth="176.0" styleClass="sidebarItem" text="Registrar Horario" textAlignment="CENTER" textFill="WHITE">
+                        <JFXButton fx:id="btnHorario" alignment="BASELINE_LEFT" prefHeight="38.0" prefWidth="176.0" styleClass="sidebarItem" text="Horario" textAlignment="CENTER" textFill="WHITE">
                            <font>
                               <Font name="System Bold" size="12.0" />
                            </font>
@@ -87,7 +88,7 @@
                               </ImageView>
                            </graphic>
                         </JFXButton>
-                        <JFXButton alignment="BASELINE_LEFT" onAction="#pantallaProducto" prefHeight="38.0" prefWidth="176.0" styleClass="sidebarItem" text="Productos" textAlignment="CENTER" textFill="WHITE">
+                        <JFXButton fx:id="btnProducto" alignment="BASELINE_LEFT" onAction="#pantallaProducto" prefHeight="38.0" prefWidth="176.0" styleClass="sidebarItem" text="Productos" textAlignment="CENTER" textFill="WHITE">
                            <font>
                               <Font name="System Bold" size="12.0" />
                            </font>
