@@ -130,6 +130,13 @@ public class MainPantallaController implements Initializable {
         contentArea.getChildren().setAll(fxml);     
     }
     
+    public void pantallaHorario(javafx.event.ActionEvent actionEvent) throws IOException{
+        
+        Parent fxml = FXMLLoader.load(getClass().getResource("/vista/Horario/GeneralHorarioPantalla.fxml"));
+        contentArea.getChildren().removeAll();
+        contentArea.getChildren().setAll(fxml);
+    }
+    
     public void pantallaPromocion(javafx.event.ActionEvent actionEvent) throws IOException{
         
         Parent fxml = FXMLLoader.load(getClass().getResource("/vista/Promocion/GeneralPromocionPantalla.fxml"));      

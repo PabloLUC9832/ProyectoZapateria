@@ -1,8 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import com.jfoenix.controls.JFXButton?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.Pane?>
 
@@ -23,7 +26,16 @@
                <children>
                   <Label fx:id="titulo" layoutX="36.0" layoutY="16.0" text="Registro de Horarios de Apertura y Cierre" />
                </children>
-            </Pane>     
+            </Pane>
+            <JFXButton fx:id="btnAgregar" layoutX="25.0" layoutY="108.0" onAction="#agregarHorario" prefWidth="125.0" styleClass="menuItem" stylesheets="@../../styles/mainpantalla.css" text="Añadir">
+               <graphic>
+                  <ImageView fitHeight="25.0" fitWidth="25.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../../imgs/addCliente_64px.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+            </JFXButton>     
          </children>
       </Pane>
    </children>
