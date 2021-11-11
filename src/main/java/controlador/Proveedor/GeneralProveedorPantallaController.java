@@ -1,6 +1,5 @@
 package controlador.Proveedor;
 
-import controlador.Proveedor.*;
 import com.jfoenix.controls.JFXButton;
 import controlador.MainPantallaController;
 import java.io.IOException;
@@ -103,7 +102,12 @@ public class GeneralProveedorPantallaController implements Initializable {
         try {
             buscarProveedor();
         } catch (Exception ex) {
-            Logger.getLogger(GeneralProveedorPantallaController.class.getName()).log(Level.SEVERE, null, ex);
+            String errorMessage = "El tiempo de espera se ha agotado o se perdío la conexión\n" +"con la Base Datos.";
+            Alert alert = new Alert(Alert.AlertType.ERROR);
+            alert.setTitle("Error, No hay conexión con la Base de Datos");
+            alert.setHeaderText(" ¡Por favor! intentelo nuevamente");
+            alert.setContentText(errorMessage);
+            alert.showAndWait();
         }
         this.tablaProveedor.getSelectionModel().selectedItemProperty().addListener((observable, oldValue, newValue) -> this.mostrarProveedor((Proveedor) newValue));
     }
@@ -114,9 +118,12 @@ public class GeneralProveedorPantallaController implements Initializable {
         try{
             listaConsulta = proveedor_DAO.readAll();
         }catch (Exception ex) {
-            //AlertaFXML alerta = new AlertaFXML(this.stagePrincipal);
-            //alerta.alertaError("Error", "Ocurrió un error al realizar una operación", ex.getMessage());
-            System.out.println("ERROR READ ALL "+ex);
+            String errorMessage = "El tiempo de espera se ha agotado o se perdío la conexión\n" +"con la Base Datos.";
+            Alert alert = new Alert(Alert.AlertType.ERROR);
+            alert.setTitle("Error, No hay conexión con la Base de Datos");
+            alert.setHeaderText(" ¡Por favor! intentelo nuevamente");
+            alert.setContentText(errorMessage);
+            alert.showAndWait();
         }
         Iterator it = listaConsulta.iterator();
         listaProveedor.clear();
@@ -140,21 +147,28 @@ public class GeneralProveedorPantallaController implements Initializable {
                                 
         txtBusqueda.setOnKeyReleased((e) -> {
             if(txtBusqueda.getText().equals("")){
-            //if(busqueda.equals("")){
                 try {
                     colocarProveedorTabla();
                 } catch (Exception ex) {
-                    Logger.getLogger(GeneralProveedorPantallaController.class.getName()).log(Level.SEVERE, null, ex);                    
+                    String errorMessage = "El tiempo de espera se ha agotado o se perdío la conexión\n" +"con la Base Datos.";
+                    Alert alert = new Alert(Alert.AlertType.ERROR);
+                    alert.setTitle("Error, No hay conexión con la Base de Datos");
+                    alert.setHeaderText(" ¡Por favor! intentelo nuevamente");
+                    alert.setContentText(errorMessage);
+                    alert.showAndWait();
                 }
             }else{
                 listaProveedor.clear();                
-                try {
-                    //listaEmpleado.clear();                    
+                try {                 
                     listaProveedor = proveedor_DAO.search(txtBusqueda.getText());
-                    //listaEmpleado = empleado_DAO.search(busqueda);
                     tablaProveedor.setItems(listaProveedor);
                 } catch (Exception ex) {
-                    Logger.getLogger(GeneralProveedorPantallaController.class.getName()).log(Level.SEVERE, null, ex);
+                    String errorMessage = "El tiempo de espera se ha agotado o se perdío la conexión\n" +"con la Base Datos.";
+                    Alert alert = new Alert(Alert.AlertType.ERROR);
+                    alert.setTitle("Error, No hay conexión con la Base de Datos");
+                    alert.setHeaderText(" ¡Por favor! intentelo nuevamente");
+                    alert.setContentText(errorMessage);
+                    alert.showAndWait();
                 }
             }            
         });         
@@ -198,7 +212,12 @@ public class GeneralProveedorPantallaController implements Initializable {
 
             return controlador.getEsEdicion();
         } catch (IOException e) {
-            e.printStackTrace();
+            String errorMessage = "El tiempo de espera se ha agotado o se perdío la conexión\n" +"con la Base Datos.";
+            Alert alert = new Alert(Alert.AlertType.ERROR);
+            alert.setTitle("Error, No hay conexión con la Base de Datos");
+            alert.setHeaderText(" ¡Por favor! intentelo nuevamente");
+            alert.setContentText(errorMessage);
+            alert.showAndWait();
             return false;
         }
     }
@@ -214,9 +233,12 @@ public class GeneralProveedorPantallaController implements Initializable {
                 try {
                     this.proveedor_DAO.update(proveedorSeleccionado);
                 } catch (Exception ex) {
-                    AlertaFXML alerta = new AlertaFXML(this.stagePrincipal);
-                    alerta.alertaError("Error", "Ocurrió un error al realizar una operación", ex.getMessage());
-                    Logger.getLogger(MainPantallaController.class.getName()).log(Level.SEVERE, null, ex);
+                    String errorMessage = "El tiempo de espera se ha agotado o se perdío la conexión\n" +"con la Base Datos.";
+                    Alert alert = new Alert(Alert.AlertType.ERROR);
+                    alert.setTitle("Error, No hay conexión con la Base de Datos");
+                    alert.setHeaderText(" ¡Por favor! intentelo nuevamente");
+                    alert.setContentText(errorMessage);
+                    alert.showAndWait();
                 }
                 this.colocarProveedorTabla();
                 this.tablaProveedor.getSelectionModel().select(ultimoSeleccionado);
@@ -242,14 +264,17 @@ public class GeneralProveedorPantallaController implements Initializable {
                 String a = "¿Estas seguro de eliminar  : \n"+proveedor.getProveedorNombre()+"";
                 Stage stage = (Stage) this.btnEliminar.getScene().getWindow();
                 AlertaFXML alerta = new AlertaFXML(stage);
-                //alerta.alertaConfirmacion("Eliminar", a, "Pulsa Aceptar para eliminar");
-                //this.promocion_DAO.delete(promocion);
                 if (alerta.alertaConfirmacion("Eliminar", a, "Pulsa Aceptar para eliminar")==true) {
                   this.proveedor_DAO.delete(proveedor);  
                 }
                 
             } catch (Exception ex) {
-                Logger.getLogger(GeneralProveedorPantallaController.class.getName()).log(Level.SEVERE, null, ex);
+                String errorMessage = "El tiempo de espera se ha agotado o se perdío la conexión\n" +"con la Base Datos.";
+                Alert alert = new Alert(Alert.AlertType.ERROR);
+                alert.setTitle("Error, No hay conexión con la Base de Datos");
+                alert.setHeaderText(" ¡Por favor! intentelo nuevamente");
+                alert.setContentText(errorMessage);
+                alert.showAndWait();
             }
             this.colocarProveedorTabla();
             if(selectedIndex!=0){
@@ -281,7 +306,12 @@ public class GeneralProveedorPantallaController implements Initializable {
             stage.show();
             
         }catch(IOException e){
-            System.out.println("ERROR AL MOSTRAR LA VENTANA: "+e);
+            String errorMessage = "El tiempo de espera se ha agotado o se perdío la conexión\n" +"con la Base Datos.";
+            Alert alert = new Alert(Alert.AlertType.ERROR);
+            alert.setTitle("Error, No hay conexión con la Base de Datos");
+            alert.setHeaderText(" ¡Por favor! intentelo nuevamente");
+            alert.setContentText(errorMessage);
+            alert.showAndWait();
         }        
     }    
 

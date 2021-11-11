@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package controlador.Horario;
 
 import com.jfoenix.controls.JFXButton;
@@ -77,15 +72,24 @@ public class CreateHorarioPantallaController implements Initializable {
                     cerrarVentana();
                 }else{
                     Stage stage = (Stage) this.btnRegistrar.getScene().getWindow();
-                    AlertaFXML alerta = new AlertaFXML(stage);
-                    alerta.alertaError("Error al agrear", "Error al agregar", "Ha ocurrido al registrar el Horario, intanta nuevamente.");
+                    String errorMessage = "El tiempo de espera se ha agotado o se perdío la conexión\n" +"con la Base Datos.";
+                    Alert alert = new Alert(Alert.AlertType.ERROR);
+                    alert.setTitle("Error, No hay conexión con la Base de Datos");
+                    alert.setHeaderText(" ¡Por favor! intentelo nuevamente");
+                    alert.setContentText(errorMessage);
+                    alert.initOwner(stageDialogoEdicion);
+                    alert.showAndWait();
                 }
             }
         }catch(Exception ex) {
             Stage stage = (Stage) this.btnRegistrar.getScene().getWindow();
-            AlertaFXML alerta = new AlertaFXML(stage);
-            alerta.alertaError("Error al agregar", "Error al agregar", "Ha ocurrido un error al registrar el horario, intenta nuevamente. Más información \n"+ex);
-            Logger.getLogger(CreateHorarioPantallaController.class.getName()).log(Level.SEVERE,null,ex);
+            String errorMessage = "El tiempo de espera se ha agotado o se perdío la conexión\n" +"con la Base Datos.";
+                    Alert alert = new Alert(Alert.AlertType.ERROR);
+                    alert.setTitle("Error, No hay conexión con la Base de Datos");
+                    alert.setHeaderText(" ¡Por favor! intentelo nuevamente");
+                    alert.setContentText(errorMessage);
+                    alert.initOwner(stageDialogoEdicion);
+                    alert.showAndWait();
         }
     }
     private boolean campoTextoValidoNombre() {

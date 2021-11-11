@@ -93,8 +93,7 @@ public class EditarEmpleadoPantallaController implements Initializable {
     @FXML
     void editarEmpleado(ActionEvent event) {
         
-        this.esEdicion = false;
-       //if(campoTextoValidoNombre() && campoTextoValidoUsuario() && campoTextoValidoPass() && campoTextoValidoPuesto()){
+       this.esEdicion = false;
        if(campoTextoValidoNombre() && campoTextoValidoUsuario() && campoTextoValidoPass()){
             this.empleado.setUsuario(this.txtUsuario.getText());
             this.empleado.setPass(this.txtPass.getText());
