@@ -72,7 +72,12 @@ public class LoginPantallaController implements Initializable {
             try{
                 empleado = empleadoDAO_Imp.read(pass);
             }catch(Exception ex){
-                System.out.println("EX ERROR AL INICIAR SESIÓN:  "+ex);
+                String errorMessage = "El tiempo de espera se ha agotado o se perdío la conexión\n" +"con la Base Datos.";
+                Alert alert = new Alert(Alert.AlertType.ERROR);
+                alert.setTitle("Error al iniciar sesión");
+                alert.setHeaderText(" ¡Por favor! intentelo nuevamente");
+                alert.setContentText(errorMessage);
+                alert.showAndWait();
             }
             if (empleado.getUsuario().equals(usuario) && empleado.getPuesto().equals(puesto)){
                 System.out.println("INGRESANDO");     
@@ -140,7 +145,12 @@ public class LoginPantallaController implements Initializable {
             stage.setScene(scene);
             stage.show();            
         }catch(IOException e){
-            System.out.println("Error al abrir ventana principal"+e);
+            String errorMessage = "El tiempo de espera se ha agotado o se perdío la conexión\n" +"con la Base Datos.";
+            Alert alert = new Alert(Alert.AlertType.ERROR);
+            alert.setTitle("Error al mostrar la ventana principal");
+            alert.setHeaderText(" ¡Por favor! intentelo nuevamente");
+            alert.setContentText(errorMessage);
+            alert.showAndWait();
         }
     }
     

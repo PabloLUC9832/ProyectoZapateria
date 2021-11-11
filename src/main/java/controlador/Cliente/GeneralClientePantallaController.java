@@ -13,6 +13,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Alert;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
@@ -51,7 +52,12 @@ public class GeneralClientePantallaController implements Initializable {
         try {
             listaConsulta = cliente_DAO.readAll();
         } catch(Exception ex) {
-            System.out.println("Error Read All " + ex);
+            String errorMessage = "El tiempo de espera se ha agotado o se perdío la conexión\n" +"con la Base Datos.";
+            Alert alert = new Alert(Alert.AlertType.ERROR);
+            alert.setTitle("Error, No hay conexión con la Base de Datos");
+            alert.setHeaderText(" ¡Por favor! intentelo nuevamente");
+            alert.setContentText(errorMessage);
+            alert.showAndWait();
         }
         Iterator it = listaConsulta.iterator();
         listaCliente.clear();
@@ -78,7 +84,12 @@ public class GeneralClientePantallaController implements Initializable {
             stage.show();
             
         }catch(IOException e){
-            System.out.println("ERROR AL MOSTRAR LA VENTANA: "+e);
+            String errorMessage = "El tiempo de espera se ha agotado o se perdío la conexión\n" +"con la Base Datos.";
+            Alert alert = new Alert(Alert.AlertType.ERROR);
+            alert.setTitle("Error, No hay conexión con la Base de Datos");
+            alert.setHeaderText(" ¡Por favor! intentelo nuevamente");
+            alert.setContentText(errorMessage);
+            alert.showAndWait();
         }        
     }
       

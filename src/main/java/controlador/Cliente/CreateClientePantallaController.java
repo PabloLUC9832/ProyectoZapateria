@@ -61,15 +61,24 @@ public class CreateClientePantallaController implements Initializable {
                     cerrarVentana();
                 }else{
                     Stage stage = (Stage) this.btnRegistrar.getScene().getWindow();
-                    AlertaFXML alerta = new AlertaFXML(stage);
-                    alerta.alertaError("Error al agregar", "Error al agregar", "Ha ocurrido al agregar al cliente, intentelo nuevamente.");                                                        
+                    String errorMessage = "El tiempo de espera se ha agotado o se perdío la conexión\n" +"con la Base Datos.";
+                    Alert alert = new Alert(Alert.AlertType.ERROR);
+                    alert.setTitle("Error, No hay conexión con la Base de Datos");
+                    alert.setHeaderText(" ¡Por favor! intentelo nuevamente");
+                    alert.setContentText(errorMessage);
+                    alert.initOwner(stageDialogoEdicion);
+                    alert.showAndWait();
                 }                
             }           
         }catch(Exception ex) {
             Stage stage = (Stage) this.btnRegistrar.getScene().getWindow();
-            AlertaFXML alerta = new AlertaFXML(stage);
-            alerta.alertaError("Error al agregar", "Error al agregar", "Ha ocurrido al agregar al cliente, intentelo nuevamente.Más información \n"+ex);             
-            Logger.getLogger(CreateClientePantallaController.class.getName()).log(Level.SEVERE,null,ex);
+            String errorMessage = "El tiempo de espera se ha agotado o se perdío la conexión\n" +"con la Base Datos.";
+            Alert alert = new Alert(Alert.AlertType.ERROR);
+            alert.setTitle("Error, No hay conexión con la Base de Datos");
+            alert.setHeaderText(" ¡Por favor! intentelo nuevamente");
+            alert.setContentText(errorMessage);
+            alert.initOwner(stageDialogoEdicion);
+            alert.showAndWait();
         }
     }
   

@@ -11,6 +11,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Label;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
@@ -174,7 +175,12 @@ public class MainPantallaController implements Initializable {
             stage.show();
             
         }catch(IOException e){
-            System.out.println("ERROR AL MOSTRAR LA VENTANA: "+e);
+            String errorMessage = "El tiempo de espera se ha agotado o se perdío la conexión\n" +"con la Base Datos.";
+            Alert alert = new Alert(Alert.AlertType.ERROR);
+            alert.setTitle("Error al mostrar la ventana");
+            alert.setHeaderText(" ¡Por favor! intentelo nuevamente");
+            alert.setContentText(errorMessage);
+            alert.showAndWait();
         }
     }   
     
@@ -192,7 +198,12 @@ public class MainPantallaController implements Initializable {
             stage.show();
             
         }catch(IOException e){
-            System.out.println("Error al abrir ventana principal"+e);
+            String errorMessage = "El tiempo de espera se ha agotado o se perdío la conexión\n" +"con la Base Datos.";
+            Alert alert = new Alert(Alert.AlertType.ERROR);
+            alert.setTitle("Error al mostrar la ventana principal");
+            alert.setHeaderText(" ¡Por favor! intentelo nuevamente");
+            alert.setContentText(errorMessage);
+            alert.showAndWait();
         }      
     }   
     

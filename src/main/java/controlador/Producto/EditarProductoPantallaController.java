@@ -1,9 +1,4 @@
-package controlador.Proveedor;
-
-/**
- *
- * @author horus
- */
+package controlador.Producto;
 
 import com.jfoenix.controls.JFXButton;
 import java.net.URL;
@@ -16,48 +11,44 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
-import modelo.Proveedor.Proveedor;
+import modelo.Producto.Producto;
 
 /**
  *
- * @author horus
+ * @author jhair
  */
-
-public class EditarProveedorPantallaController implements Initializable {
-    
-    @FXML
-    private TextField txtNombreProveedor;
-
-    @FXML
-    private TextField txtTelefono;
+public class EditarProductoPantallaController implements Initializable{
+     @FXML
+    private JFXButton btnCancelar;
 
     @FXML
     private JFXButton btnEditar;
 
     @FXML
-    private TextField txtDireccion;
+    private Label etiquetaClave;
 
     @FXML
-    private TextField txtProducto;
+    private TextField txtMarca;
 
     @FXML
-    private JFXButton btnCancelar;
-    
+    private TextField txtPrecioC;
+
     @FXML
-    private Label etiquetaId;
+    private TextField txtPrecioV;
+
+    @FXML
+    private TextField txtProveedor;
     
-    private Proveedor proveedor;
-    
+    private Producto producto;
     private boolean esEdicion;
-    
     private Stage stageDialogoEdicion;
     
-    public Button getBotonEditar(){
+    public Button getBotonEditar() {
         return this.btnEditar;
     }
     
-    public GeneralProveedorPantallaController gp;
-    
+    public GeneralProductoPantallaController gp;
+
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         esEdicion = false;
@@ -66,45 +57,45 @@ public class EditarProveedorPantallaController implements Initializable {
     public void setStageDialog(Stage stageDialogoEdicion){
         this.stageDialogoEdicion = stageDialogoEdicion;
     }
-
+     
     public boolean getEsEdicion(){
         return esEdicion;
     }
     
-    public void setProveedor(Proveedor proveedor){
-        if(proveedor != null){
-            this.proveedor = proveedor;
+    public void setProducto(Producto producto){
+        if(producto != null){
+            this.producto = producto;
             
-            if(proveedor.getProveedorId() == 0){
-                this.etiquetaId.setText("Será generada");
+            if(producto.getClaveProducto() == 0){
+                this.etiquetaClave.setText("Será generada");
             }else{
-                this.etiquetaId.setText(Integer.toString(proveedor.getProveedorId()));
+                this.etiquetaClave.setText(Integer.toString(producto.getClaveProducto()));
             }
-            this.txtNombreProveedor.setText(proveedor.getProveedorNombre());
-            this.txtTelefono.setText(proveedor.getProveedorTelefono());
-            this.txtDireccion.setText(proveedor.getProveedorDireccion());
-            this.txtProducto.setText(proveedor.getProveedorProducto());
+            this.txtMarca.setText(producto.getMarcaProducto());
+            this.txtProveedor.setText(producto.getProveedorProducto());
+            this.txtPrecioC.setText(Float.toString(producto.getPrecioCProducto()));
+            this.txtPrecioV.setText(Float.toString(producto.getPrecioVProducto()));
         }
     }
-
+    
     @FXML
-    void editarProveedorx(ActionEvent event) {
+    void editarProductox(ActionEvent event) {
         this.esEdicion = false;
-        if(campoTextoValidoNombreProveedor() && campoTextoValidoTelefono() && campoTextoValidoDireccion() && campoTextoValidoProducto()){
-            this.proveedor.setProveedorNombre(this.txtNombreProveedor.getText());
-            this.proveedor.setProveedorTelefono(this.txtTelefono.getText());
-            this.proveedor.setProveedorDireccion(this.txtDireccion.getText());
-            this.proveedor.setProveedorProducto(this.txtProducto.getText());
+        if(campoTextoValidoMarcaProducto() && campoTextoValidoProveedorProducto() && campoTextoValidoPrecioCProducto() && campoTextoValidoPrecioVProducto()){
+            this.producto.setMarcaProducto(this.txtMarca.getText());
+            this.producto.setDescripcionProducto(this.txtMarca.getText());
+            this.producto.setPrecioCProducto(Float.parseFloat(this.txtPrecioC.getText()));
+            this.producto.setPrecioVProducto(Float.parseFloat(this.txtPrecioV.getText()));
             this.esEdicion = true;
             this.stageDialogoEdicion.close();
         }
     }
     
-    private boolean campoTextoValidoNombreProveedor(){
+    private boolean campoTextoValidoMarcaProducto(){
         
         String errorMessage = "";
         
-        if(this.txtNombreProveedor.getText() == null || this.txtNombreProveedor.getText().length() == 0){
+        if(this.txtMarca.getText() == null || this.txtMarca.getText().length() == 0){
           errorMessage +="Verifica el campo! \n";                         
         }
         if(errorMessage.length()==0){
@@ -112,19 +103,18 @@ public class EditarProveedorPantallaController implements Initializable {
         }else{
             Alert alert = new Alert(Alert.AlertType.ERROR);
             alert.setTitle("Error, campo no válido");
-            alert.setHeaderText("El campo Nombre Proveedor esta vacío");
+            alert.setHeaderText("El campo Marca esta vacío");
             alert.setContentText(errorMessage);
-            alert.initOwner(stageDialogoEdicion);
             alert.showAndWait();
             return false;            
         }                                       
     }
     
-    private boolean campoTextoValidoTelefono(){
+    private boolean campoTextoValidoProveedorProducto(){
         
         String errorMessage = "";
         
-        if(this.txtTelefono.getText() == null || this.txtTelefono.getText().length() == 0){
+        if(this.txtProveedor.getText() == null || this.txtProveedor.getText().length() == 0){
           errorMessage +="Verifica el campo! \n";                         
         }
         if(errorMessage.length()==0){
@@ -132,7 +122,7 @@ public class EditarProveedorPantallaController implements Initializable {
         }else{
             Alert alert = new Alert(Alert.AlertType.ERROR);
             alert.setTitle("Error, campo no válido");
-            alert.setHeaderText("El campo Telefono esta vacío");
+            alert.setHeaderText("El campo Proveedor esta vacío");
             alert.setContentText(errorMessage);
             alert.initOwner(stageDialogoEdicion);
             alert.showAndWait();
@@ -140,11 +130,11 @@ public class EditarProveedorPantallaController implements Initializable {
         }                                       
     }
     
-    private boolean campoTextoValidoDireccion(){
+        private boolean campoTextoValidoPrecioCProducto(){
         
         String errorMessage = "";
         
-        if(this.txtDireccion.getText() == null || this.txtDireccion.getText().length() == 0){
+        if(this.txtPrecioC.getText() == null || this.txtPrecioC.getText().length() == 0){
           errorMessage +="Verifica el campo! \n";                         
         }
         if(errorMessage.length()==0){
@@ -152,19 +142,19 @@ public class EditarProveedorPantallaController implements Initializable {
         }else{
             Alert alert = new Alert(Alert.AlertType.ERROR);
             alert.setTitle("Error, campo no válido");
-            alert.setHeaderText("El campo Direccion esta vacío");
+            alert.setHeaderText("El campo Precio Compra esta vacío");
             alert.setContentText(errorMessage);
             alert.initOwner(stageDialogoEdicion);
             alert.showAndWait();
             return false;            
         }                                       
     }
-    
-    private boolean campoTextoValidoProducto(){
+        
+        private boolean campoTextoValidoPrecioVProducto(){
         
         String errorMessage = "";
         
-        if(this.txtProducto.getText() == null || this.txtProducto.getText().length() == 0){
+        if(this.txtPrecioV.getText() == null || this.txtPrecioV.getText().length() == 0){
           errorMessage +="Verifica el campo! \n";                         
         }
         if(errorMessage.length()==0){
@@ -172,16 +162,17 @@ public class EditarProveedorPantallaController implements Initializable {
         }else{
             Alert alert = new Alert(Alert.AlertType.ERROR);
             alert.setTitle("Error, campo no válido");
-            alert.setHeaderText("El campo Telefono esta vacío");
+            alert.setHeaderText("El campo Precio Venta esta vacío");
             alert.setContentText(errorMessage);
             alert.initOwner(stageDialogoEdicion);
             alert.showAndWait();
             return false;            
         }                                       
     }
-    
+
     @FXML
     void cancelarEdicionx(ActionEvent event) {
         stageDialogoEdicion.close();
+
     }
 }

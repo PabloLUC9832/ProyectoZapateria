@@ -3,8 +3,6 @@ package controlador.Promocion;
 import com.jfoenix.controls.JFXButton;
 import java.net.URL;
 import java.util.ResourceBundle;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -14,7 +12,6 @@ import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 import modelo.Promocion.Promocion;
 import modelo.Promocion.Promocion_DAO_Imp;
-import modelo.AlertaFXML;
 
 public class CreatePromocionPantallaController implements Initializable{
 
@@ -73,16 +70,25 @@ public class CreatePromocionPantallaController implements Initializable{
                     cerrarVentana();
                 }else{
                     Stage stage = (Stage) this.btnRegistrar.getScene().getWindow();
-                    AlertaFXML alerta = new AlertaFXML(stage);
-                    alerta.alertaError("Error al agregar", "Error al agregar", "Ha ocurrido al agregar la promoción, intentelo nuevamente.");                                                        
+                    String errorMessage = "El tiempo de espera se ha agotado o se perdío la conexión\n" +"con la Base Datos.";
+                    Alert alert = new Alert(Alert.AlertType.ERROR);
+                    alert.setTitle("Error, No hay conexión con la Base de Datos");
+                    alert.setHeaderText(" ¡Por favor! intentelo nuevamente");
+                    alert.setContentText(errorMessage);
+                    alert.initOwner(stageDialogoEdicion);
+                    alert.showAndWait();
                 }                                                   
             }
             
         }catch(Exception ex) {
             Stage stage = (Stage) this.btnRegistrar.getScene().getWindow();
-            AlertaFXML alerta = new AlertaFXML(stage);
-            alerta.alertaError("Error al agregar", "Error al agregar", "Ha ocurrido al agregar la promoción, intentelo nuevamente.Más información \n"+ex);             
-            Logger.getLogger(CreatePromocionPantallaController.class.getName()).log(Level.SEVERE,null,ex);
+            String errorMessage = "El tiempo de espera se ha agotado o se perdío la conexión\n" +"con la Base Datos.";
+            Alert alert = new Alert(Alert.AlertType.ERROR);
+            alert.setTitle("Error, No hay conexión con la Base de Datos");
+            alert.setHeaderText(" ¡Por favor! intentelo nuevamente");
+            alert.setContentText(errorMessage);
+            alert.initOwner(stageDialogoEdicion);
+            alert.showAndWait();
         }
     }
     

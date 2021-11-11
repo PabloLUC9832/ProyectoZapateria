@@ -1,14 +1,11 @@
 package controlador.Empleado;
 
 import com.jfoenix.controls.JFXButton;
-import controlador.MainPantallaController;
 import java.io.IOException;
 import java.net.URL;
 import java.util.Iterator;
 import java.util.List;
 import java.util.ResourceBundle;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -101,7 +98,12 @@ public class GeneralEmpleadoPantallaController implements Initializable {
         try {
             buscarProducto();
         } catch (Exception ex) {
-            Logger.getLogger(GeneralEmpleadoPantallaController.class.getName()).log(Level.SEVERE, null, ex);
+            String errorMessage = "El tiempo de espera se ha agotado o se perdío la conexión\n" +"con la Base Datos.";
+            Alert alert = new Alert(Alert.AlertType.ERROR);
+            alert.setTitle("Error, No hay conexión con la Base de Datos");
+            alert.setHeaderText(" ¡Por favor! intentelo nuevamente");
+            alert.setContentText(errorMessage);
+            alert.showAndWait();
         }
         this.tablaEmpleados.getSelectionModel().selectedItemProperty().addListener((observable, oldValue, newValue) -> this.mostrarEmpleado(newValue));
                    
@@ -113,9 +115,12 @@ public class GeneralEmpleadoPantallaController implements Initializable {
         try{
             listaConsulta = empleado_DAO.readAll();
         }catch (Exception ex) {
-            //AlertaFXML alerta = new AlertaFXML(this.stagePrincipal);
-            //alerta.alertaError("Error", "Ocurrió un error al realizar una operación", ex.getMessage());
-            System.out.println("ERROR READ ALL "+ex);
+            String errorMessage = "El tiempo de espera se ha agotado o se perdío la conexión\n" +"con la Base Datos.";
+            Alert alert = new Alert(Alert.AlertType.ERROR);
+            alert.setTitle("Error, No hay conexión con la Base de Datos");
+            alert.setHeaderText(" ¡Por favor! intentelo nuevamente");
+            alert.setContentText(errorMessage);
+            alert.showAndWait();
         }
         Iterator it = listaConsulta.iterator();
         listaEmpleado.clear();
@@ -142,7 +147,12 @@ public class GeneralEmpleadoPantallaController implements Initializable {
                 try {
                     colocarEmpleadosTabla();
                 } catch (Exception ex) {
-                    Logger.getLogger(GeneralEmpleadoPantallaController.class.getName()).log(Level.SEVERE, null, ex);                    
+                    String errorMessage = "El tiempo de espera se ha agotado o se perdío la conexión\n" +"con la Base Datos.";
+                    Alert alert = new Alert(Alert.AlertType.ERROR);
+                    alert.setTitle("Error, No hay conexión con la Base de Datos");
+                    alert.setHeaderText(" ¡Por favor! intentelo nuevamente");
+                    alert.setContentText(errorMessage);
+                    alert.showAndWait();
                 }
             }else{
                 listaEmpleado.clear();                
@@ -150,7 +160,12 @@ public class GeneralEmpleadoPantallaController implements Initializable {
                     listaEmpleado = empleado_DAO.search(txtBusqueda.getText());
                     tablaEmpleados.setItems(listaEmpleado);
                 } catch (Exception ex) {
-                    Logger.getLogger(GeneralEmpleadoPantallaController.class.getName()).log(Level.SEVERE, null, ex);
+                    String errorMessage = "El tiempo de espera se ha agotado o se perdío la conexión\n" +"con la Base Datos.";
+                    Alert alert = new Alert(Alert.AlertType.ERROR);
+                    alert.setTitle("Error, No hay conexión con la Base de Datos");
+                    alert.setHeaderText(" ¡Por favor! intentelo nuevamente");
+                    alert.setContentText(errorMessage);
+                    alert.showAndWait();
                 }
             }            
                   
@@ -198,7 +213,12 @@ public class GeneralEmpleadoPantallaController implements Initializable {
 
             return controlador.getEsEdicion();
         } catch (IOException e) {
-            e.printStackTrace();
+            String errorMessage = "El tiempo de espera se ha agotado o se perdío la conexión\n" +"con la Base Datos.";
+            Alert alert = new Alert(Alert.AlertType.ERROR);
+            alert.setTitle("Error, No hay conexión con la Base de Datos");
+            alert.setHeaderText(" ¡Por favor! intentelo nuevamente");
+            alert.setContentText(errorMessage);
+            alert.showAndWait();
             return false;
         }
     }    
@@ -215,9 +235,12 @@ public class GeneralEmpleadoPantallaController implements Initializable {
                 try {
                     this.empleado_DAO.update(empleadoSeleccionada);
                 } catch (Exception ex) {
-                    //AlertaFXML alerta = new AlertaFXML(this.stagePrincipal);
-                    //alerta.alertaError("Error", "Ocurrió un error al realizar una operación", ex.getMessage());
-                    Logger.getLogger(MainPantallaController.class.getName()).log(Level.SEVERE, null, ex);
+                    String errorMessage = "El tiempo de espera se ha agotado o se perdío la conexión\n" +"con la Base Datos.";
+                    Alert alert = new Alert(Alert.AlertType.ERROR);
+                    alert.setTitle("Error, No hay conexión con la Base de Datos");
+                    alert.setHeaderText(" ¡Por favor! intentelo nuevamente");
+                    alert.setContentText(errorMessage);
+                    alert.showAndWait();
                 }
                 this.colocarEmpleadosTabla();
                 this.tablaEmpleados.getSelectionModel().select(ultimoSeleccionado);
@@ -249,7 +272,12 @@ public class GeneralEmpleadoPantallaController implements Initializable {
                 }
                 
             } catch (Exception ex) {
-                Logger.getLogger(GeneralEmpleadoPantallaController.class.getName()).log(Level.SEVERE, null, ex);
+                String errorMessage = "El tiempo de espera se ha agotado o se perdío la conexión\n" +"con la Base Datos.";
+                Alert alert = new Alert(Alert.AlertType.ERROR);
+                alert.setTitle("Error, No hay conexión con la Base de Datos");
+                alert.setHeaderText(" ¡Por favor! intentelo nuevamente");
+                alert.setContentText(errorMessage);
+                alert.showAndWait();
             }
             this.colocarEmpleadosTabla();
             if(selectedIndex!=0){
@@ -281,7 +309,12 @@ public class GeneralEmpleadoPantallaController implements Initializable {
             stage.show();
             
         }catch(IOException e){
-            System.out.println("ERROR AL MOSTRAR LA VENTANA: "+e);
+            String errorMessage = "El tiempo de espera se ha agotado o se perdío la conexión\n" +"con la Base Datos.";
+            Alert alert = new Alert(Alert.AlertType.ERROR);
+            alert.setTitle("Error, No hay conexión con la Base de Datos");
+            alert.setHeaderText(" ¡Por favor! intentelo nuevamente");
+            alert.setContentText(errorMessage);
+            alert.showAndWait();
         }        
     }
     

@@ -6,8 +6,8 @@ package modelo.Producto;
  */
 public class Producto {
     
-    int claveProducto;
-    float precioCProducto, precioVProducto, stockProducto;
+    int claveProducto, stockProducto;
+    float precioCProducto, precioVProducto;
     String marcaProducto, descripcionProducto, proveedorProducto;
     
     public Producto() {
@@ -20,7 +20,7 @@ public class Producto {
         this.proveedorProducto = "";
     }
     
-    public Producto(int claveProducto, String marcaProducto, String descripcionProducto, String proveedorProducto, Float precioCProducto, Float precioVProducto, Float stockProducto) {
+    public Producto(int claveProducto, String marcaProducto, String descripcionProducto, String proveedorProducto, Float precioCProducto, Float precioVProducto, int stockProducto) {
         this.claveProducto = claveProducto;
         this.precioCProducto = precioCProducto;
         this.precioVProducto = precioVProducto;
@@ -54,11 +54,11 @@ public class Producto {
         this.precioVProducto = precioVProducto;
     }
 
-    public float getStockProducto() {
+    public int getStockProducto() {
         return stockProducto;
     }
 
-    public void setStockProducto(float stockProducto) {
+    public void setStockProducto(int stockProducto) {
         this.stockProducto = stockProducto;
     }
 

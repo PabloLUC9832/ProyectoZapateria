@@ -75,7 +75,6 @@ public class EditarPromocionPantallaController implements Initializable {
             if(promocion.getIdPromocion() == 0){
                 this.etiquetaId.setText("Será generada");
             }else{
-                //this.etiquetaId.setText(Integer.toString(promocion.getIdPromocion()));
                 this.etiquetaId.setText(Integer.toString(promocion.getIdPromocion()));
             }
             this.txtNombreProducto.setText(promocion.getNombreProducto());
