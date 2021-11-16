@@ -75,7 +75,10 @@ public class GeneralEmpleadoPantallaController implements Initializable {
     private JFXButton btnEditar;
 
     @FXML
-    private JFXButton btnEliminar;    
+    private JFXButton btnEliminar;
+
+    @FXML
+    private JFXButton btnactualizarVentana;
     
     private Empleado_DAO_Imp empleado_DAO;
     public ObservableList<Empleado> listaEmpleado;    
@@ -107,6 +110,11 @@ public class GeneralEmpleadoPantallaController implements Initializable {
         }
         this.tablaEmpleados.getSelectionModel().selectedItemProperty().addListener((observable, oldValue, newValue) -> this.mostrarEmpleado(newValue));
                    
+    }
+    
+    @FXML
+    void actualizarVentana(ActionEvent event){
+            colocarEmpleadosTabla();
     }
 
     public void obtenerEmpleados(){

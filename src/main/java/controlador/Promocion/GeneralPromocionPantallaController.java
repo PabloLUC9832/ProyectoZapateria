@@ -81,6 +81,9 @@ public class GeneralPromocionPantallaController implements Initializable {
 
     @FXML
     private JFXButton btnEliminar;
+    
+    @FXML
+    private JFXButton btnactualizarVentana;
         
     private Promocion_DAO_Imp promocion_DAO;
     public ObservableList<Promocion> listaPromocion;  
@@ -116,6 +119,11 @@ public class GeneralPromocionPantallaController implements Initializable {
             alert.showAndWait();
         }
         this.tablaPromociones.getSelectionModel().selectedItemProperty().addListener((observable, oldValue, newValue) -> this.mostrarPromocion(newValue));
+    }
+    
+    @FXML
+    void actualizarVentana(ActionEvent event){
+            colocarPromocionesTabla();
     }
 
     public void obtenerPromociones(){
@@ -314,7 +322,7 @@ public class GeneralPromocionPantallaController implements Initializable {
             Stage stage = new Stage();            
             stage.setScene(new Scene(ventana));
             stage.setTitle("Añadir Promocion");
-            stage.show();
+            stage.show();          
             
         }catch(IOException e){
             String errorMessage = "El tiempo de espera se ha agotado o se perdío la conexión\n" +"con la Base Datos.";
@@ -323,7 +331,7 @@ public class GeneralPromocionPantallaController implements Initializable {
             alert.setHeaderText(" ¡Por favor! intentelo nuevamente");
             alert.setContentText(errorMessage);
             alert.showAndWait();
-        }        
+        }   
     }    
     
 }

@@ -74,6 +74,9 @@ public class GeneralProveedorPantallaController implements Initializable {
     private JFXButton btnEliminar;
     
     @FXML
+    private JFXButton btnactualizarVentana;
+    
+    @FXML
     private Label textoId;
         
     private Proveedor_DAO_Imp proveedor_DAO;
@@ -110,6 +113,11 @@ public class GeneralProveedorPantallaController implements Initializable {
             alert.showAndWait();
         }
         this.tablaProveedor.getSelectionModel().selectedItemProperty().addListener((observable, oldValue, newValue) -> this.mostrarProveedor((Proveedor) newValue));
+    }
+    
+    @FXML
+    void actualizarVentana(ActionEvent event){
+            colocarProveedorTabla();
     }
 
     public void obtenerProveedor(){
@@ -247,7 +255,7 @@ public class GeneralProveedorPantallaController implements Initializable {
             Alert alert = new Alert(Alert.AlertType.WARNING);
             alert.initOwner(this.stagePrincipal);
             alert.setTitle("Sin seleccionar");
-            alert.setHeaderText("No hay promocion Seleccionada");
+            alert.setHeaderText("No hay Proveedor Seleccionado");
             alert.setContentText("Seleccione una promocion");
             alert.showAndWait();
         }

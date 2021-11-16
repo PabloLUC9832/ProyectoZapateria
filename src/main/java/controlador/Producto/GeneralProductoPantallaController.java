@@ -93,7 +93,10 @@ public class GeneralProductoPantallaController implements Initializable {
 
     @FXML
     private JFXButton btnEliminar;
-
+    
+    @FXML
+    private JFXButton btnactualizarVentana;
+    
     
     private Producto_DAO_Imp producto_DAO;
     private Stage stageDialogoEdicion;
@@ -127,6 +130,11 @@ public class GeneralProductoPantallaController implements Initializable {
         }
         this.tablaProductos.getSelectionModel().selectedItemProperty().addListener((observable, oldValue, newValue) -> this.mostrarProducto((Producto) newValue));
 
+    }
+    
+    @FXML
+    void actualizarVentana(ActionEvent event){
+            colocarProductosTabla();
     }
     
     public void obtenerProductos() {

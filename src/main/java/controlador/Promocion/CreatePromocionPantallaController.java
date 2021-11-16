@@ -67,7 +67,7 @@ public class CreatePromocionPantallaController implements Initializable{
                     Alert alert = new Alert(Alert.AlertType.NONE,"Se ha añadido con exito",ButtonType.OK);
                     alert.setTitle("Operación exitosa");          
                     alert.showAndWait();
-                    cerrarVentana();
+                    cerrarVentana();   
                 }else{
                     Stage stage = (Stage) this.btnRegistrar.getScene().getWindow();
                     String errorMessage = "El tiempo de espera se ha agotado o se perdío la conexión\n" +"con la Base Datos.";

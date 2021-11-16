@@ -1,5 +1,6 @@
 package controlador.Horario;
 
+import com.jfoenix.controls.JFXButton;
 import java.io.IOException;
 import java.net.URL;
 import java.util.Iterator;
@@ -47,6 +48,9 @@ public class GeneralHorarioPantallaController implements Initializable {
     @FXML
     private Label titulo;
     
+    @FXML
+    private JFXButton btnactualizarVentana;
+    
     private Horario_DAO_Imp horario_DAO;
     private ObservableList<Horario> listaHorario;
     /**
@@ -59,6 +63,12 @@ public class GeneralHorarioPantallaController implements Initializable {
         this.colocarHorariosTabla();
         // TODO
     }
+    
+    @FXML
+    void actualizarVentana(ActionEvent event){
+            colocarHorariosTabla();
+    }
+    
     public void obtenerHorarios() {
         List listaConsulta = null;
         

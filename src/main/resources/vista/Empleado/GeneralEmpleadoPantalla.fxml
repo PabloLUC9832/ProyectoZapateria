@@ -11,13 +11,13 @@
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane id="AnchorPane" prefHeight="450.0" prefWidth="700.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controlador.Empleado.GeneralEmpleadoPantallaController">
+<AnchorPane id="AnchorPane" prefHeight="450.0" prefWidth="700.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controlador.Empleado.GeneralEmpleadoPantallaController">
    <children>
       <Pane prefHeight="200.0" prefWidth="200.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
          <children>
-            <TextField fx:id="txtBusqueda" layoutX="162.0" layoutY="54.0" prefHeight="25.0" prefWidth="336.0" style="-fx-background-color: transparent; -fx-border-color: #4cc9f0; -fx-border-width: 0px 0px 2px 0px;" />
-            <Label layoutX="25.0" layoutY="66.0" text="Ingresa tu búsqueda" />
-            <TableView fx:id="tablaEmpleados" layoutX="25.0" layoutY="98.0" prefHeight="220.0" prefWidth="648.0">
+            <TextField fx:id="txtBusqueda" layoutX="162.0" layoutY="87.0" prefHeight="25.0" prefWidth="336.0" style="-fx-background-color: transparent; -fx-border-color: #4cc9f0; -fx-border-width: 0px 0px 2px 0px;" />
+            <Label layoutX="25.0" layoutY="98.0" text="Ingresa tu búsqueda" />
+            <TableView fx:id="tablaEmpleados" layoutX="25.0" layoutY="130.0" prefHeight="204.0" prefWidth="648.0">
               <columns>
                 <TableColumn fx:id="columnaID" prefWidth="30.0" text="ID" />
                 <TableColumn fx:id="columnaNombre" prefWidth="234.0" text="Nombre" />
@@ -26,9 +26,14 @@
                   <TableColumn fx:id="columnaPuesto" prefWidth="138.0" text="Puesto" />
               </columns>
             </TableView>
+            <Label layoutX="303.0" layoutY="58.0" text="Empleados">
+               <font>
+                  <Font name="System Bold" size="18.0" />
+               </font>
+            </Label>
          </children>
       </Pane>
-      <Label layoutX="279.0" layoutY="343.0" text="Personal Seleccionado">
+      <Label layoutX="279.0" layoutY="353.0" text="Personal Seleccionado">
          <font>
             <Font name="System Bold" size="13.0" />
          </font>
@@ -64,29 +69,38 @@
       <Label fx:id="textoPass" layoutX="435.0" layoutY="418.0" />
       <Label fx:id="textoPuesto" layoutX="603.0" layoutY="419.0" />
       
-      <JFXButton fx:id="btnAgregar" layoutY="8.0" onAction="#agregarEmpleado" prefWidth="125.0" styleClass="menuItem" stylesheets="@../../styles/mainpantalla.css" text="Añadir">
+      <JFXButton fx:id="btnEditar" layoutX="387.0" layoutY="8.0" onAction="#editarEmpleado" prefHeight="33.0" prefWidth="85.0" styleClass="menuItem" stylesheets="@../../styles/mainpantalla.css" text="Editar">
                      <graphic>
                         <ImageView fitHeight="25.0" fitWidth="25.0" pickOnBounds="true" preserveRatio="true">
                            <image>
-                              <Image url="@../../imgs/addEmpleado_64px.png" />
+                              <Image url="@../../imgs/Edit.png" />
                            </image>
                         </ImageView>
                      </graphic>
                   </JFXButton>
-                  <JFXButton fx:id="btnEditar" layoutX="126.0" layoutY="8.0" onAction="#editarEmpleado" prefWidth="125.0" styleClass="menuItem" stylesheets="@../../styles/mainpantalla.css" text="Editar">
+                  <JFXButton fx:id="btnEliminar" layoutX="521.0" layoutY="9.0" onAction="#eliminarEmpleado" prefHeight="33.0" prefWidth="98.0" styleClass="menuItem" stylesheets="@../../styles/mainpantalla.css" text="Eliminar">
                      <graphic>
                         <ImageView fitHeight="25.0" fitWidth="25.0" pickOnBounds="true" preserveRatio="true">
                            <image>
-                              <Image url="@../../imgs/editEmpleado_64px.png" />
+                              <Image url="@../../imgs/Delete.png" />
                            </image>
                         </ImageView>
                      </graphic>
                   </JFXButton>
-                  <JFXButton fx:id="btnEliminar" layoutX="252.0" layoutY="8.0" onAction="#eliminarEmpleado" prefWidth="125.0" styleClass="menuItem" stylesheets="@../../styles/mainpantalla.css" text="Eliminar">
+                  <JFXButton fx:id="btnAgregar" layoutX="255.0" layoutY="9.0" onAction="#agregarEmpleado" prefHeight="33.0" prefWidth="85.0" styleClass="menuItem" stylesheets="@../../styles/mainpantalla.css" text="Añadir">
                      <graphic>
                         <ImageView fitHeight="25.0" fitWidth="25.0" pickOnBounds="true" preserveRatio="true">
                            <image>
-                              <Image url="@../../imgs/deleteEmpleado_64px.png" />
+                              <Image url="@../../imgs/Add.png" />
+                           </image>
+                        </ImageView>
+                     </graphic>
+                  </JFXButton>
+                  <JFXButton fx:id="btnactualizarVentana" layoutX="63.0" layoutY="9.0" onAction="#actualizarVentana" text="Actualizar Ventana">
+                      <graphic>
+                        <ImageView fitHeight="25.0" fitWidth="25.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../../imgs/Refresh.png" />
                            </image>
                         </ImageView>
                      </graphic>

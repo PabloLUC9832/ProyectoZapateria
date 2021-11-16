@@ -1,5 +1,6 @@
 package controlador.Cliente;
 
+import com.jfoenix.controls.JFXButton;
 import java.io.IOException;
 import java.net.URL;
 import java.util.Iterator;
@@ -36,6 +37,10 @@ public class GeneralClientePantallaController implements Initializable {
     @FXML
     private TableColumn<Cliente, String> columnaEmail;
     
+    @FXML
+    private JFXButton btnactualizarVentana;
+    
+    
     private Cliente_DAO_Imp cliente_DAO;
     private ObservableList<Cliente> listaCliente;
     
@@ -44,6 +49,11 @@ public class GeneralClientePantallaController implements Initializable {
         cliente_DAO = new Cliente_DAO_Imp();
         listaCliente = FXCollections.observableArrayList();
         this.colocarClientesTabla();
+    }
+    
+    @FXML
+    void actualizarVentana(ActionEvent event){
+            colocarClientesTabla();
     }
     
     public void obtenerClientes() {
