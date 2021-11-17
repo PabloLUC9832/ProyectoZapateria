@@ -40,9 +40,6 @@ public class MainPantallaController implements Initializable {
     private JFXButton btnHorario;
 
     @FXML
-    private JFXButton btnVentas;
-
-    @FXML
     private JFXButton btnProducto;
 
     @FXML
@@ -158,13 +155,6 @@ public class MainPantallaController implements Initializable {
         contentArea.getChildren().setAll(fxml);             
     }
     
-    public void pantallaVentas(javafx.event.ActionEvent actionEvent) throws IOException{
-        
-        Parent fxml = FXMLLoader.load(getClass().getResource("/vista/Ventas/GeneralVentasPantalla.fxml"));      
-        contentArea.getChildren().removeAll();
-        contentArea.getChildren().setAll(fxml);             
-    }
-
     public void pantallaProducto(javafx.event.ActionEvent actionEvent) throws IOException{
         
         Parent fxml = FXMLLoader.load(getClass().getResource("/vista/Producto/GeneralProductoPantalla.fxml"));      

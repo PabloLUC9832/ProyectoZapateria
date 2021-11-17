@@ -1,33 +1,33 @@
+package modelo.Inventario;
 
-package modelo.Producto;
 /**
  *
- * @author jhair
+ * @author ferna
  */
-public class Producto {
+public class ProductoInv {
     
-    int claveProducto, stockProducto;
-    float precioCProducto, precioVProducto;
-    String marcaProducto, descripcionProducto, proveedorProducto;
+    int claveProducto;
+    float precioCProducto, stockProducto;
+    String marcaProducto, descripcionProducto, proveedorProducto, fecha;
     
-    public Producto() {
+    public ProductoInv() {
         this.claveProducto = 0;
         this.precioCProducto = 0;
-        this.precioVProducto = 0;
         this.stockProducto = 0;
         this.marcaProducto = "";
         this.descripcionProducto = "";
         this.proveedorProducto = "";
+        this.fecha = "";
     }
     
-    public Producto(int claveProducto, String marcaProducto, String descripcionProducto, String proveedorProducto, Float precioCProducto, Float precioVProducto, int stockProducto) {
+    public ProductoInv(int claveProducto, String marcaProducto, String descripcionProducto, String proveedorProducto, Float precioCProducto, Float stockProducto, String fecha) {
         this.claveProducto = claveProducto;
         this.precioCProducto = precioCProducto;
-        this.precioVProducto = precioVProducto;
         this.stockProducto = stockProducto;
         this.marcaProducto = marcaProducto;
         this.descripcionProducto = descripcionProducto;
         this.proveedorProducto = proveedorProducto;
+        this.fecha = fecha;
     }
 
     public int getClaveProducto() {
@@ -46,19 +46,11 @@ public class Producto {
         this.precioCProducto = precioCProducto;
     }
 
-    public float getPrecioVProducto() {
-        return precioVProducto;
-    }
-
-    public void setPrecioVProducto(float precioVProducto) {
-        this.precioVProducto = precioVProducto;
-    }
-
-    public int getStockProducto() {
+    public float getStockProducto() {
         return stockProducto;
     }
 
-    public void setStockProducto(int stockProducto) {
+    public void setStockProducto(float stockProducto) {
         this.stockProducto = stockProducto;
     }
 
@@ -85,16 +77,24 @@ public class Producto {
     public void setProveedorProducto(String proveedorProducto) {
         this.proveedorProducto = proveedorProducto;
     }
+
+    public String getFecha() {
+        return fecha;
+    }
+
+    public void setFecha(String fecha) {
+        this.fecha = fecha;
+    }  
     
     @Override
     public String toString() {
-        return "Producto{" + "Clave: " + claveProducto + "Descripcion: " + descripcionProducto +
-                "Marca: " + marcaProducto + "Precio de Compra: " + precioCProducto + "Precio de venta: "
-                + precioVProducto + "Proveedor: " + proveedorProducto + "Stock: " + stockProducto;
+        return "Inventario" + " ID: " + claveProducto + " Descripcion: " + descripcionProducto +
+                " Marca: " + marcaProducto + " Precio de Compra: " + precioCProducto + 
+                " Proveedor: " + proveedorProducto + " Stock: " + stockProducto + " fecha: " + fecha;
     }
-    public String formatoPDF(){
-        return "Clave: "+ claveProducto + " Descripcion: " +descripcionProducto + "Marca: " + marcaProducto
-                + " Precio de Compra: " + precioCProducto + "Precio de venta: "
-                + precioVProducto + "Proveedor: " + proveedorProducto + "Stock: " + stockProducto;
+     public String formatoPDF(){
+        return " ID: " + claveProducto + " Descripcion: " + descripcionProducto +
+                " Marca: " + marcaProducto + " Precio de Compra: " + precioCProducto + 
+                " Proveedor: " + proveedorProducto + " Stock: " + stockProducto + " fecha: " + fecha;
     }
 }

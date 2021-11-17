@@ -1,6 +1,5 @@
 package modelo.Producto;
 
-import controlador.Producto.GeneralProductoPantallaController;
 import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -17,7 +16,7 @@ import modelo.ConexionDB;
  */
 public class Producto_DAO_Imp implements Producto_DAO {
     
-    GeneralProductoPantallaController gc;
+    //GeneralProductoPantallaController gc;
     
     @Override
     public boolean create(Producto producto) throws Exception {

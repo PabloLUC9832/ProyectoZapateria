@@ -47,7 +47,7 @@ public class EditarProductoPantallaController implements Initializable{
         return this.btnEditar;
     }
     
-    public GeneralProductoPantallaController gp;
+    //public GeneralProductoPantallaController gp;
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {

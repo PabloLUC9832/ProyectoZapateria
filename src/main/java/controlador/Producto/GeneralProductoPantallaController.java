@@ -1,13 +1,24 @@
 package controlador.Producto;
 
+import com.itextpdf.text.Document;
+import com.itextpdf.text.DocumentException;
+import com.itextpdf.text.PageSize;
+import com.itextpdf.text.Paragraph;
+import com.itextpdf.text.pdf.PdfWriter;
+
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
+
 import com.jfoenix.controls.JFXButton;
+import controlador.Producto.EditarProductoPantallaController;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
 import java.io.IOException;
 import java.net.URL;
+import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 import java.util.ResourceBundle;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -17,6 +28,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Alert;
+import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
@@ -95,8 +107,16 @@ public class GeneralProductoPantallaController implements Initializable {
     private JFXButton btnEliminar;
     
     @FXML
-    private JFXButton btnactualizarVentana;
+    private JFXButton btnHistorial;
     
+    @FXML
+    private Button btnAbrirPDF;
+        
+    @FXML
+    private Button btnGenerarPDF;
+    
+    
+
     
     private Producto_DAO_Imp producto_DAO;
     private Stage stageDialogoEdicion;
@@ -130,11 +150,6 @@ public class GeneralProductoPantallaController implements Initializable {
         }
         this.tablaProductos.getSelectionModel().selectedItemProperty().addListener((observable, oldValue, newValue) -> this.mostrarProducto((Producto) newValue));
 
-    }
-    
-    @FXML
-    void actualizarVentana(ActionEvent event){
-            colocarProductosTabla();
     }
     
     public void obtenerProductos() {
@@ -345,5 +360,52 @@ public class GeneralProductoPantallaController implements Initializable {
             alert.setContentText(errorMessage);
             alert.showAndWait();
         }        
+    }
+    public void ViewHisotrialCProveedor2(){
+        try{
+            FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/vista/Inventario/CreateInventarioPantalla2.fxml"));
+            Parent ventana = (Parent) fxmlLoader.load();
+            Stage stage = new Stage();            
+            stage.setScene(new Scene(ventana));
+            stage.setTitle("Historial");
+            stage.show();
+            
+        }catch(IOException e){
+            System.out.println("ERROR AL MOSTRAR LA VENTANA: "+e);
+            String errorMessage = "El tiempo de espera se ha agotado o se perdío la conexión\n" +"con la Base Datos.";
+            Alert alert = new Alert(Alert.AlertType.ERROR);
+            alert.setTitle("Error, No hay conexión con la Base de Datos");
+            alert.setHeaderText(" ¡Por favor! intentelo nuevamente");
+            alert.setContentText(errorMessage);
+            alert.showAndWait();
+        }        
+    }
+    public void ViewHisotrialCProveedor(){
+        try{
+            FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/vista/Inventario/CreateInventarioPantalla.fxml"));
+            Parent ventana = (Parent) fxmlLoader.load();
+            Stage stage = new Stage();            
+            stage.setScene(new Scene(ventana));
+            stage.setTitle("Historial");
+            stage.show();
+            
+        }catch(IOException e){
+            System.out.println("ERROR AL MOSTRAR LA VENTANA: "+e);           
+        }        
+    }
+    @FXML
+    void AbrirPDF(ActionEvent event) {
+
+    }
+    
+    @FXML
+    public void GenerarPDF(ActionEvent event) throws FileNotFoundException, DocumentException{
+        Document document = new Document();
+        PdfWriter.getInstance(document, new FileOutputStream("Inventario.pdf"));
+        document.open();
+        for(int i=0; i<tablaProductos.getItems().size(); i++){
+            document.add(new Paragraph(tablaProductos.getItems().get(i).formatoPDF()));
+        }
+        document.close();
     }
 }
