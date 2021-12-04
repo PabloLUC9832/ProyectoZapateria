@@ -241,7 +241,7 @@ public class GeneralProveedorPantallaController implements Initializable {
                 try {
                     this.proveedor_DAO.update(proveedorSeleccionado);
                 } catch (Exception ex) {
-                    String errorMessage = "El tiempo de espera se ha agotado o se perdío la conexión\n" +"con la Base Datos.";
+                    String errorMessage = "Intento agregar un proveedor existente en la Base Datos.";
                     Alert alert = new Alert(Alert.AlertType.ERROR);
                     alert.setTitle("Error, No hay conexión con la Base de Datos");
                     alert.setHeaderText(" ¡Por favor! intentelo nuevamente");

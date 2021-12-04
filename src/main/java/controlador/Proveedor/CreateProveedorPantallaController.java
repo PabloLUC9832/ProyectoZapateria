@@ -4,21 +4,19 @@ import java.net.URL;
 import java.util.ResourceBundle;
 import javafx.fxml.Initializable;
 import com.jfoenix.controls.JFXButton;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Alert;
 import javafx.scene.control.ButtonType;
 import javafx.scene.control.TextField;
+import javafx.scene.input.KeyEvent;
 import javafx.stage.Stage;
 import modelo.Proveedor.Proveedor;
 import modelo.Proveedor.Proveedor_DAO_Imp;
-import modelo.AlertaFXML;
 
 /**
  *
- * @author Horus
+ * @author Horus Alejandro Hernandez Cabrera
  */
 
 public class CreateProveedorPantallaController implements Initializable{
@@ -43,6 +41,7 @@ public class CreateProveedorPantallaController implements Initializable{
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
         proveedor_DAO =new Proveedor_DAO_Imp();
+        txtTelefono.addEventHandler(KeyEvent.KEY_TYPED, event -> soloNumeros(event));
     } 
     
     @FXML
@@ -78,9 +77,9 @@ public class CreateProveedorPantallaController implements Initializable{
             
         }catch(Exception ex) {
             Stage stage = (Stage) this.btnRegistrar.getScene().getWindow();
-            String errorMessage = "El tiempo de espera se ha agotado o se perdío la conexión\n" +"con la Base Datos.";
+            String errorMessage = "Trata de igresar un Proveedor existente en la Base de Datos\n";
             Alert alert = new Alert(Alert.AlertType.ERROR);
-            alert.setTitle("Error, No hay conexión con la Base de Datos");
+            alert.setTitle("Error, Problemas con la Base de Datos");
             alert.setHeaderText(" ¡Por favor! intentelo nuevamente");
             alert.setContentText(errorMessage);
             alert.initOwner(stageDialogoEdicion);
@@ -115,7 +114,7 @@ public class CreateProveedorPantallaController implements Initializable{
     
         private boolean campoNuloTelefono(){
         String errorMessage = "";
-        if(this.txtTelefono.getText() == null || this.txtTelefono.getText().length() == 0 ){
+        if(this.txtTelefono.getText() == null || this.txtTelefono.getText().length() == 0 || this.txtTelefono.getText().length() > 10 ){
             errorMessage += "Verifica el campo! \n";
         }
                 
@@ -124,7 +123,7 @@ public class CreateProveedorPantallaController implements Initializable{
         }else{
             Alert alert = new Alert(Alert.AlertType.ERROR);
             alert.setTitle("Error, campo no válido");
-            alert.setHeaderText("El campo Teléfono esta vacío");
+            alert.setHeaderText("El campo Teléfono esta vacío o tiene mas de 10 digitos");
             alert.setContentText(errorMessage);
             alert.initOwner(stageDialogoEdicion);
             alert.showAndWait();
@@ -211,6 +210,18 @@ public class CreateProveedorPantallaController implements Initializable{
         Stage stage = (Stage) this.btnRegistrar.getScene().getWindow();
         stage.close();
     }       
+    
+    public void soloNumeros(KeyEvent keyEvent){
+        try{
+            char key = keyEvent.getCharacter().charAt(0);
+            if(!Character.isDigit(key)){
+                keyEvent.consume();
+            }
+        }catch(Exception e){
+          
+        }
+    }
+    
     
 }
 

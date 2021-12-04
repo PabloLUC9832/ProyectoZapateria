@@ -10,7 +10,7 @@ import modelo.ConexionDB;
 
 /**
  *
- * @author theiv
+ * @author Ivan Antonio Campos Garcia
  */
 public class Cliente_DAO_Imp implements Cliente_DAO {
     

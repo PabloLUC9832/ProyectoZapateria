@@ -2,7 +2,7 @@ package modelo.Inventario;
 
 /**
  *
- * @author ferna
+ * @author Luis Fernando Morales
  */
 public class ProductoInv {
     

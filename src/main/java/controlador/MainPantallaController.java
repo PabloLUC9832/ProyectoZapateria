@@ -104,15 +104,7 @@ public class MainPantallaController implements Initializable {
             });
             
         }); 
-        /*
-        try{
-            Parent fxml = FXMLLoader.load(getClass().getResource("/vista/MenuVentas/MenuVentasPantalla.fxml"));
-            contentArea.getChildren().removeAll();
-            contentArea.getChildren().setAll(fxml);           
-        }catch(IOException ex){
-            Logger.getLogger(ModuleLayer.Controller.class.getName()).log(Level.SEVERE,null,ex);            
-        }
-        */
+
     }    
     
     void bloqueo(String puesto,String ruta) throws IOException{

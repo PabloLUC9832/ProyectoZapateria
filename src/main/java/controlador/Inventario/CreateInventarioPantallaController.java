@@ -27,7 +27,7 @@ import modelo.Inventario.ProductoInv_DAO_Imp;
 /**
  * FXML Controller class
  *
- * @author ferna
+ * @author Luis Fernando Morales Teutli
  */
 public class CreateInventarioPantallaController implements Initializable {
 
@@ -64,13 +64,11 @@ public class CreateInventarioPantallaController implements Initializable {
     
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        System.out.println("puta lawea ");
         Inventario_DAO = new ProductoInv_DAO_Imp();
         try{
-            //System.out.println("puta lawea 2");
             listaInventario = FXCollections.observableArrayList();
         }catch(Exception e){
-            //System.out.println("ERROR: "+e.getMessage());
+            System.out.println("ERROR: "+e.getMessage());
         }
         
         this.colocarInventarioTabla();                
@@ -90,8 +88,9 @@ public class CreateInventarioPantallaController implements Initializable {
         while (it.hasNext()) {
             listaInventario.add((ProductoInv) it.next());
         }
-        //System.out.println("WEA!"+listaInventario.get(9).toString());
+
     }
+    
     public void colocarInventarioTabla() {
         this.obtenerInventario();
         this.columnaClave.setCellValueFactory(new PropertyValueFactory<>("claveProducto"));
@@ -106,10 +105,11 @@ public class CreateInventarioPantallaController implements Initializable {
         @FXML
     public void GenerarPDFHistorialCP(ActionEvent event) throws FileNotFoundException, DocumentException{
         Document document = new Document();
-        PdfWriter.getInstance(document, new FileOutputStream("Historial de compras al proveedor.pdf"));
+        PdfWriter.getInstance(document, new FileOutputStream("PDFs/Historial de compras al proveedor.pdf"));
         document.open();
         for(int i=0; i<tablaProductos.getItems().size(); i++){
             document.add(new Paragraph(tablaProductos.getItems().get(i).formatoPDF()));
+            System.out.println("Documento generado en la carpeta PDFs dentro de la raíz del proyecto");
         }
         document.close();
     }

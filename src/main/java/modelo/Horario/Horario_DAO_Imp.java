@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package modelo.Horario;
 
 import java.sql.Connection;
@@ -15,7 +10,7 @@ import modelo.ConexionDB;
 
 /**
  *
- * @author theiv
+ * @author IVan Antonio Campos Garcia
  */
 public class Horario_DAO_Imp implements Horario_DAO {
     

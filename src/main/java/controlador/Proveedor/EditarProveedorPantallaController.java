@@ -2,7 +2,7 @@ package controlador.Proveedor;
 
 /**
  *
- * @author horus
+ * @author Horus Alejandro Hernandez Cabrera
  */
 
 import com.jfoenix.controls.JFXButton;
@@ -15,13 +15,10 @@ import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
+import javafx.scene.input.KeyEvent;
 import javafx.stage.Stage;
 import modelo.Proveedor.Proveedor;
 
-/**
- *
- * @author horus
- */
 
 public class EditarProveedorPantallaController implements Initializable {
     
@@ -74,6 +71,8 @@ public class EditarProveedorPantallaController implements Initializable {
     public void setProveedor(Proveedor proveedor){
         if(proveedor != null){
             this.proveedor = proveedor;
+            txtTelefono.addEventHandler(KeyEvent.KEY_TYPED, event -> soloNumeros(event));
+            
             
             if(proveedor.getProveedorId() == 0){
                 this.etiquetaId.setText("Será generada");
@@ -124,7 +123,7 @@ public class EditarProveedorPantallaController implements Initializable {
         
         String errorMessage = "";
         
-        if(this.txtTelefono.getText() == null || this.txtTelefono.getText().length() == 0){
+        if(this.txtTelefono.getText() == null || this.txtTelefono.getText().length() == 0 || this.txtTelefono.getText().length() >= 11){
           errorMessage +="Verifica el campo! \n";                         
         }
         if(errorMessage.length()==0){
@@ -132,13 +131,13 @@ public class EditarProveedorPantallaController implements Initializable {
         }else{
             Alert alert = new Alert(Alert.AlertType.ERROR);
             alert.setTitle("Error, campo no válido");
-            alert.setHeaderText("El campo Telefono esta vacío");
+            alert.setHeaderText("El campo Telefono esta vacío o intenta ingresar mas de 10 digitos");
             alert.setContentText(errorMessage);
             alert.initOwner(stageDialogoEdicion);
             alert.showAndWait();
             return false;            
         }                                       
-    }
+    }                                    
     
     private boolean campoTextoValidoDireccion(){
         
@@ -184,4 +183,16 @@ public class EditarProveedorPantallaController implements Initializable {
     void cancelarEdicionx(ActionEvent event) {
         stageDialogoEdicion.close();
     }
+    
+    public void soloNumeros(KeyEvent keyEvent){
+        try{
+            char key = keyEvent.getCharacter().charAt(0);
+            if(!Character.isDigit(key)){
+                keyEvent.consume();
+            }
+        }catch(Exception e){
+          
+        }
+    }
+    
 }

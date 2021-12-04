@@ -22,13 +22,9 @@ public class App extends Application {
     public void start(Stage primaryStage) throws IOException {
         
         //String ruta="/vista/LoginPantalla.fxml";
-
         String ruta="/vista/MainPantalla.fxml";
-        //String ruta="/vista/Promocion/CreatePromocionPantalla.fxml";
 
-        Parent root = FXMLLoader.load(getClass().getResource(ruta));
-        //primaryStage.initStyle(StageStyle.UNDECORATED);
-        
+        Parent root = FXMLLoader.load(getClass().getResource(ruta));        
         root.setOnMousePressed(event -> {
             x = event.getSceneX();
             y = event.getSceneY();

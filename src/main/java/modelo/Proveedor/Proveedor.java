@@ -3,7 +3,7 @@ package modelo.Proveedor;
 
 /**
  *
- * @author horus
+ * @author Horus Hernandez Cabrera
  */
 public class Proveedor {
    

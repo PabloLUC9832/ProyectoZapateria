@@ -66,7 +66,6 @@ public class Empleado_DAO_Imp implements Empleado_DAO {
                             rs.getString(4),
                             rs.getString(5)                                                    
                             );
-              //System.out.println(rs.getInt(1));
               listaEmpleados.add(empl);
             }            
             stm.close();
@@ -194,10 +193,8 @@ public class Empleado_DAO_Imp implements Empleado_DAO {
                             rs.getString(4),
                             rs.getString(5)                                                    
                             );
-                //empl
                 listaEmpleado.add(empl);
             }
-            //listaEmpleado.add(empleado);
             System.out.println(empleado);
             stm.close();
             rs.close();

@@ -2,7 +2,7 @@
 package modelo.Producto;
 /**
  *
- * @author jhair
+ * @author Jhair Garcia Ceballos
  */
 public class Producto {
     

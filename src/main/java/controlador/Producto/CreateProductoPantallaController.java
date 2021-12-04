@@ -15,7 +15,7 @@ import modelo.Producto.Producto_DAO_Imp;
 
 /**
  *
- * @author jhair
+ * @author Jhair García Ceballos
  */
 public class CreateProductoPantallaController implements Initializable {
     

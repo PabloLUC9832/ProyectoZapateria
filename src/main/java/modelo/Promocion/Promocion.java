@@ -1,13 +1,8 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package modelo.Promocion;
 
 /**
  *
- * @author jair1
+ * @author jair Vasquez Rendón
  */
 public class Promocion {
     int idPromocion;

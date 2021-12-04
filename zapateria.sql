@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 17-11-2021 a las 01:48:02
+-- Tiempo de generación: 04-12-2021 a las 20:53:07
 -- Versión del servidor: 10.4.20-MariaDB
 -- Versión de PHP: 8.0.9
 
@@ -39,26 +39,7 @@ CREATE TABLE `cliente` (
 --
 
 INSERT INTO `cliente` (`nombreCliente`, `emailCliente`) VALUES
-('pepe', 'pepe@gmail.com'),
-('jose', 'jose@hotmail.com'),
-('pedro', 'pedro@gmal.com'),
-('ivan ', 'ivan1@mail.mx'),
-('Nnnn', 'qweqwe'),
-('0t', 'D0'),
-('AEIOU', 'ABCDE'),
-('qwe', 'asd'),
-('qwe', 'qwe'),
-('zxc', 'zxc'),
-('pablo', 'pablo'),
-('mmm', 'mmm'),
-('mnmm', 'mnnn'),
-('qwe', 'qwe@hola.com'),
-('holaaa', 'holaaa@hola.com'),
-('qwe', 'qwe@qe.com'),
-('asdasd', 'ads@asd'),
-('ñlklk', 'ñpñp@pl.com'),
-('kjhg', 'nbv@sd-com'),
-('Bbb', 'weqwe@hotm.com');
+('Ivan', 'Ivan@gmail.com');
 
 -- --------------------------------------------------------
 
@@ -79,19 +60,7 @@ CREATE TABLE `empleado` (
 --
 
 INSERT INTO `empleado` (`Nempleado`, `Nombre`, `usuario`, `pass`, `puesto`) VALUES
-(7, 'Eminuns', 'Emnis', '4444', 'Gerente'),
-(8, 'PrubeaC', 'cc', 'cccc', 'Gerente'),
-(9, 'qq', 'qq', 'qq', '[Empleado,'),
-(11, 'qq', 'qq', 'qq', 'Empleado'),
-(12, 'WW', 'WW', 'WW', 'Gerente'),
-(15, 'PP QQ', 'PP', '123', 'Empleado'),
-(16, 'Flor Flor Flor', 'Rosa1', 'rosa1', 'Empleado'),
-(17, 'Pedro Pedro', 'Pedr0', 'pedro', 'Gerente'),
-(20, '123', '123', '123', 'Gerente'),
-(21, 'Pedro', 'Pedro1', 'hola', 'Empleado'),
-(22, 'Perez', 'Perz1', '1234', 'Empleado'),
-(23, 'ooo', '321', '321', 'Empleado'),
-(24, 'Pp', 'p1', 'qwe', 'Empleado');
+(52, 'pablo', 'pablo', 'asd', 'Empleado');
 
 -- --------------------------------------------------------
 
@@ -111,9 +80,8 @@ CREATE TABLE `horario` (
 --
 
 INSERT INTO `horario` (`nombreHorario`, `horaHorario`, `fechaHorario`, `empleadoHorario`) VALUES
-('Apertura', '08:00', '09-11', 'Juan'),
-('Cierre', '19:00', '10-11', 'Jose'),
-('Apertura', '08:00', '12/11/2021', 'Pepe');
+('Apertura', '13:19:50', '2021-12-04', 'Ivan'),
+('Cierre', '13:20:01', '2021-12-04', 'Horus');
 
 -- --------------------------------------------------------
 
@@ -127,19 +95,18 @@ CREATE TABLE `promocion` (
   `mensaje` varchar(100) CHARACTER SET utf8 NOT NULL,
   `descuento` varchar(10) CHARACTER SET utf8 NOT NULL,
   `precioAnterior` float NOT NULL,
-  `precioNuevo` float NOT NULL
+  `precioNuevo` float NOT NULL,
+  `fechaInicio` varchar(50) NOT NULL,
+  `fechaCierre` varchar(50) NOT NULL,
+  `diasDuracion` int(2) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Volcado de datos para la tabla `promocion`
 --
 
-INSERT INTO `promocion` (`idPromocion`, `nombreProducto`, `mensaje`, `descuento`, `precioAnterior`, `precioNuevo`) VALUES
-(17, 'ad', 'fer', '23', 76, 344),
-(21, 'qweqwe', 'qweqwe', '654', 645, 32564),
-(23, 'dff', 'fggf', '7777', 664, 195),
-(25, 'PrubaBto', 'bbb', '12', 43, 4343),
-(26, 'qwe', 'aweas', '12', 12, 3);
+INSERT INTO `promocion` (`idPromocion`, `nombreProducto`, `mensaje`, `descuento`, `precioAnterior`, `precioNuevo`, `fechaInicio`, `fechaCierre`, `diasDuracion`) VALUES
+(27, 'Tennis Nuevos', 'Aprovecha esta nueva oferta', '20%', 500, 400, '', '', 0);
 
 -- --------------------------------------------------------
 
@@ -160,10 +127,7 @@ CREATE TABLE `proveedor` (
 --
 
 INSERT INTO `proveedor` (`ProveedorId`, `ProveedorNombre`, `ProveedorTelefono`, `ProveedorDireccion`, `ProveedorProducto`) VALUES
-(6, 'NIke', '123231', '1wewe', 'ewqeqwe'),
-(7, 'Adidas', 'asdasdasd', 'AV. 1', 'Tenix'),
-(8, 'reer', '43434', 'asda', 'asdad'),
-(9, 'Con', '123', 'wewe', 'qewe');
+(12, '3 hermanos ', '1100992233', 'xico', 'zapato');
 
 -- --------------------------------------------------------
 
@@ -186,13 +150,7 @@ CREATE TABLE `tablaproductos` (
 --
 
 INSERT INTO `tablaproductos` (`claveProducto`, `marcaProducto`, `descripcionProducto`, `proveedorProducto`, `precioCProducto`, `precioVProducto`, `stockProducto`) VALUES
-(5, 'nike', 'sdfsafsa', 'nike', 56, 542, 52),
-(6, 'adidas', 'tenis', 'adidas', 600, 1800, 50),
-(7, 'puma', 'tenis', 'puma', 500, 1000, 26),
-(8, 'hhgf', 'hgfhg', 'hgfghf', 52, 258, 25),
-(9, 'pppp', 'qqqq', 'zapato', 250, 500, 25),
-(10, 'asd', 'dfsasd', 'tenis', 250, 522, 20),
-(11, 'asdf', 'sdfds', 'zapato', 100, 200, 10);
+(12, 'Chabelo', 'Zapatos para niñas 24 cms', 'Los 3 Hermanos', 600, 700, 20);
 
 -- --------------------------------------------------------
 
@@ -237,7 +195,8 @@ ALTER TABLE `promocion`
 -- Indices de la tabla `proveedor`
 --
 ALTER TABLE `proveedor`
-  ADD PRIMARY KEY (`ProveedorId`);
+  ADD PRIMARY KEY (`ProveedorId`),
+  ADD UNIQUE KEY `ProveedorNombre` (`ProveedorNombre`);
 
 --
 -- Indices de la tabla `tablaproductos`
@@ -259,25 +218,25 @@ ALTER TABLE `ventas`
 -- AUTO_INCREMENT de la tabla `empleado`
 --
 ALTER TABLE `empleado`
-  MODIFY `Nempleado` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=25;
+  MODIFY `Nempleado` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=56;
 
 --
 -- AUTO_INCREMENT de la tabla `promocion`
 --
 ALTER TABLE `promocion`
-  MODIFY `idPromocion` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=27;
+  MODIFY `idPromocion` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=38;
 
 --
 -- AUTO_INCREMENT de la tabla `proveedor`
 --
 ALTER TABLE `proveedor`
-  MODIFY `ProveedorId` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
+  MODIFY `ProveedorId` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=26;
 
 --
 -- AUTO_INCREMENT de la tabla `tablaproductos`
 --
 ALTER TABLE `tablaproductos`
-  MODIFY `claveProducto` int(100) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
+  MODIFY `claveProducto` int(100) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
 
 --
 -- AUTO_INCREMENT de la tabla `ventas`

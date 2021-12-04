@@ -14,8 +14,5 @@ public interface Empleado_DAO {
     public Empleado read(String pass) throws Exception;
     public boolean update (Empleado empleado) throws Exception;
     public boolean delete (Empleado empleado) throws Exception;
-    
-    //public void search(String busqueda) throws Exception;
-    //public Empleado search(String busqueda) throws Exception;
     public ObservableList<Empleado> search(String busqueda) throws Exception;
 }

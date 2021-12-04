@@ -42,7 +42,7 @@ import modelo.Producto.Producto_DAO_Imp;
 
 /**
  *
- * @author jhair
+  * @author Jhair García Ceballos && Luis Fernando Morales Teutli
  */
 public class GeneralProductoPantallaController implements Initializable {
     
@@ -330,7 +330,6 @@ public class GeneralProductoPantallaController implements Initializable {
             }
 
         } else {
-            // Nothing selected.
             Alert alert = new Alert(Alert.AlertType.WARNING);
             alert.initOwner(this.stagePrincipal);
             alert.setTitle("Ninguna fila seleccionada");
@@ -408,8 +407,6 @@ public class GeneralProductoPantallaController implements Initializable {
         }
         Alert alert = new Alert(Alert.AlertType.NONE);
         alert.setTitle("DOCUMENTO GENERADO CON EXITO");
-        ///alert.setHeaderText("Su documento se ha generado en la sigueinte ruta: "+ );
-        //alert.setContentText(errorMessage);
         alert.showAndWait();
     }
 }

@@ -104,20 +104,17 @@ public class CreateEmpleadoPantallaController implements Initializable {
         }
                 
     }    
-    
-    
+        
     private boolean camposValidos(){
         
         String errorMessage = "";
         
         if(this.txtNombre.getText() == null ||
            this.txtUser.getText() == null   ||
-           this.txtPass.getText() == null // ||
+           this.txtPass.getText() == null
         ){
           errorMessage +="ALGUNOS CAMPOS ESTAN VACIOS\n";                         
-        }/*else if(soloLetras2()==true){
-          errorMessage +="HAS INGRESADO ALGÚN CARACTER ESPECIAL AL ESCRIBIR EL NOMBRE\n";                                     
-        }*/
+        }
         
         if(errorMessage.length()==0){
             return true;
@@ -141,7 +138,6 @@ public class CreateEmpleadoPantallaController implements Initializable {
     public void soloLetras(KeyEvent keyEvent){
         try{
             char key = keyEvent.getCharacter().charAt(0);
-            //if(Character.isDigit(key)){
             if(!Character.isLetter(key) && !Character.isSpaceChar(key) ){
                 keyEvent.consume();
             }
@@ -149,29 +145,6 @@ public class CreateEmpleadoPantallaController implements Initializable {
             System.out.println("soloLetras"+e);
         }
             
-    }
-    
-    private boolean soloLetras2(){
-        boolean valor = false;
-        String nombre = this.txtNombre.getText();
-        for(int i = 0;i<nombre.length();i++){
-            if(nombre.charAt(i) == '!' || nombre.charAt(i) == '"'|| nombre.charAt(i) == '#' ||
-                    nombre.charAt(i) == '$' || nombre.charAt(i) == '%' || nombre.charAt(i) == '&' ||
-                    nombre.charAt(i) == '(' || nombre.charAt(i) == ')' || nombre.charAt(i) == '/' ||
-                    nombre.charAt(i) == '.' || nombre.charAt(i) == '=' || nombre.charAt(i) == '?' ||
-                    nombre.charAt(i) == '¡' || nombre.charAt(i) == '¿' || nombre.charAt(i) == '}' ||
-                    nombre.charAt(i) == ']' || nombre.charAt(i) == '`' || nombre.charAt(i) == '+' ||
-                    nombre.charAt(i) == '*' || nombre.charAt(i) == '~' || nombre.charAt(i) == '{' ||
-                    nombre.charAt(i) == '[' || nombre.charAt(i) == '^' || nombre.charAt(i) == '-' ||
-                    nombre.charAt(i) == '_' || nombre.charAt(i) == ':' || nombre.charAt(i) == ';' ||
-                    nombre.charAt(i) == ',' || nombre.charAt(i) == '°' || nombre.charAt(i) == '|' ||
-                    nombre.charAt(i) == '<' || nombre.charAt(i) == '>' || nombre.charAt(i) == '@'
-                    ){
-                valor = true;
-                break;
-            }
-        }
-        return valor;
     }
     
 }

@@ -15,7 +15,7 @@ import modelo.Producto.Producto;
 
 /**
  *
- * @author jhair
+ * @author Jhair García Ceballos
  */
 public class EditarProductoPantallaController implements Initializable{
      @FXML
@@ -47,8 +47,6 @@ public class EditarProductoPantallaController implements Initializable{
         return this.btnEditar;
     }
     
-    //public GeneralProductoPantallaController gp;
-
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         esEdicion = false;

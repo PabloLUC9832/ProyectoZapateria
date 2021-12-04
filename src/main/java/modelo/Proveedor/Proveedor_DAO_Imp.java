@@ -2,7 +2,6 @@ package modelo.Proveedor;
 
 import controlador.Proveedor.GeneralProveedorPantallaController;
 import java.sql.Connection;
-import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
@@ -11,11 +10,10 @@ import java.util.List;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import modelo.ConexionDB;
-import modelo.Proveedor.Proveedor;
 
 /**
  *
- * @author horus
+ * @author Horus Alejandro Hernandez
  */
 public class Proveedor_DAO_Imp implements Proveedor_DAO {
     
@@ -67,7 +65,6 @@ public class Proveedor_DAO_Imp implements Proveedor_DAO {
                             rs.getString(4),
                             rs.getString(5)
                             );
-              //System.out.println(rs.getInt(1));
               listaProveedor.add(proveedor);
             }            
             stm.close();
@@ -80,9 +77,7 @@ public class Proveedor_DAO_Imp implements Proveedor_DAO {
         }   
         
         return listaProveedor;
-        
-        //throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
+}
 
     @Override
     public ObservableList<Proveedor> search(String busqueda) throws Exception {
@@ -127,35 +122,32 @@ public class Proveedor_DAO_Imp implements Proveedor_DAO {
         }        
         return listaProveedor;
 
-        //throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
+}
     
     @Override
     public boolean update(Proveedor proveedor) throws Exception {
         
         Statement stm;
 
-    boolean actualizar = false;
- 
-    String sql = "UPDATE proveedor SET  ProveedorNombre = '"+proveedor.getProveedorNombre()+"',"
-            +"ProveedorTelefono='"+proveedor.getProveedorTelefono()+"',"
-            +"ProveedorDireccion='"+proveedor.getProveedorDireccion()+"',"
-            +"ProveedorProducto='"+proveedor.getProveedorProducto()+"'"
-            + "WHERE ProveedorId='"+proveedor.getProveedorId()+"'";
-    
-    ConexionDB cc = new ConexionDB();
-    try (Connection connect = cc.getConnection();) {
-      stm = connect.createStatement();
-      actualizar = stm.execute(sql);
-      connect.close();
-    } catch (SQLException e) {
-      throw new Exception("Error en update SQLException " + e.getMessage());
-    } catch (Exception e) {
-      throw new Exception("Error en update Exception " + e.getMessage());
-    }
-    return actualizar;
+        boolean actualizar = false;
 
-        //throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        String sql = "UPDATE proveedor SET  ProveedorNombre = '"+proveedor.getProveedorNombre()+"',"
+                +"ProveedorTelefono='"+proveedor.getProveedorTelefono()+"',"
+                +"ProveedorDireccion='"+proveedor.getProveedorDireccion()+"',"
+                +"ProveedorProducto='"+proveedor.getProveedorProducto()+"'"
+                + "WHERE ProveedorId='"+proveedor.getProveedorId()+"'";
+
+        ConexionDB cc = new ConexionDB();
+        try (Connection connect = cc.getConnection();) {
+          stm = connect.createStatement();
+          actualizar = stm.execute(sql);
+          connect.close();
+        } catch (SQLException e) {
+          throw new Exception("Error en update SQLException " + e.getMessage());
+        } catch (Exception e) {
+          throw new Exception("Error en update Exception " + e.getMessage());
+        }
+        return actualizar;
 
     }
 
@@ -181,8 +173,4 @@ public class Proveedor_DAO_Imp implements Proveedor_DAO {
 
     }
 
-    @Override
-    public Proveedor read(int nombreProveedor) throws Exception {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
 }

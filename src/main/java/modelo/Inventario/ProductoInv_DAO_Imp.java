@@ -6,12 +6,11 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
-import javafx.collections.ObservableList;
 import modelo.ConexionDB;
 
 /**
  *
- * @author jhair
+ * @author JhAir García Ceballos
  */
 public class ProductoInv_DAO_Imp implements ProductoInv_DAO {    
 
@@ -51,20 +50,6 @@ public class ProductoInv_DAO_Imp implements ProductoInv_DAO {
         return listaProductos;
     }
 
-    @Override
-    public boolean update(ProductoInv ProductoInv) throws Exception {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
-
-    @Override
-    public boolean delete(ProductoInv ProductoInv) throws Exception {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
-
-    @Override
-    public ObservableList<ProductoInv> search(String busqueda) throws Exception {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
     
 }
 

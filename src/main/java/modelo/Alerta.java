@@ -4,7 +4,7 @@ import javafx.stage.Stage;
 
 /**
  *
- * @author Pablo
+ * @author Pablo Lucas
  */
 public abstract class Alerta {
     protected Stage ventanaPropietaria;

@@ -16,7 +16,7 @@ import modelo.Promocion.Promocion;
 /**
  * FXML Controller class
  *
- * @author Jair
+ * @author Jair Vasquez Rendón
  */
 public class EditarPromocionPantallaController implements Initializable {
 

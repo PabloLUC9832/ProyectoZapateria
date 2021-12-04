@@ -15,9 +15,7 @@ import modelo.ConexionDB;
  * @author jhair
  */
 public class Producto_DAO_Imp implements Producto_DAO {
-    
-    //GeneralProductoPantallaController gc;
-    
+        
     @Override
     public boolean create(Producto producto) throws Exception {
         
@@ -177,11 +175,6 @@ public class Producto_DAO_Imp implements Producto_DAO {
         }
         return eliminar;        
 
-    }
-    
-    @Override
-    public Producto read(int MarcaProducto) throws Exception {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
     
 }

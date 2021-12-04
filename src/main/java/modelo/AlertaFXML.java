@@ -2,8 +2,6 @@ package modelo;
 
 import java.util.Optional;
 import javafx.scene.control.Alert;
-import javafx.scene.control.ButtonBar;
-import javafx.scene.control.ButtonBar.ButtonData;
 import javafx.scene.control.ButtonType;
 import javafx.stage.Stage;
 

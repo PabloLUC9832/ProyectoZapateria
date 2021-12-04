@@ -294,7 +294,6 @@ public class GeneralEmpleadoPantallaController implements Initializable {
             }
 
         } else {
-            // Nothing selected.
             Alert alert = new Alert(Alert.AlertType.WARNING);
             alert.initOwner(this.stagePrincipal);
             alert.setTitle("Ninguna fila seleccionada");

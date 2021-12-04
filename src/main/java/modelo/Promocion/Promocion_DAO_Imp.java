@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package modelo.Promocion;
 
 import controlador.Promocion.GeneralPromocionPantallaController;
@@ -18,7 +13,7 @@ import modelo.ConexionDB;
 
 /**
  *
- * @author jair1
+ * @author Jair Vsquez Rendón
  */
 public class Promocion_DAO_Imp implements Promocion_DAO {
     
@@ -76,7 +71,6 @@ public class Promocion_DAO_Imp implements Promocion_DAO {
                             rs.getString(8),
                             rs.getInt(9)
                             );
-              //System.out.println(rs.getInt(1));
               listaPromocion.add(promocion);
             }            
             stm.close();
@@ -192,9 +186,4 @@ public class Promocion_DAO_Imp implements Promocion_DAO {
 
     }
 
-    @Override
-    public Promocion read(int idPromocion) throws Exception {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
-    
 }

@@ -26,7 +26,7 @@ import modelo.Horario.Horario_DAO_Imp;
 /**
  * FXML Controller class
  *
- * @author theiv
+ * @author Ivan Antonio Campos García
  */
 public class GeneralHorarioPantallaController implements Initializable {
 
@@ -61,7 +61,7 @@ public class GeneralHorarioPantallaController implements Initializable {
         horario_DAO = new Horario_DAO_Imp();
         listaHorario = FXCollections.observableArrayList();
         this.colocarHorariosTabla();
-        // TODO
+
     }
     
     @FXML
