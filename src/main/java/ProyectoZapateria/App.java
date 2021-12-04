@@ -24,7 +24,7 @@ public class App extends Application {
         //String ruta="/vista/LoginPantalla.fxml";
 
         String ruta="/vista/MainPantalla.fxml";
-
+        //String ruta="/vista/Promocion/CreatePromocionPantalla.fxml";
 
         Parent root = FXMLLoader.load(getClass().getResource(ruta));
         //primaryStage.initStyle(StageStyle.UNDECORATED);

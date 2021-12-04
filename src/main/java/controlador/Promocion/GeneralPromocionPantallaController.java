@@ -1,14 +1,11 @@
 package controlador.Promocion;
 
 import com.jfoenix.controls.JFXButton;
-import controlador.MainPantallaController;
 import java.io.IOException;
 import java.net.URL;
 import java.util.Iterator;
 import java.util.List;
 import java.util.ResourceBundle;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -56,22 +53,34 @@ public class GeneralPromocionPantallaController implements Initializable {
     private TableColumn<Promocion, Float> columnaPrecioNuevo;
     
     @FXML
-    public Label textoId;
+    private TableColumn<Promocion, String> columnaDiasDuracion;
 
     @FXML
-    public Label textoNombreProducto;
+    private TableColumn<Promocion, String> columnaFechaCierre;
 
     @FXML
-    public Label textoMensaje;
+    private TableColumn<Promocion, Integer> columnaFechaInicio;
+
+     @FXML
+    private Label textoDescuento;
 
     @FXML
-    public Label textoDescuento;
+    private Label textoDiasDuracion;
 
     @FXML
-    public Label textoPrecioAnterior;
+    private Label textoFechaCierre;
 
     @FXML
-    public Label textoPrecioNuevo;
+    private Label textoFechaInicio;
+
+    @FXML
+    private Label textoNombreProducto;
+
+    @FXML
+    private Label textoPrecioAnterior;
+
+    @FXML
+    private Label textoPrecioNuevo;
     
     @FXML
     private JFXButton btnAgregar;
@@ -155,6 +164,9 @@ public class GeneralPromocionPantallaController implements Initializable {
         this.columnaDescuento.setCellValueFactory(new PropertyValueFactory<>("descuento"));
         this.columnaPrecioAnterior.setCellValueFactory(new PropertyValueFactory<>("precioAnterior"));
         this.columnaPrecioNuevo.setCellValueFactory(new PropertyValueFactory<>("precioNuevo"));
+        this.columnaFechaInicio.setCellValueFactory(new PropertyValueFactory<>("fechaInicio"));
+        this.columnaFechaCierre.setCellValueFactory(new PropertyValueFactory<>("fechaCierre"));
+        this.columnaDiasDuracion.setCellValueFactory(new PropertyValueFactory<>("diasDuracion"));
         this.tablaPromociones.setItems(this.listaPromocion);
     }  
     
@@ -194,19 +206,21 @@ public class GeneralPromocionPantallaController implements Initializable {
     
     private void mostrarPromocion(Promocion promocion) {
         if (promocion != null) {
-            this.textoId.setText(Integer.toString(promocion.getIdPromocion()));
             this.textoNombreProducto.setText(promocion.getNombreProducto());
-            this.textoMensaje.setText(promocion.getMensaje());
             this.textoDescuento.setText(promocion.getDescuento());
             this.textoPrecioAnterior.setText(Float.toString(promocion.getPrecioAnterior()));
             this.textoPrecioNuevo.setText(Float.toString(promocion.getPrecioNuevo()));
+            this.textoFechaInicio.setText(promocion.getFechaInicio());
+            this.textoFechaCierre.setText(promocion.getFechaCierre());
+            this.textoDiasDuracion.setText(Integer.toString(promocion.getDiasDuracion()));
         } else {
-            this.textoId.setText("");
             this.textoNombreProducto.setText("");
-            this.textoMensaje.setText("");
             this.textoDescuento.setText("");
             this.textoPrecioAnterior.setText("");
             this.textoPrecioNuevo.setText("");
+            this.textoFechaInicio.setText("");
+            this.textoFechaCierre.setText("");
+            this.textoDiasDuracion.setText("");
         }
     }
     
@@ -266,8 +280,8 @@ public class GeneralPromocionPantallaController implements Initializable {
             Alert alert = new Alert(Alert.AlertType.WARNING);
             alert.initOwner(this.stagePrincipal);
             alert.setTitle("Sin seleccionar");
-            alert.setHeaderText("No hay promocion Seleccionada");
-            alert.setContentText("Seleccione una promocion");
+            alert.setHeaderText("No ha seleccionado ninguna promocion");
+            alert.setContentText("Por favor selecciona una promoción e intente\n"+"editar nuevamente.");
             alert.showAndWait();
         }
     }
@@ -305,9 +319,9 @@ public class GeneralPromocionPantallaController implements Initializable {
             // Nothing selected.
             Alert alert = new Alert(Alert.AlertType.WARNING);
             alert.initOwner(this.stagePrincipal);
-            alert.setTitle("Ninguna fila seleccionada");
+            alert.setTitle("Sin seleccionar");
             alert.setHeaderText("No ha seleccionado ninguna promoción");
-            alert.setContentText("Por favor selecciona una fila e intenta eliminar nuevamente.");
+            alert.setContentText("Por favor selecciona una promoción e intente\n"+"eliminar nuevamente.");
             alert.showAndWait();
         }        
         
