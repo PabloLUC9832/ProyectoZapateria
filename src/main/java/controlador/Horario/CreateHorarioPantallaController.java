@@ -2,17 +2,25 @@ package controlador.Horario;
 
 import com.jfoenix.controls.JFXButton;
 import java.net.URL;
+import java.time.LocalDateTime;
+import java.time.LocalTime;
+import java.time.format.DateTimeFormatter;
+import java.util.Date;
 import java.util.ResourceBundle;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.ButtonType;
+import javafx.scene.control.ComboBox;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
+import javafx.util.converter.DateTimeStringConverter;
 import modelo.AlertaFXML;
 import modelo.Horario.Horario;
 import modelo.Horario.Horario_DAO_Imp;
@@ -24,8 +32,8 @@ import modelo.Horario.Horario_DAO_Imp;
  */
 public class CreateHorarioPantallaController implements Initializable {
 
-    @FXML
-    private TextField txtNombre;
+    //@FXML
+    //private TextField txtNombre;
 
     @FXML
     private TextField txtHora;
@@ -38,10 +46,16 @@ public class CreateHorarioPantallaController implements Initializable {
 
     @FXML
     private TextField txtEmpleado;
+    
+    @FXML
+    private ComboBox<?> txtAccion;
 
     private Horario_DAO_Imp horario_DAO;
     private Stage stageDialogoEdicion;
     private Horario horario;
+    
+    public String accion;
+    public String fechaHora;
     
     GeneralHorarioPantallaController gc;
     /**
@@ -50,6 +64,14 @@ public class CreateHorarioPantallaController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         horario_DAO = new Horario_DAO_Imp();
+        ObservableList list = FXCollections.observableArrayList("Apertura", "Cierre");
+        txtAccion.setItems(list);
+        String fechaYHora = obtenerFechaYHoraActual();
+        txtHora.setText(fechaYHora);
+        String fechaYHoraa = obtenerFechaSolamente();
+        txtFecha.setText(fechaYHoraa);
+        txtFecha.setDisable(true);
+        txtHora.setDisable(true);
         // TODO
     }
 
@@ -58,11 +80,13 @@ public class CreateHorarioPantallaController implements Initializable {
         Horario horario = new Horario();
         try{
             if(campoTextoValidoNombre() && campoNuloHora() && campoTextoValidoHora() ) {
-                String nombreHorario = this.txtNombre.getText();
+                //String nombreHorario = this.txtNombre.getText();
+                //String nombreHorario = this.txtAccion.toString();
                 String horaHorario = this.txtHora.getText();
                 String fechaHorario = this.txtFecha.getText();
                 String empleadoHorario = this.txtEmpleado.getText();
-                horario = new Horario(nombreHorario, horaHorario, fechaHorario, empleadoHorario);
+                accion = this.txtAccion.getValue().toString();
+                horario = new Horario(accion, horaHorario, fechaHorario, empleadoHorario);
                 
                 if(this.horario_DAO.create(horario)==true) {
                     Stage stage = (Stage) this.btnRegistrar.getScene().getWindow();
@@ -96,7 +120,7 @@ public class CreateHorarioPantallaController implements Initializable {
         
         String errorMessage = "";
         
-        if(this.txtNombre.getText() == null || this.txtNombre.getText().length() == 0) {
+        if(this.txtEmpleado.getText() == null || this.txtEmpleado.getText().length() == 0) {
             errorMessage += "Verifica el campo! \n";
         }
         if(errorMessage.length() == 0) {
@@ -112,8 +136,13 @@ public class CreateHorarioPantallaController implements Initializable {
         }
     }
     
+    
     private boolean campoTextoHora() {
+        //String fechaYHora = obtenerFechaYHoraActual();
+        //txtHora.setText(fechaYHora);
+        //System.out.println("Hora: " + fechaYHora);
         String errorMessage = "";
+        //txtHora.setText(fechaYHora);
         boolean simbolo = false;
         String hora = this.txtHora.getText();
         for(int i = 0; i<hora.length();i++) {
@@ -125,7 +154,15 @@ public class CreateHorarioPantallaController implements Initializable {
         return simbolo;
     }
     
+    //private boolean campoTextoHoraAuto() {
+    //    String fechaYHora = obtenerFechaYHoraActual();
+    //    txtHora.setText(fechaYHora);
+    //    return false;
+        
+    //}
+    
     private boolean campoNuloHora() {
+        
         String errorMessage = "";
         if(this.txtHora.getText() == null || this.txtHora.getText().length() == 0) {
             errorMessage += "Verifica el campo! \n";
@@ -163,6 +200,39 @@ public class CreateHorarioPantallaController implements Initializable {
         }
     }
     
+    //Original    public static String obtenerFechaYHoraActual() {
+	//	String formato = "yyyy-MM-dd HH:mm:ss";
+	//	DateTimeFormatter formateador = DateTimeFormatter.ofPattern(formato);
+	//	LocalDateTime ahora = LocalDateTime.now();
+	//	return formateador.format(ahora);
+	//}
+    
+    public static String obtenerFechaYHoraActual() {
+		String formato = "HH:mm:ss";
+		DateTimeFormatter formateador = DateTimeFormatter.ofPattern(formato);
+		LocalDateTime ahora = LocalDateTime.now();
+		return formateador.format(ahora);
+	}
+    
+    public String obtenerFechaSolamente() {
+        String formato = "yyyy-MM-dd";
+        DateTimeFormatter formater = DateTimeFormatter.ofPattern(formato);
+        LocalDateTime ahoraa = LocalDateTime.now();
+        return formater.format(ahoraa);
+        
+    }
+    
+    /*public LocalTime hora() {
+        LocalTime horaActual = LocalTime.now();
+        //System.out.println("Hora: " + horaActual);
+        return horaActual;
+    }*/
+    
+   /* public String fecha() {
+        Date fecha = new Date();
+        DateTimeStringConverter formatoFecha = new DateTimeStringConverter("dd/MM/YYYY");
+        return formatoFecha.toString(fecha);
+    }*/
     public void cerrarVentana() {
         Stage stage = (Stage) this.btnRegistrar.getScene().getWindow();
         stage.close();

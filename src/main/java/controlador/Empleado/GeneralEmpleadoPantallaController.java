@@ -256,15 +256,9 @@ public class GeneralEmpleadoPantallaController implements Initializable {
         } else {
             Alert alert = new Alert(Alert.AlertType.WARNING);
             alert.initOwner(this.stagePrincipal);
-<<<<<<< HEAD
             alert.setTitle("Ningún elemento seleccionado");
             alert.setHeaderText("No se ha seleccionado a nadie del personal.");
             alert.setContentText("Por favor selecciona a alguien y vuelve a intentarlo.");
-=======
-            alert.setTitle("Sin seleccionar");
-            alert.setHeaderText("No se ha seleccionado un empleado");
-            alert.setContentText("Por favor selecciona un empleado e intente editar nuevamente.");
->>>>>>> jair
             alert.showAndWait();
         }        
                 

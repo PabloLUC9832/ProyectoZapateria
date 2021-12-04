@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import com.jfoenix.controls.JFXButton?>
+<?import javafx.scene.control.ComboBox?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.image.Image?>
@@ -25,7 +26,6 @@
             </Label>
             <Label layoutX="25.0" layoutY="77.0" text="Apertura / Cierre" />
             <Label layoutX="25.0" layoutY="107.0" text="Hora" />
-            <TextField fx:id="txtNombre" layoutX="163.0" layoutY="67.0" prefHeight="25.0" prefWidth="336.0" style="-fx-border-color: #4cc9f0; -fx-background-color: transparent; -fx-border-width: 0px 0px 2px 0px;" />
             <TextField fx:id="txtHora" layoutX="163.0" layoutY="97.0" prefHeight="25.0" prefWidth="336.0" style="-fx-border-color: #4cc9f0; -fx-background-color: transparent; -fx-border-width: 0px 0px 2px 0px;" />
             <JFXButton fx:id="btnRegistrar" layoutX="230.0" layoutY="286.0" onAction="#registrarHora" prefHeight="32.0" prefWidth="117.0" style="-fx-background-color: #4cc9f0;" text="Guardar" textFill="WHITE">
                <font>
@@ -36,6 +36,7 @@
             <Label layoutY="191.0" text="Empleado que realizó registro" />
             <TextField fx:id="txtFecha" layoutX="163.0" layoutY="140.0" prefHeight="25.0" prefWidth="336.0" style="-fx-border-color: #4cc9f0; -fx-background-color: transparent; -fx-border-width: 0px 0px 2px 0px;" />
             <TextField fx:id="txtEmpleado" layoutX="163.0" layoutY="186.0" prefHeight="25.0" prefWidth="336.0" style="-fx-border-color: #4cc9f0; -fx-background-color: transparent; -fx-border-width: 0px 0px 2px 0px;" />
+            <ComboBox fx:id="txtAccion" layoutX="163.0" layoutY="73.0" prefHeight="25.0" prefWidth="336.0" promptText="Selecciona" />
          </children>
       </Pane>
    </children>
