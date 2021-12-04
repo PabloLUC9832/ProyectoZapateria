@@ -65,6 +65,7 @@ public class EditarEmpleadoPantallaController implements Initializable {
         esEdicion = false;
         ObservableList list = FXCollections.observableArrayList("Empleado","Gerente");
         comboPuesto.setItems(list);        
+        txtPuesto.setVisible(false);
     }    
 
     public void setStageDialog(Stage stageDialogoEdicion){

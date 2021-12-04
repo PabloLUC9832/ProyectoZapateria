@@ -406,6 +406,10 @@ public class GeneralProductoPantallaController implements Initializable {
         for(int i=0; i<tablaProductos.getItems().size(); i++){
             document.add(new Paragraph(tablaProductos.getItems().get(i).formatoPDF()));
         }
-        document.close();
+        Alert alert = new Alert(Alert.AlertType.NONE);
+        alert.setTitle("DOCUMENTO GENERADO CON EXITO");
+        ///alert.setHeaderText("Su documento se ha generado en la sigueinte ruta: "+ );
+        //alert.setContentText(errorMessage);
+        alert.showAndWait();
     }
 }

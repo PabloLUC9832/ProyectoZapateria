@@ -88,9 +88,8 @@ public class LoginPantallaController implements Initializable {
                 Alert alert = new Alert(Alert.AlertType.ERROR);
                 alert.setTitle("Usuario sin permiso");
                 alert.setHeaderText("Acceso denegado");
-                alert.setContentText("Usuario no permitido");
+                alert.setContentText("Usuario  o contraseñas incorrectas, vuelve a intentar.");
                 alert.showAndWait();                
-                System.out.println("ERROR AL ACCEDER ----");
             }
             
         }else{

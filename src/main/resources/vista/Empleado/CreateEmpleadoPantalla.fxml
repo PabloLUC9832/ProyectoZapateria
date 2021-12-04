@@ -28,13 +28,11 @@
             <Label layoutX="25.0" layoutY="77.0" text="Nombre completo" />
             <Label layoutX="25.0" layoutY="107.0" text="Usuario" />
             <Label layoutX="25.0" layoutY="137.0" text="Contraseña" />
-            <Label layoutX="25.0" layoutY="167.0" text="Repite tu contraseña" />
-            <Label layoutX="25.0" layoutY="197.0" text="Puesto" />
+            <Label layoutX="25.0" layoutY="167.0" text="Puesto" />
             <TextField fx:id="txtNombre" layoutX="163.0" layoutY="67.0" prefHeight="25.0" prefWidth="336.0" style="-fx-border-color: #4cc9f0; -fx-background-color: transparent; -fx-border-width: 0px 0px 2px 0px;" />
             <TextField fx:id="txtUser" layoutX="163.0" layoutY="97.0" prefHeight="25.0" prefWidth="336.0" style="-fx-border-color: #4cc9f0; -fx-background-color: transparent; -fx-border-width: 0px 0px 2px 0px;" />
             <PasswordField fx:id="txtPass" layoutX="163.0" layoutY="127.0" prefHeight="25.0" prefWidth="336.0" style="-fx-background-color: transparent; -fx-border-color: #4cc9f0; -fx-border-width: 0px 0px 2px 0px;" />
-            <PasswordField fx:id="txtConfirmarPass" layoutX="163.0" layoutY="157.0" prefHeight="25.0" prefWidth="336.0" style="-fx-background-color: transparent; -fx-border-color: #4cc9f0; -fx-border-width: 0px 0px 2px 0px;" />
-            <ComboBox fx:id="comboPuesto" layoutX="163.0" layoutY="187.0" prefHeight="25.0" prefWidth="336.0" promptText="Selecciona el puesto" style="-fx-background-color: transparent; -fx-border-color: #4cc9f0; -fx-border-width: 0px 0px 2px 0px;" />
+            <ComboBox fx:id="comboPuesto" layoutX="163.0" layoutY="157.0" prefHeight="25.0" prefWidth="336.0" promptText="Selecciona el puesto" style="-fx-background-color: transparent; -fx-border-color: #4cc9f0; -fx-border-width: 0px 0px 2px 0px;" />
             <JFXButton fx:id="btnRegistrar" layoutX="230.0" layoutY="286.0" onAction="#registrarEmpleado" prefHeight="32.0" prefWidth="117.0" style="-fx-background-color: #4cc9f0;" text="Registrar" textFill="WHITE">
                <font>
                   <Font name="System Bold" size="13.0" />

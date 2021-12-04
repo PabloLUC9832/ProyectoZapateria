@@ -21,11 +21,8 @@ public class App extends Application {
     @Override
     public void start(Stage primaryStage) throws IOException {
         
-        //String ruta="/vista/Cliente/GeneralClientePantalla.fxml";
         //String ruta="/vista/LoginPantalla.fxml";
 
-        //String ruta="/vista/Cliente/GeneralClientePantalla.fxml";
-        //String ruta="/vista/Promocion/EditarPromocionPantalla.fxml";
         String ruta="/vista/MainPantalla.fxml";
 
 

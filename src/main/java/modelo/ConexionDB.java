@@ -7,6 +7,7 @@ package modelo;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
+import javafx.scene.control.Alert;
 
 public class ConexionDB {
     
@@ -45,6 +46,11 @@ public class ConexionDB {
             System.out.println("CONECTADO");
             return DriverManager.getConnection(url, username, password);
         } catch (SQLException ex) {
+            Alert alert = new Alert(Alert.AlertType.ERROR);
+            alert.setTitle("ERROR");
+            alert.setHeaderText("SIN CONEXIÓN");
+            alert.setContentText("Se ha perdido la conexión al servidor, revisa tu conexión a internet e intentalo nuevamente.");
+            alert.showAndWait();
             throw new Exception("Error en ConexionDB. La causa es: " + ex.getCause().toString());
         }
         

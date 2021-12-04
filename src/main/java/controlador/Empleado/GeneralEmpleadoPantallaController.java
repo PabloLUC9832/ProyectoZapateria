@@ -256,9 +256,9 @@ public class GeneralEmpleadoPantallaController implements Initializable {
         } else {
             Alert alert = new Alert(Alert.AlertType.WARNING);
             alert.initOwner(this.stagePrincipal);
-            alert.setTitle("Sin seleccionar");
-            alert.setHeaderText("No hay promocion Seleccionada");
-            alert.setContentText("Seleccione una promocion");
+            alert.setTitle("Ningún elemento seleccionado");
+            alert.setHeaderText("No se ha seleccionado a nadie del personal.");
+            alert.setContentText("Por favor selecciona a alguien y vuelve a intentarlo.");
             alert.showAndWait();
         }        
                 
@@ -313,7 +313,7 @@ public class GeneralEmpleadoPantallaController implements Initializable {
             Parent ventana = (Parent) fxmlLoader.load();
             Stage stage = new Stage();            
             stage.setScene(new Scene(ventana));
-            stage.setTitle("Añadir Empleado");
+            stage.setTitle("Registro de personal");
             stage.show();
             
         }catch(IOException e){

@@ -4,8 +4,6 @@ import java.net.URL;
 import java.util.ResourceBundle;
 import javafx.fxml.Initializable;
 import com.jfoenix.controls.JFXButton;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -15,10 +13,10 @@ import javafx.scene.control.ButtonType;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
+import javafx.scene.input.KeyEvent;
 import javafx.stage.Stage;
 import modelo.Empleado.Empleado;
 import modelo.Empleado.Empleado_DAO_Imp;
-import modelo.AlertaFXML;
 
 /**
  * FXML Controller class
@@ -35,9 +33,6 @@ public class CreateEmpleadoPantallaController implements Initializable {
 
     @FXML
     private PasswordField txtPass;
-
-    @FXML
-    private PasswordField txtConfirmarPass;
 
     @FXML
     private ComboBox<?> comboPuesto;
@@ -62,6 +57,7 @@ public class CreateEmpleadoPantallaController implements Initializable {
         empleado_DAO = new Empleado_DAO_Imp();
         ObservableList list = FXCollections.observableArrayList("Empleado","Gerente");
         comboPuesto.setItems(list);
+        txtNombre.addEventHandler(KeyEvent.KEY_TYPED, event -> soloLetras(event));
     }    
    
     @FXML
@@ -85,9 +81,9 @@ public class CreateEmpleadoPantallaController implements Initializable {
                     cerrarVentana();                    
                 }else{
                     Stage stage = (Stage) this.btnRegistrar.getScene().getWindow();
-                    String errorMessage = "El tiempo de espera se ha agotado o se perdío la conexión\n" +"con la Base Datos.";
+                    String errorMessage = "Ha ocurrido un error al añadir, intentalo nuevamente.";
                     Alert alert = new Alert(Alert.AlertType.ERROR);
-                    alert.setTitle("Error, No hay conexión con la Base de Datos");
+                    alert.setTitle("Error");
                     alert.setHeaderText(" ¡Por favor! intentelo nuevamente");
                     alert.setContentText(errorMessage);
                     alert.initOwner(stageDialogoEdicion);
@@ -98,9 +94,9 @@ public class CreateEmpleadoPantallaController implements Initializable {
             
         }catch(Exception ex) {
             Stage stage = (Stage) this.btnRegistrar.getScene().getWindow();
-            String errorMessage = "El tiempo de espera se ha agotado o se perdío la conexión\n" +"con la Base Datos.";
+            String errorMessage = "Se ha perdido la conexión al servidor, revisa tu conexión a internet e intentalo nuevamente.\n"+ex;            
             Alert alert = new Alert(Alert.AlertType.ERROR);
-            alert.setTitle("Error, No hay conexión con la Base de Datos");
+            alert.setTitle("Error");
             alert.setHeaderText(" ¡Por favor! intentelo nuevamente");
             alert.setContentText(errorMessage);
             alert.initOwner(stageDialogoEdicion);
@@ -116,11 +112,12 @@ public class CreateEmpleadoPantallaController implements Initializable {
         
         if(this.txtNombre.getText() == null ||
            this.txtUser.getText() == null   ||
-           this.txtPass.getText() == null   || 
-           this.txtConfirmarPass.getText() == null
+           this.txtPass.getText() == null // ||
         ){
           errorMessage +="ALGUNOS CAMPOS ESTAN VACIOS\n";                         
-        }
+        }/*else if(soloLetras2()==true){
+          errorMessage +="HAS INGRESADO ALGÚN CARACTER ESPECIAL AL ESCRIBIR EL NOMBRE\n";                                     
+        }*/
         
         if(errorMessage.length()==0){
             return true;
@@ -140,6 +137,41 @@ public class CreateEmpleadoPantallaController implements Initializable {
         Stage stage = (Stage) this.btnRegistrar.getScene().getWindow();
         stage.close();
     }       
+        
+    public void soloLetras(KeyEvent keyEvent){
+        try{
+            char key = keyEvent.getCharacter().charAt(0);
+            //if(Character.isDigit(key)){
+            if(!Character.isLetter(key) && !Character.isSpaceChar(key) ){
+                keyEvent.consume();
+            }
+        }catch(Exception e){
+            System.out.println("soloLetras"+e);
+        }
+            
+    }
     
+    private boolean soloLetras2(){
+        boolean valor = false;
+        String nombre = this.txtNombre.getText();
+        for(int i = 0;i<nombre.length();i++){
+            if(nombre.charAt(i) == '!' || nombre.charAt(i) == '"'|| nombre.charAt(i) == '#' ||
+                    nombre.charAt(i) == '$' || nombre.charAt(i) == '%' || nombre.charAt(i) == '&' ||
+                    nombre.charAt(i) == '(' || nombre.charAt(i) == ')' || nombre.charAt(i) == '/' ||
+                    nombre.charAt(i) == '.' || nombre.charAt(i) == '=' || nombre.charAt(i) == '?' ||
+                    nombre.charAt(i) == '¡' || nombre.charAt(i) == '¿' || nombre.charAt(i) == '}' ||
+                    nombre.charAt(i) == ']' || nombre.charAt(i) == '`' || nombre.charAt(i) == '+' ||
+                    nombre.charAt(i) == '*' || nombre.charAt(i) == '~' || nombre.charAt(i) == '{' ||
+                    nombre.charAt(i) == '[' || nombre.charAt(i) == '^' || nombre.charAt(i) == '-' ||
+                    nombre.charAt(i) == '_' || nombre.charAt(i) == ':' || nombre.charAt(i) == ';' ||
+                    nombre.charAt(i) == ',' || nombre.charAt(i) == '°' || nombre.charAt(i) == '|' ||
+                    nombre.charAt(i) == '<' || nombre.charAt(i) == '>' || nombre.charAt(i) == '@'
+                    ){
+                valor = true;
+                break;
+            }
+        }
+        return valor;
+    }
     
 }
