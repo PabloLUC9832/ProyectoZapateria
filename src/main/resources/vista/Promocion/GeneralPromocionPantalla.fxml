@@ -25,14 +25,12 @@
                   <TableColumn fx:id="columnaDescuento" minWidth="1.0" prefWidth="73.0" text="Descuento" />
                   <TableColumn fx:id="columnaPrecioAnterior" prefWidth="96.0" text="Precio Anterior" />
                   <TableColumn fx:id="columnaPrecioNuevo" prefWidth="91.0" text="Precio Nuevo" />
+                  <TableColumn fx:id="columnaFechaInicio" prefWidth="91.0" text="Fecha Inicio" />
+                  <TableColumn fx:id="columnaFechaCierre" prefWidth="91.0" text="Fecha Cierre" />
+                  <TableColumn fx:id="columnaDiasDuracion" prefWidth="91.0" text="Dias de Duración" />
               </columns>
-            </TableView>            
-            <Label layoutX="37.0" layoutY="423.0" text="ID">
-               <font>
-                  <Font name="System Bold Italic" size="12.0" />
-               </font>
-            </Label>
-            <Label layoutX="425.0" layoutY="423.0" text="Descuento">
+            </TableView>
+            <Label layoutX="148.0" layoutY="423.0" text="Descuento">
                <font>
                   <Font name="System Bold Italic" size="12.0" />
                </font>
@@ -42,32 +40,28 @@
                   <Font name="System Bold" size="18.0" />
                </font>
             </Label>
-            <Label layoutX="68.0" layoutY="423.0" text="Nombre del Producto">
+            <Label layoutX="14.0" layoutY="423.0" text="Nombre del Producto">
                <font>
                   <Font name="System Bold Italic" size="12.0" />
                </font>
             </Label>
-            <Label layoutX="281.0" layoutY="423.0" text="Mensaje">
+            <Label layoutX="221.0" layoutY="423.0" text="Precio Anterior">
                <font>
                   <Font name="System Bold Italic" size="12.0" />
                </font>
             </Label>
-            <Label layoutX="494.0" layoutY="423.0" text="Precio Anterior">
+            <Label layoutX="323.0" layoutY="423.0" text="Precio Nuevo">
                <font>
                   <Font name="System Bold Italic" size="12.0" />
                </font>
             </Label>
-            <Label layoutX="593.0" layoutY="423.0" text="Precio Nuevo">
-               <font>
-                  <Font name="System Bold Italic" size="12.0" />
-               </font>
-            </Label>
-            <Label fx:id="textoId" layoutX="36.0" layoutY="448.0" />
-            <Label fx:id="textoNombreProducto" layoutX="69.0" layoutY="448.0" />
-            <Label fx:id="textoMensaje" layoutX="281.0" layoutY="448.0" />
-            <Label fx:id="textoDescuento" layoutX="425.0" layoutY="448.0" />
-            <Label fx:id="textoPrecioAnterior" layoutX="495.0" layoutY="449.0" />
-            <Label fx:id="textoPrecioNuevo" layoutX="593.0" layoutY="449.0" />
+            <Label fx:id="textoNombreProducto" layoutX="17.0" layoutY="448.0" />
+            <Label fx:id="textoDescuento" layoutX="149.0" layoutY="448.0" prefHeight="17.0" prefWidth="0.0" />
+            <Label fx:id="textoPrecioAnterior" layoutX="223.0" layoutY="449.0" />
+            <Label fx:id="textoPrecioNuevo" layoutX="325.0" layoutY="449.0" />
+            <Label fx:id="textoFechaInicio" layoutX="419.0" layoutY="449.0" />
+            <Label fx:id="textoFechaCierre" layoutX="502.0" layoutY="449.0" />
+            <Label fx:id="textoDiasDuracion" layoutX="586.0" layoutY="449.0" />
             <Label layoutX="279.0" layoutY="383.0" text="Producto Seleccionado">
                <font>
                   <Font name="System Bold" size="13.0" />
@@ -112,7 +106,22 @@
                      </graphic>
                   </JFXButton>
                </children>
-            </Pane>     
+            </Pane>
+            <Label layoutX="416.0" layoutY="423.0" text="Fecha Inicio">
+               <font>
+                  <Font name="System Bold Italic" size="12.0" />
+               </font>
+            </Label>
+            <Label layoutX="499.0" layoutY="423.0" text="Fecha cierre">
+               <font>
+                  <Font name="System Bold Italic" size="12.0" />
+               </font>
+            </Label>
+            <Label layoutX="584.0" layoutY="423.0" text="Días de duración">
+               <font>
+                  <Font name="System Bold Italic" size="12.0" />
+               </font>
+            </Label>     
          </children>
       </Pane>
    </children>

@@ -7,7 +7,6 @@ package modelo.Promocion;
 
 import controlador.Promocion.GeneralPromocionPantallaController;
 import java.sql.Connection;
-import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
@@ -16,7 +15,6 @@ import java.util.List;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import modelo.ConexionDB;
-import modelo.Empleado.Empleado;
 
 /**
  *
@@ -33,7 +31,8 @@ public class Promocion_DAO_Imp implements Promocion_DAO {
         
         String sql = "INSERT INTO promocion values(NULL,"+"'"+promocion.getNombreProducto()+"','"
                 +promocion.getMensaje()+"','"+promocion.getDescuento()+"','"
-                    +promocion.getPrecioAnterior()+"','"+promocion.getPrecioNuevo()
+                    +promocion.getPrecioAnterior()+"','"+promocion.getPrecioNuevo()+"','"+promocion.getFechaInicio()+"','"
+                +promocion.getFechaCierre()+"','"+promocion.getDiasDuracion()
                     +"')";
  
         ConexionDB cc = new ConexionDB();
@@ -72,7 +71,10 @@ public class Promocion_DAO_Imp implements Promocion_DAO {
                             rs.getString(3),
                             rs.getString(4),
                             rs.getFloat(5),
-                            rs.getFloat(6)
+                            rs.getFloat(6),
+                            rs.getString(7),
+                            rs.getString(8),
+                            rs.getInt(9)
                             );
               //System.out.println(rs.getInt(1));
               listaPromocion.add(promocion);
@@ -97,7 +99,10 @@ public class Promocion_DAO_Imp implements Promocion_DAO {
                     " UNION SELECT *FROM promocion WHERE mensaje LIKE '%"+busqueda+"%'"+
                     " UNION SELECT *FROM promocion WHERE descuento LIKE '%"+busqueda+"%'"+
                     " UNION SELECT *FROM promocion WHERE precioAnterior LIKE '%"+busqueda+"%'"+
-                    " UNION SELECT *FROM promocion WHERE precioNuevo LIKE '%"+busqueda+"%'"                                                                                                   
+                    " UNION SELECT *FROM promocion WHERE precioNuevo LIKE '%"+busqueda+"%'"+
+                    " UNION SELECT *FROM promocion WHERE fechaInicio LIKE '%"+busqueda+"%'"+
+                    " UNION SELECT *FROM promocion WHERE fechaCierre LIKE '%"+busqueda+"%'"+
+                    " UNION SELECT *FROM promocion WHERE diasDuracion LIKE '%"+busqueda+"%'"                                                                                                   
                     ;
         Promocion promocion = new Promocion();
         ConexionDB cc= new ConexionDB();
@@ -115,7 +120,10 @@ public class Promocion_DAO_Imp implements Promocion_DAO {
                             rs.getString(3),
                             rs.getString(4),
                             rs.getFloat(5),
-                            rs.getFloat(6)                                                   
+                            rs.getFloat(6),
+                            rs.getString(7),
+                            rs.getString(8),
+                            rs.getInt(9)
                             );
                 listaPromocion.add(prom1);
             }
@@ -143,7 +151,10 @@ public class Promocion_DAO_Imp implements Promocion_DAO {
             +"mensaje='"+promocion.getMensaje()+"',"
             +"descuento='"+promocion.getDescuento()+"',"
             +"precioAnterior='"+promocion.getPrecioAnterior()+"',"
-            +"precioNuevo='"+promocion.getPrecioNuevo()+"'"
+            +"precioNuevo='"+promocion.getPrecioNuevo()+","
+            +"fechaInicio='"+promocion.getFechaInicio()+","
+            +"fechaCierre='"+promocion.getFechaCierre()+","
+            +"diasDuracion='"+promocion.getDiasDuracion()+","
             + "WHERE idPromocion='"+promocion.getIdPromocion()+"'";
     
     ConexionDB cc = new ConexionDB();

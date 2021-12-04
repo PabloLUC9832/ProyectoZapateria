@@ -2,12 +2,17 @@ package controlador.Promocion;
 
 import com.jfoenix.controls.JFXButton;
 import java.net.URL;
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
+import java.time.temporal.TemporalField;
 import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Alert;
 import javafx.scene.control.ButtonType;
+import javafx.scene.control.DatePicker;
+import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 import modelo.Promocion.Promocion;
@@ -17,9 +22,21 @@ public class CreatePromocionPantallaController implements Initializable{
 
     @FXML
     private TextField txtNombreProducto;
+    
+    @FXML
+    private DatePicker fechaInicio;
+    
+    @FXML
+    private TextField txtDiasDuracion;
+    
+    @FXML
+    private Label txtFechaCierre;
 
     @FXML
     private TextField txtMensaje;
+  
+    @FXML
+    private Label txtFechaInicio;
 
     @FXML
     private JFXButton btnRegistrar;
@@ -53,14 +70,29 @@ public class CreatePromocionPantallaController implements Initializable{
         Promocion promocion = new Promocion();
         try{
             if (campoTextoValidoNombreProducto() && campoTextoValidoMensaje() && campoTextoValidoDescuento() &&
-               campoNuloPrecioAnterior() && campoNumericoValidoPrecioAnterior() && campoNuloPrecioNuevo() && campoNumericoValidoPrecioNuevo()) {
+               campoNuloPrecioAnterior() && campoNumericoValidoPrecioAnterior() && campoNuloPrecioNuevo() && 
+               campoNumericoValidoPrecioNuevo() && campoTextoValidoDias() && campoNumericoDias()) {
 
                 String nombreProducto = this.txtNombreProducto.getText();
                 String mensaje = this.txtMensaje.getText();
                 String descuento = this.txtDescuento.getText();
                 float precioAnterior = Float.parseFloat(txtPrecioAnterior.getText());
-                float precioNuevo = Float.parseFloat(txtPrecioNuevo.getText());                
-                promocion = new Promocion(0,nombreProducto,mensaje,descuento,precioAnterior,precioNuevo);                                
+                float precioNuevo = Float.parseFloat(txtPrecioNuevo.getText());   
+                
+                LocalDate fecha1 = fechaInicio.getValue();
+                String formatoFechaInicio = fecha1.format(DateTimeFormatter.ofPattern("dd-MMM-yyyy"));
+                txtFechaInicio.setText(formatoFechaInicio);
+                String fechaInicio = this.txtFechaInicio.getText();
+                
+                int duracion = Integer.parseInt(txtDiasDuracion.getText());
+                int diasDuracion = duracion;
+                
+                LocalDate nuevaFecha = fecha1.plusDays(duracion);
+                String formatoFechaCierre = nuevaFecha.format(DateTimeFormatter.ofPattern("dd-MMM-yyyy"));
+                txtFechaCierre.setText(formatoFechaCierre);
+                String fechaCierre = formatoFechaCierre;
+                
+                promocion = new Promocion(0,nombreProducto,mensaje,descuento,precioAnterior,precioNuevo,fechaInicio,fechaCierre,diasDuracion);
                 
                 if(this.promocion_DAO.create(promocion)==true){
                     Stage stage = (Stage) this.btnRegistrar.getScene().getWindow();
@@ -90,6 +122,14 @@ public class CreatePromocionPantallaController implements Initializable{
             alert.initOwner(stageDialogoEdicion);
             alert.showAndWait();
         }
+    }
+    
+    
+    @FXML
+    public void getDateInicio(ActionEvent event) {
+        LocalDate fecha1 = fechaInicio.getValue();
+        String formatoFechaInicio = fecha1.format(DateTimeFormatter.ofPattern("dd-MMM-yyyy"));
+        txtFechaInicio.setText(formatoFechaInicio);
     }
     
     private boolean campoTextoValidoNombreProducto(){
@@ -260,6 +300,49 @@ public class CreatePromocionPantallaController implements Initializable{
             return false;
         }
     } 
+   
+   private boolean campoTextoValidoDias(){
+        
+        String errorMessage = "";
+        
+        if(this.txtDiasDuracion.getText() == null || this.txtDiasDuracion.getText().length() == 0){
+          errorMessage +="Verifica el campo! \n";                         
+        }
+        if(errorMessage.length()==0){
+            return true;
+        }else{
+            Alert alert = new Alert(Alert.AlertType.ERROR);
+            alert.setTitle("Error, campo no válido");
+            alert.setHeaderText("El campo días de duración esta vacío");
+            alert.setContentText(errorMessage);
+            alert.initOwner(stageDialogoEdicion);
+            alert.showAndWait();
+            return false;            
+        }                                       
+        
+    }
+   
+   private boolean campoNumericoDias(){
+        String errorMessage = "";
+        int duracion = Integer.parseInt(txtDiasDuracion.getText());
+        int diasDuracion = duracion;
+        
+        if(diasDuracion>15){
+          errorMessage +="Verifica el campo! \n";                         
+        }
+        if(errorMessage.length()==0){
+            return true;
+        }else{
+            Alert alert = new Alert(Alert.AlertType.ERROR);
+            alert.setTitle("Error, campo no válido");
+            alert.setHeaderText(errorMessage);
+            alert.setContentText("Las promociones no deben durar más\n"+"de 15 días.");
+            alert.initOwner(stageDialogoEdicion);
+            alert.showAndWait();
+            return false;            
+        } 
+        
+    }
     
     public void cerrarVentana(){
         Stage stage = (Stage) this.btnRegistrar.getScene().getWindow();
