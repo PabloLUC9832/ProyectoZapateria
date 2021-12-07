@@ -42,7 +42,7 @@ import modelo.Producto.Producto_DAO_Imp;
 
 /**
  *
-  * @author Jhair García Ceballos && Luis Fernando Morales Teutli
+ * @author jhair
  */
 public class GeneralProductoPantallaController implements Initializable {
     
@@ -114,6 +114,9 @@ public class GeneralProductoPantallaController implements Initializable {
         
     @FXML
     private Button btnGenerarPDF;
+    
+    @FXML
+    private JFXButton btnactualizarVentana;
     
     
 
@@ -330,6 +333,7 @@ public class GeneralProductoPantallaController implements Initializable {
             }
 
         } else {
+            // Nothing selected.
             Alert alert = new Alert(Alert.AlertType.WARNING);
             alert.initOwner(this.stagePrincipal);
             alert.setTitle("Ninguna fila seleccionada");
@@ -405,8 +409,11 @@ public class GeneralProductoPantallaController implements Initializable {
         for(int i=0; i<tablaProductos.getItems().size(); i++){
             document.add(new Paragraph(tablaProductos.getItems().get(i).formatoPDF()));
         }
-        Alert alert = new Alert(Alert.AlertType.NONE);
-        alert.setTitle("DOCUMENTO GENERADO CON EXITO");
-        alert.showAndWait();
+        document.close();
+    }
+    
+        @FXML
+    void actualizarVentana(ActionEvent event){
+            colocarProductosTabla();
     }
 }
