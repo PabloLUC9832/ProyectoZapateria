@@ -1,6 +1,6 @@
 # ZAPATERIA EL QUINTO ELEMENTO
 
-##Integrantes del equipo
+## Integrantes del equipo
 
 - Campos García Ivan Antonio
 - García Ceballos Jhair
